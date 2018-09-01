@@ -1,0 +1,244 @@
+% !TEX root = ../../rings_mods.tex
+
+\newpage
+\section{Noetherian and Artinian Rings/Modules}
+
+\subsection{Noetherian Rings and Modules}
+
+\begin{dfn}[Noetherian Ring]
+A ring $R$ is said to be left noetherian if it satisfies the ascending chain condition on left ideals. That is, for all chains
+\[
+I_1 \subset I_2 \subset \cdots \subset I_n \subset \cdots
+\]
+of left ideals, there is an $n_0 \in \N$ such that $I_{n_0}=I_N$ for all $n \geq n_0$, i.e. that that the chain stabilizes (at $I_{n_0}$).
+\end{dfn}
+
+\begin{ex}
+If $R$ is a principal ideal domain, then $R$ is noetherian.
+\end{ex}
+
+\begin{ex}
+Let $R=\Q[x_i]_{i \in \N}$, the polynomial ring in infinitely many indeterminates. Then the ideal $I=\langle \{x_i\} \rangle$ cannot be finitely generated so that $R$ is not noetherian. 
+\end{ex}
+
+\begin{ex}
+Let $F$ ba  field. Look at $R=F[X,Y]=\langle X^2,XY,Y^2\rangle$. Now $R$ is a vector space over $F$ with basis $\{1,\overline{X},\overline{Y}\}$. All ideals of $R$ are vector spaces so the only possible dimensions are 1, 2, and 3. So there can be no infinite ascending chain of spaces so $R$ must be noetherian. 
+\end{ex}
+
+\begin{thm}
+The following are equivalent for a ring $R$:
+\begin{enumerate}[(i)]
+\item $R$ is left noetherian.
+\item Every nonempty set of left ideals has a maximal element with respect to inclusion. 
+\item Every left ideal of $R$ modules is finitely generated.
+\end{enumerate}
+\end{thm}
+
+Proof: $1\rightarrow 2$: Let $S \neq \emptyset$ be a set of (left) ideals. Choose $I_1 \in S$. If $I_1$ is maximal, we are done. If not, choose $I_2 \in S$ such that $I_2 \supsetneq I_1$. Continue this process. If this sequence of chosen left ideals does not terminate, we have found a chain of ascending left ideals which does not stabilize, contradicting the fact that $R$ is noetherian. Therefore, there is a maximal element, say $I_{n_0}$ for some $n_0 \in \N$. \\
+
+$2 \rightarrow 3$: Let $S$ be the set of all finitely generated ideals of $R$ contained within $I$. Let $I$ be a nonzero left ideal of $R$. It is clear that $S$ is nonempty as $0\neq a \in I$ so that $\langle a \rangle \subset I$ so that $a \in S$. By assumption, $S$ has a maximal element $J$. We claim that $J=I$. If not, let $x \in I \setminus S$. Say that $J=\langle i_1,i_2,\cdots,i_e \rangle$. But then $J \subset \langle i_1,\cdots,i_e,x\rangle \subset I$, contrary to the fact that $J$ was maximal. \\
+
+$3 \rightarrow 1$: Assume
+\[
+I_1 \subseteq I_2 \subseteq \cdots
+\]
+is a chain of ideals. Without loss of generality, assume that the inclusions are proper. Let
+\[
+I=\bigcup_{i \in \mathcal{I}} I_i
+\]
+It is clear that $I$ is a left ideal. We wish to show that $I \neq R$. If $I=R$, then $1 \in I_n$ for some $n$. But then $I_n=R$, contrary to the fact that $I_n$ is a proper ideal. Therefore, $I \neq R$. If we are in the finitely generated case, then say $I=\langle x_1,x_2,\cdots,x_n \rangle$, with $x_i \in I_{i}$. Choosing $M$ large enough so that $x_1,x_2,cdots,x_m \in I_M$, then $I=I_M$ and the chain stabilizes. \qed \\
+
+\begin{dfn}[Noetherian Module]
+Let $R$ be a ring. An $R$-module $M$ is said to be (left) noetherian if it satisfies the ascending chain condition on left modules. 
+\end{dfn}
+
+\begin{thm}
+The following are equivalent for a left module $M$:
+\begin{enumerate}[(i)]
+\item $M$ is left noetherian.
+\item Every nonempty set of submodules of $M$ has a maximal element under inclusion.
+\item Every submodule of $M$ is finitely generated.
+\end{enumerate}
+\end{thm}
+
+\begin{thm}
+If $R$ is noetherian and $I$ is a two sided ideal of $R$ then $R/I$ is also noetherian.
+\end{thm}
+
+Proof: This follows from the Correspondence Theorem. We know the ideals of $R/I$ are in 1-1 correspondence to ideals of $R$ containing $I$. \qed \\
+
+\begin{lem}
+Let
+\[
+0 \longrightarrow L \hooklongrightarrow M \longrightarrow N \longrightarrow 0
+\]
+be a short exact sequence. If $L,N$ are finitely generated then $M$ is finitely generated. 
+\end{lem}
+
+Proof: Let $L=\langle x_1,x_2,\cdots,x_n \rangle$ and $N=\langle y_1+L,y_2+L,\cdots,y_m+L \rangle$. We claim that $M=\langle x_1,x_2,\cdots,x_n,y_1,y_2,\cdots,y_m \rangle$. Let $z \in M$. Then $z+L=r_1(y_1+L)+\cdots+r_m(y_m+L)$, where $r_i \in R$. Then $z-\sum r_iy_i \in L$ so that $z=\sum r_iy_i+\sum s_jx_j$. \qed \\
+
+\begin{thm}
+Let $R$ be a ring and let
+\[
+0 \longrightarrow A \ma{f} B \ma{g} C \longrightarrow 0
+\]
+be a short exact sequence. Then $B$ is noetherian if and only if $A,C$ are noetherian. 
+\end{thm} 
+
+Proof: Without loss of generality, assume that $A \longrightarrow B$ is an inclusion. (Why?)
+
+Let $B$ be noetherian and $A \leq B$. Every submodule of $A$ is also a submodule of $B$ so it is finitely generated. That $C$ is noetherian follows from the Correspondence Theorem as every submodule of $C$ corresponds to a submodule of $B$ containing $A$. 
+
+To show the reverse direction, we wish to show that every submodule of $B$ is finitely generated. Let $X$ be a submodule of $B$. We want to show that $X$ is finitely generated. Now $X \cap A$ is a submodule of $A$. As $A$ is noetherian, $X \cap A$ is finitely generated. 
+\[
+0 \longrightarrow X \cap A \hooklongrightarrow X \longrightarrow X/X \cap A \longrightarrow 0
+\]
+But we have $X/X \cap A \cong A+X/A \subseteq B/A=C$ and $C$ is finitely generated. So $X/X \cap A$ is finitely generated and $X \cap A$ is finitely generated so that by the preceding lemma, $X$ is finitely generated. \qed \\
+
+\begin{prop}
+A direct sum of two noetherian modules is noetherian.
+\end{prop}
+
+Proof: Let $A,B$ be noetherian. Then we have the exact sequence
+\[
+0 \longrightarrow A \ma{k_A} A \oplus B \ma{k_B} \longrightarrow 0
+\]
+As $A,B$ are noetherian, $A \oplus B$ is noetherian. A finite sum of noetherian modules is then noetherian by induction. \qed \\
+
+We can extend this to an if and only if statement. 
+
+\begin{prop}
+Let $R$ be a noetherian ring. Let $M$ be a finitely generated $R$-module. Then $M$ is noetherian. 
+\end{prop}
+
+Proof: Let $M$ be finitely generated. Then there exists a finitely generated free module $F$ mapping onto $M$. But this finitely generated free modules has
+\[
+F \cong R^n=R \oplus \cdots \oplus R
+\]
+But $F$ is noetherian as $R^n=R \oplus \cdots \oplus R$ is noetherian being the finite sum of noetherian rings. So $M$ is a quotient of noetherian modules. But then $M$ is noetherian. \qed \\
+
+\subsection{Artinian Rings and Modules}
+
+\begin{dfn}[Artinian Module]
+Let $M$ be an $R$-module. Then $M$ is called left artinian if it satisfies the descending chain condition on submodules.
+\end{dfn}
+
+\begin{ex}
+Every field is an artinian ring (in fact, all division rings satisfy the artinian condition).
+\end{ex}
+
+\begin{ex}
+$F[X,Y]/\langle X^2,XY,Y^2\rangle$ as seen before to be noetherian, must also necessarily be artinian.
+\end{ex}
+
+\begin{ex}
+$\Z$ is not artinian as we have $\langle 2 \rangle \supsetneq \langle 4 \rangle \supsetneq \langle 16 \rangle \supsetneq \cdots$. 
+\end{ex}
+
+\begin{thm}
+Suppose $R$ is a ring and let
+\[
+0 \longrightarrow A \longrightarrow B \longrightarrow C \longrightarrow 0
+\]
+be a short exact sequence of $R$-modules. Then $B$ is artinian if and only if $A,C$ are artinian.
+\end{thm}
+
+Proof: The forward direction follows from the corresponding proof (no pun intended) for noetherian modules mutatis mutandis. 
+
+Now let $B_1 \supseteq B_2 \supseteq \cdots$ be a descending chain of submodules of $B$. Consider
+\[
+A \cap B_1 \supseteq A \cap B_2 \supseteq \cdots
+\]
+a descending chain of submodules of $A$. As $A$ is artinian, this chain must stabilize at some $n$. We now look at $A+B_1 \supseteq A+B_2 \supseteq \cdots$, a descending chain of submodules of $B$ containing $A$. Now look at
+\[
+A+B_1/A \supseteq A+B_2 \supseteq \cdots
+\]
+a descending chain of submodules of $C$. Now as $C$ is artinian, this chain stabilizes. So there is a $m$ such that the chain stabilizes at $m$. Then $A+B_m$ must stabilize by the Correspondence Theorem. Now we have
+\[
+\begin{split}
+B_k &\supseteq B_{k+1} \supseteq B_{k+2} \supseteq \cdots \\
+A+B_k&=A+B_{k+1}=\cdots \\
+A\cap B_k&=A \cap B_{k+1}=\cdots
+\end{split}
+\]
+We claim that $B_k=B_{k+1}=\cdots$. It is sufficient to show $B_k \subseteq B_{k+1}$. Let $x \in B_k$ and $a \in A$. We know $a+x \in A+B_k$. Suppose $a+x=a'+y$ for some $a' \in A$ and $y \in B_{k+1} \subseteq B_k$. We know $a-a' \in A$ and $-x+y \in B_k$. Therefore,
+\[
+-x+y \in A \cap B_k= A \cap B_{k+1}
+\]
+so that $-x+y \in B_{k+1}$. We know $y \in B_{k+1}$ so that $x \in B_{k+1}$. But then $B_k \subseteq B_{k+1}$. \qed \\
+
+\begin{cor}
+A finite direct sum of modules is artinian if and only if each of the modules is artinian.
+\end{cor}
+
+\begin{cor}
+Let $R$ be an artinian ring and let $M$ be a family of finitely generated $R$-modules. Then $M$ is artinian. 
+\end{cor}
+
+\subsection{Hilbert's Basis Theorem}
+
+\begin{thm}
+Let $R$ be a noetherian commutative ring. Then $R[x]$ is noetherian. Consequently by induction, $R[x_1,x_2,\cdots,x_n]$ is noetherian. 
+\end{thm}
+
+Proof: Let $I \unlhd R[x]$. We want to show that $I$ is finitely generated. Let 
+\[
+L=\{\text{all leading coefficients of polynomials in }I\}
+\]
+ We know that $0 \in L$ so that $L$ is nonempty. We wish to show that $L$ is an ideal of $R$. Let $a,b \in L$. There then exists $f=ax^m+\cdots \in I$ and $g=bx^n+\cdots \in I$. Without loss of generality, assume that $m>n$. As $f \in I$ and $I$ is an ideal, $x^{m-n}g=ax^m+\cdots \in I$. We know $a+b$ is the leading coefficient of $f+x^{m-n}g$ so $a+b \in L$. But then $L \unlhd R$. As $R$ is noetherian, it must be that $L$ is finitely generated. Then there exist $a_1,\cdots,a_n \in R$ with $L=\langle a_1,\cdots,a_n\rangle$. 
+
+Moreover, there exist polynomials $f_i \in I$ with $f_i=a_ix^{e_i}+\cdots$. The ``guess" would be that $\langle f_1,\cdots,f_n \rangle=I$ but this would be incorrect. There are many $f_i$ with $a_i$ as a leading coefficient so this generating set is ``probably not enough". Let $N=\max \{e_1,\cdots,e_n\}$. For each $0 \leq d \leq N-1$, let
+\[
+L_D=\{\text{all leading coefficients of polynomials in } I \text{ of degree }d\} \cup\{0\}
+\]
+We claim that $L_D$ is an ideal of $R$ for each $D$. As $R$ is noetherian, we know that $L_D$ is finitely generated for all $D$. Then $L_D=\langle b_{d_0},\cdots,b_{d_nd}\}$. We write $f_{d,i}=$ some polynomial in $I$ of degree $d$ with leading coefficient $b_{d,i}$. We claim that 
+\[
+I=\langle f_1,\cdots,f_n,\{f_{d,i}\}_{0 \leq d \leq N-1,0 \leq i \leq n_d}\}
+\]
+Let $I'$ be the set on the right. It is clear that $I' \subseteq I$. We wish to show then that $I \subseteq I'$. Assume that $I \not\subseteq I'$. Choose a counterexample $f$ of smallest degree such that $f \in I$ but $f \notin I'$. Let $\deg f=d$ so $f=ax^d+\cdots$. We claim $0 \leq d \leq N-1$. Assume then that $d \geq N$. Let $a \in L$. As $L$ is finitely generated, $a=r_1a_1+\cdots+r_na_n$. We look at
+\[
+g=\underbrace{r_1 x^{d-e_1}f_1}_{\deg e}+\cdots+\underbrace{r_n x^{d-e_n}f_n}_{\deg d}
+\]
+The leading coefficient of $g$ is $a$ and $\deg g=d$. Now we know that $f-g \in I$ and $f-g \in I'$. Otherwise, $f \in I'$. But $f-g$ has degree less than $d$. But this contradicts the minimality of the degree of the counterexample, $f$. Now $d<N$. It follows that the leading coefficient of $f$, $a$, must be in $L_D$ so we have $a=r_1f_{d,1}+\cdots+r_{n_d}f_{d,n_d} \in I'$. Furthermore, the degree of $g$ is $d$ - the degree of $f$ and both $f$ and $g$ have the same leading coefficient. Now as $f-g \in I$ but not in $I'$, we have a contradiction of the minimality of the degree of $f$. \qed \\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

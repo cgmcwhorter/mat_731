@@ -1,0 +1,1050 @@
+% !TEX root = ../../rings_mods.tex
+
+\newpage
+\section{Classification of Injective Modules}
+\subsection{Motivation and Review}
+
+We know that if $M$ is a module then there exists a projective module $P$ with $P \longrightarrow M \longrightarrow 0$ and an injective module $E$ with $0 \longrightarrow M \longrightarrow E$. We want the ``smallest" projective module mapping onto $M$ and the ``smallest" injective module containing $M$. If $R$ is artinian then we could define ``the smallest'' as the module with the smallest length. If $M$ were finitely generated, we could look at all finitely generated projective modules $P$, $P \longrightarrow M \longrightarrow 0$ and choose $P$ with smallest length. The same thing works for injective modules. We still have to define ``smallest'' for non-artinian modules. 
+
+We now recap a bit about injective modules. 
+
+\begin{dfn}[Injective Module]
+A module $E$ is injective if for all diagrams
+\[
+\begin{tikzcd}
+0 \arrow{r} & A \arrow{r}{i} \arrow{d}{f} & B \arrow[dotted]{dl}{\exists g} \\
+ & E & 
+\end{tikzcd}
+\]
+there is a $g$ such that $gi=f$.
+\end{dfn}
+
+\noindent Also, recall Baer's Criterion.
+
+\begin{thm}[Baer's Criterion]
+$E$ is an injective $R$-module if and only if every module homomorphism from some ideal $I$ of $R$ to $M$ can be extended to $R$.
+\[
+\begin{tikzcd}
+0 \arrow{r} & I \arrow{r}{i} \arrow{d}{f} & R \arrow[dotted]{dl}{g} \\
+ & E & 
+\end{tikzcd}
+\]
+\end{thm}
+
+\begin{thm}
+Every module can be embedded into an injective module. 
+\end{thm}
+
+\subsection{Properties of Injective Modules}
+
+\begin{enumerate}[1.]
+\item $E$ is injective if and only if the sequence $0 \longrightarrow E \stackrel{\text{incl}}{\longrightarrow} M$ splits if and only if $\text{Hom}_R(-,E)$ is exact. 
+\item Direct sums of injective modules are injective.
+\item If $E_1,E_2,\ldots,E_n$ are injective then $\bigoplus_{i=1}^n E_i$ is injective.
+\item If $\{E_i\}_{i \in \mathcal{A}}$ is a family of injective modules then $\prod_{i \in \mathcal{A}} E_i$ is injective. 
+\end{enumerate}
+
+\begin{thm}
+$R$ is left Noetherian if and only if every direct sum of injective modules is injective. 
+\end{thm}
+
+Proof: Let $\{E_i\}_{i \in \mathcal{I}}$ be a family of injective modules. We use Baer's Criterion. Let $I$ be a left ideal of $R$.
+\[
+\begin{tikzcd}
+0 \arrow{r} & I \arrow{d} \arrow{r}{\text{incl}} & R \\
+ & \bigoplus_{i \in \mathcal{I}} E_i & 
+\end{tikzcd}
+\]
+
+
+We know that if $M$ is a module then there exists a projective module $P \longrightarrow M \longrightarrow 0$ and there exists an injective module $0 \longrightarrow M \longrightarrow E$. But we want the ``smallest" projective module mapping onto $M$ and the ``smallest" injective module containing $M$. If $R$ is artinian then we could define the ``smallest" as the module with the smallest length having the particular property. 
+
+Suppose that $M$ is finitely generated. We look at all finitely generated projective modules $P$, $P \longrightarrow M \longrightarrow 0$ and choose a $P$ of smallest length. The same thing works for injective modules. It remains to create a definition for nonartinian modules. Before this, we briefly review injective modules.
+
+\begin{dfn}[Injective Module]
+A module $E$ is injective if there exists a $g$ such that the following diagram commutes
+\[
+\begin{tikzcd}
+0 \arrow{r} & A \arrow{r}{i} \arrow[swap]{d}{f} & B \arrow[dotted]{dl}{g} \\
+ & E & 
+\end{tikzcd}
+\]
+That is, $gi=f$.
+\end{dfn}
+
+\begin{thm}[Baer's Criterion]
+A module $E$ is injective if and only if for all left ideals $I$ and maps $f: I \rightarrow E$ we can extend $f$ to $R$. That is, there is a map $g$ such that the following diagram commutes.
+\[
+\begin{tikzcd}
+0 \arrow{r} & I \arrow{r}{\text{incl}} \arrow[swap]{d}{f} & R \arrow[dotted]{dl}{g} \\
+ & E & 
+\end{tikzcd}
+\]
+\end{thm}
+
+\begin{thm}
+Every module can be embedded into an injective module.
+\end{thm}
+
+
+\noindent\underline{Properties of Injective Modules}
+\begin{enumerate}[(1)]
+\item $E$ is injective if and only if every sequence $0 \longrightarrow E \stackrel{\text{incl}}{\longrightarrow} M$ splits if and only if $\text{Hom}(-,E)$ is exact.
+\item A direct sum of injective modules is injective. 
+\item If $E_1,\ldots,E_n$ are injective then $\bigoplus_{i=1}^n E_i$ is injective.
+\item If $\{E_i\}_{i \in \mathcal{I}}$ is a family of injective modules then $\prod_{i \in \mathcal{I}} E_i$ is injective.
+\end{enumerate}
+
+\begin{thm}
+$R$ is left noetherian if and only if every direct sum of injective modules is injective. 
+\end{thm}
+
+Proof: Let $\{E_i\}_{i \in \mathcal{I}}$ be a family of injective modules. We use Baer's Criterion. Let $I$ be a left ideal of $R$. Then we have
+\[
+\begin{tikzcd}
+0 \arrow{r} & I \arrow{r}{\text{incl}} \arrow[swap]{d}{f} & R \arrow[dotted]{dl}{g} \\
+ & \bigoplus_{i \in \mathcal{I}} E_i & 
+\end{tikzcd}
+\]
+But $R$ being finitely generated implies that $I=\langle a_1,a_2,\cdots,a_n \rangle$ for some nonzero $a_i \in R$. So $f(a_i)$ has finite support in $\bigoplus_{i \in \mathcal{I}} E_i$; that is, only finitely many entries of $f(a_j)$ are nonzero. Since $I$ is finitely generated, there are only finitely many of the $a_i$ so that $f(I)$ has finite support in $\bigoplus_{i \in \mathcal{I}} E_i$. Therefore, finitely many of the $E_i$ support $f(I)$. But then
+\[
+\text{im } f=f(I)\subseteq \bigoplus_{i=1}^n E_i  \hooklongrightarrow \bigoplus_{i \in \mathcal{I}} E_i
+\]
+for some $n \in \N$. But then we have
+\[
+\begin{tikzcd}
+0 \arrow{r} & I \arrow{r}{\text{incl}} \arrow{d} & R \arrow[dotted]{dl}{\exists g} \\  
+ & E_{i_1} \oplus \cdots \oplus E_{i_j} \arrow[hook]{d} & \\
+  & \bigoplus_{i \in \mathcal{I}} E_i & 
+\end{tikzcd}
+\]
+But then $R$ is an injective module. 
+
+
+To show the other direction, we show that if $R$ is not noetherian then we can construct a family of injective modules which is not injective which shall serve as our contradiction. So assume that $R$ is not noetherian. Then there exists a proper ascending chain of (proper) left ideals
+\[
+I_1 \subset I_2 \subset I_3 \subset \cdots \subset I_n \subset \cdots
+\]
+Let $I=\bigcup_{n \geq 1} I_n$. It is clear that $I$ is a left ideal of $R$ and that for all $n$, we have $I/I_n \neq 0$. 
+\[
+I \stackrel{\pi_n}{\longrightarrow} I/I_n \hooklongrightarrow E_n
+\]
+We embed $I/I_n$ into an injective module $E_n$ for all $n$ and claim that $\bigoplus_{n \geq 1}E_n$ is not injective. 
+
+Let $\pi_n: I \rightarrow I/I_n$ be the canonical surjection for all $n$. Then for all $a \in I$, there is an $n \in \N$ such that $\pi_n(a)=0$. We look at $I \rightarrow \prod_{n \geq 1} E_n$. We know that $f(a)=\big(\pi_n(a)\big)_{n \geq 1}$. If at some point an entry is 0, then as $I_n \subset I_{n+1}$, the rest of the entries are 0 so that $f(a)$ has finite support. But this shows that $\im f \subset \oplus_{n \geq 1} E_n$. 
+\[
+\begin{tikzcd}
+0 \arrow{r} & I \arrow{r}{\text{incl}} \arrow{d} & R \arrow[dotted]{dl}{\exists g} \\  
+ &  \bigoplus_{n \geq 1} E_n & 
+\end{tikzcd}
+\]
+
+Assume that $\oplus_{n \geq 1} E_n$ is injective. So there is a $g: R \rightarrow \oplus_{n \geq 1}E_n$ extending $f$. We write $g(1)=(x_n)_{n}$ and this must have finite support. For $m \geq 1$, choose $a \notin I_m$ such that $\pi_m(a) \neq 0$; that is, choose $a \in I_{m+1} \setminus I_m$. So we have $f(a)=g(a)$ has $m$th coordinate $\pi_m(a)$. But 
+\[
+g(a)=g(a\cdot 1)=ag(1)
+\]
+Now we choose $m$ large enough so that the $m$th entry of $g(1)$ is 0 ($g(1)$ has finite support so this is possible). This is a contradiction. 
+
+
+\subsection{Essential Extensions} 
+
+\begin{dfn}[Essential Extension]
+Let $R$ be a ring and $M \subset E$ be an inclusion (extension) of $R$-modules. Then we say that ``the extension $M \subset E$ is essential" and write $M \ess E$ if for all nonzero submodules $L$ of $E$, $L \cap M \neq 0$. 
+\end{dfn}
+
+\begin{ex}
+Let $R=\Z$ and look at $\Z \subset \Q$/. This is essential since if $0 \neq L \leq \Q$ and $a/b \in L$ then $b\cdot a/b \in L \subset \Z$.
+\end{ex}
+
+\begin{ex}
+Let $M=S_1 \oplus S_2$ with $S_1,S_2$ simple, i.e. $M$ is semisimple. Then $S_! \subset M$ is \emph{not} essential as $S_1 \cap S_2=0$ - though we do not need simplicity for this.
+\end{ex}
+
+\begin{ex}
+The socle of a module is always an essential submodule; that is, every module is an essential extension of the socle (if it exists).
+\end{ex}
+
+\begin{dfn}
+Let $M$ be a $R$-module. The socle of $M$ is the (unique) largest semisimple module of $M$ (if such a submodule exists). When it exists, it is denoted $\soc M$.
+\end{dfn}
+
+\begin{ex}
+$\soc_\Z \Z=0$ as the only simple $\Z$-modules are of the form $\Z/p\Z$, where $p$ is prime. 
+\end{ex}
+
+\begin{prop}
+Assume $M$ is artinian. Then $\soc M \ess M$.
+\end{prop}
+
+Proof: Let $0 \neq L \leq M$. But $L \leq M$ is artinian being a submodule of an artinian module. So $L$ has a simple submodule, $S \subseteq L \subseteq M$. So $S \subset \soc M$. But then $L \cap \soc M \neq 0$. \qed \\
+
+\begin{prop}
+Assume $K \ess L \ess M$, then $K \ess M$ (that is, $\ess$ is transitive).
+\end{prop}
+
+Proof: Let $0 \neq X \leq M$. Then observe
+\[
+\begin{split}
+X \cap K&= X \cap (L \cap K) \\
+&=(X \cap L) \cap K \\
+\end{split}
+\]
+Observe that $K \cap L=K$ as $K \ess L$ and $X \cap L$ is nonzero as $X \leq M$ and $L \ess M$. But then $(X \cap L) \cap K \neq 0$. \qed \\
+
+\begin{prop}
+Let $R$ be a ring. Let $_R E$ be a module. Then $E$ is injective if and only if $E$ has no proper essential extensions. 
+\end{prop}
+
+Proof: Let $E$ be injective and $E \subsetneq M$. As $E$ is injective, $M=E \oplus N$ where $0 \neq N \leq M$ as $E$ is proper. But then $N \cap E=0$ so the extension is not essential. 
+
+Now assume that $E$ has no proper essential extensions. Assume that $E$ is not injective. There is an injective module $L$ with $E \subset L$ no essential. So there is a nonzero submodule of $L$ intersecting $E$ only at 0. Let $S=\{0 \neq X \leq L\;|\; X \cap E\}$. This set is nonempty by assumption. We can apply Zorn's Lemma (Why?) so that $S$ has a maximal element $X_0$. Consider the following:
+\[
+E \cong E/(E \cap X_0) \cong (E+X_0)/X_0 \subseteq L/X_0
+\]
+where $E/(E\cap X_0) \cong (E+X_0)/X_0$ follows from the First Isomorphism Theorem. 
+
+We claim that $(E+X_0)/X_0 \ess L/X_0$. Let $0 \neq Y/X_0 \subseteq L/X_0$ so that $X_0 <Y \leq L$. By the maximality of $X_0$ in $S$, we have $Y \cap E \neq 0$. Then $Y \cap E \not\subseteq X_0$ since $X_0 \cap E=0$ so that then we have $Y \cap (E+X_0) >X_0$. (Why?)
+
+Now $E \cong (E+X_0)/X_0$ and $E$ has no proper essential extensions so we must have
+\[
+(E+X_0)/X_0 \cong L/X_0
+\]
+so $E+X_0 \cong L$. But we also have $E \cap X_0=0$ so that $L=E\oplus X_0$ so $E$ is injective as $L$ is injective. But this is a contradiction. \qed \\
+
+Our aim is to prove that for all modules $M$, there is an injective module $E$ and extension $M \ess E$. So $M$ can be embedded by an essential extension. We also want to demonstrate some uniqueness to this extension. That is, if $M \ess E_1$ and $M \ess E_2$, where $E_1,E_2$ are injective, then $E_1 \cong E_2$. That is, the injective module $E$ described has the property that there is no injective module $\overline{E}$ such that $M \ess \overline{E} \ess E$. This injective module $E$ is called the injective envelope, or the injective hull, of the module $M$. 
+
+\subsection{Injective Envelope/Injective Hull}
+
+\begin{dfn}[Injective Envelope/Hull]
+Given a module $M$, there exists an injective module $E$ with $M \ess E$ called the injective envelope (or injective hull of $M$. Furthermore, if $E$ has the property that if $E'$ is another injective module with
+\[
+\begin{tikzcd}
+M \arrow[swap]{r}{\text{incl}} \arrow{d}{\text{incl}} & E \arrow{dl}{f} \\
+E' & 
+\end{tikzcd}
+\]
+then $f$ is an isomorphism. 
+\end{dfn}
+
+\begin{lem}
+Let $M \subset E$ be an extension of $R$-modules. Then $M \ess E$ if and only if for all $0 \neq x \in E$, there is $r \in R$ such that $0 \neq rx \in M$. 
+\end{lem}
+
+Proof: Let $0\neq L=\langle x \rangle \leq E$. Since $x \neq 0$, we know that $L \cap M \neq 0$ so the result follows. 
+
+The other direction is an exercise. \qed \\
+
+\begin{lem}\label{zornlemuse}
+Let $M$ be a submodule of $E$. Let $\{E_i\}_{i \in A}$ be a chain of submodules of $E$ such that $M \ess E_i \subset E$. Then $M \ess \bigcup_{i \in A} E_i$.
+\end{lem}
+
+Proof: Let $0 \neq x \in \cup_{i \in A} E_i$. Then there is an $i_0$ such that $x \in E_{i_0}$. But as $M \ess E_{i_0}$, there is $0 \neq r \in R$ such that $0 \neq rx \in M$ so that by the previous lemma, $M \ess \cup_{i \in A} E_i$. \qed \\
+
+\begin{lem}
+Consider the double extension
+\[
+M \ess E_1 \subset E_2
+\]
+where $M \ess E_2$, then $E_1 \ess E_2$. 
+\end{lem}
+
+Proof: We have $0 \neq L \leq E_2$, then $L \cap M \neq 0$. But $L \cap E_1 \neq 0$. (Why?) \qed \\
+
+\begin{lem}\label{lemmono}
+Assume $M \ess E$ and let $f: E \rightarrow X$ be a homomorphism such that $f|_M$ is a monomorphism, then $f$ is a monomorphism. 
+\end{lem}
+
+Proof: We want to show that $\ker f=0$. Assume that this is not the case. Then $0 \neq \ker f \leq E$. But then $\ker f \cap M \neq 0$. Take $0 \neq x \in \ker f \cap M$. But then $f|_M$ is not a monomorphism, a contradiction. \qed \\
+
+\begin{thm}
+Consider an extension $M \subset E$. The following are equivalent:
+\begin{enumerate}[1.]
+\item $E$ is a maximal essential extension of $M$ in the sense that no proper extension of $E$ is an essential extension of $M$.
+\item $M \ess E$ and $E$ is injective.
+\item If $E$ injective and there does not an exist injective module $\overline{E}$ such that $M \subset \overline{E} \subsetneq E$. 
+\end{enumerate}
+Moreover, given a module $M$, an extension $E$ as above exists. 
+\end{thm}
+
+Proof: $1\rightarrow 2$: Let $F$ be a proper extension of $E$. It is enough to show that $E \subset F$ is not essential by a previous Lemma/Theorem. Observe
+\[
+M \ess E \stackrel{\text{ess}}{\subsetneq} F
+\]
+But by transitivity, $M \ess F$. But this contradicts the assumed maximality of $E$. \\
+
+$2 \rightarrow 3$: Assume there is $M \ess \overline{E} \subsetneq E$, where $\overline{E},E$ are injective. Then $E=\overline{E} \oplus L$ for some $0 \neq L \leq E$. But $L \cap M \subseteq L \cap \overline{E}$ but $L \cap E=0$. This contradicts the fact that $M \ess E$. \\
+
+$3 \rightarrow 1$ (Existence): Look at all essential extensions of $M$ that are contained in $E$. That is, 
+\[
+S=\{X \subseteq E\;|\; M \ess X\}
+\]
+We know $S \neq \emptyset$ as $M \in S$. Using Lemma \ref{zornlemuse}, we can apply Zorn's Lemma. (Why?) Then there exists a minimal element of $S$, say $X_0$. We have $M \ess X_0 \subset E$ with $E$ injective. Assume there exists $Z>X_0$ such that $M \ess Z$.
+\[
+\begin{tikzcd}
+0 \arrow{r} & X_0 \arrow[swap]{r}{\text{incl}} \arrow{d}{\text{incl}} & Z \arrow[dotted]{dl}{\exists f} \\
+& E 
+\end{tikzcd}
+\]
+There exists a $f: Z \rightarrow E$ from the injectivity of $E$. Furthermore, $f|_{X_0}$ is a monomorphism as it is an inclusion. But using Lemma \ref{lemmono}, we obtain $f(Z) \subset E$ and $f(X_0) \subset f(Z) \subset E$. However, the maximality of $X_0$ implies that $X_0=f(Z) \cong Z$.
+
+So $X_0$ has no proper essential extensions $Z$; otherwise, we would have $M \ess X_0 \ess Z$ so that $M \ess Z$, contradicting the maximality of $X_0$. Then $X_0$ is injective. But $E$ has no proper injective modules so that $X_0=E$. 
+
+To show that such an extension always exists, we start with $\hat{E}$, an injective module containing $M$. We look at $M \subset \hat{E}$. We construct $X_0$ as above:
+\[
+S=\{X\subseteq \hat{E}\;|\; M \ess X\}
+\]
+Then $E \subset S$ is the maximal element and $E$ is injective. \qed \\
+
+\begin{dfn}
+Let $M$ be a $R$-module. An injective envelope (or hull) of $M$ is an extension $M \ess E$, where $E$ is injective. We denote this extension $E(M)$ or $I(M)$. 
+\end{dfn}
+
+\begin{thm}
+Any two injective envelopes of $M$ are isomorphic. 
+\end{thm}
+
+Proof: Suppose $E_1,E_2$ are two injective envelopes of an $R$-module $M$. 
+\[
+\begin{tikzcd}
+M \arrow[hookrightarrow,swap]{r}{i} \arrow[hookrightarrow]{d}{j} & E_1 \arrow{dl}{\exists f} \\
+E_2 & 
+\end{tikzcd}
+\]
+As $E_2$ is injective, there exists a function $f$ such that $fi=j$. Now $f|_M$ is a monomorphism, we know by Lemma \ref{lemmono} that $f$ is a monomorphism. 
+
+Now assume that $f$ is not onto: $\text{im }f \subsetneq E_2$ and $f(E_1) \subsetneq E_2$. But using the injectivity of $E_2$, $f(E_1)$ splits so $E_2=f(E_1) \oplus L$ for some nonzero $L$. Now $L \cap  \neq 0$. Take $0 \neq x \in L \cap M$. 
+\[
+\begin{tikzcd}
+ \; & x \arrow{dr}{f} \arrow[dotted]{dd} & \;\\
+ X \arrow[hookrightarrow]{ur} \arrow[hookrightarrow]{dr} & \; & (-,0) \\
+ \; & (0,x) & \;
+\end{tikzcd}
+\]
+But $(-,0) \neq (0,x)$. This is a contradiction so that $f$ is onto. \qed \\
+
+\begin{ex}
+We have $E(\Z)=Q$ as $\Z \ess \Q$ and $\Q$ is divisible so it is injective.
+\end{ex}
+
+\begin{ex}
+Let $p$ be prime. Let $S=\{1,p,p^2,\cdots\}$ be a multiplicative subset of $\Z$. We look at $\Z_{(p)}=\{a/p^n\;|\; a\in \Z,n\geq 0\}$, the localization of $\Z$ at $S$. We have $\Z \subset \Z_{(p)} \subset \Q$ so $\Z_{(p)}/\Z \subset \Q/\Z$ so that
+\[
+\begin{split}
+M&=\{a/p^n+\Z\;|\; a \in \Z,n \geq 0\} \\
+&=\langle 1/p^n+\Z\;|\; n \geq 1\rangle
+\end{split}
+\]
+\end{ex}
+
+\begin{prop}
+If $M$ is divisible, then $M$ is injective. 
+\end{prop}
+
+Proof: Let $x \in M$. Consider $x=a/p^n+\Z$ for some $n$. Let $k \in \Z$, we want $y \in M$ such that $ky=x$. \\
+
+Case 1 - $(k,p)=1$: If $(k,p)=1$, then $(k,p^n)=1$ so there exists $\alpha,p$ such that $k\alpha+\beta p^n=1$. But then
+\[
+\begin{split}
+k\alpha+\beta p^n&=1 \\
+k(\alpha a)+(\beta a)p^n&=a \\
+(k\alpha)a/p^n+\beta a&=a/p^n
+\end{split}
+\]
+Let $y=(\alpha a)/p^n+\Z$ so that $ky=x$. \\
+
+Case 2 - $k=p^m$: Let $x=a/p^n+\Z$ and let $y=a/p^{n+m}+\Z$. Then $ky=x$. \\
+
+General Case: Let $k \in \Z$ and write $k=p^nk'$ with $p \nmid k'$. Let $x=a/p^n+\Z$. Then there exists a $y \in M$ such that $p^my=x$ by Case 2. Then by Case 1, there exists a $z \in M$ such that $k'z=y$, then $kz=x$.
+
+We have seen that the only submodules of $M$ are $M_n=\langle 1/p^n +\Z \rangle$ and they form a chain of cyclic modules strictly contained in $M$  but are non disjoint so that $M_n \ess M$. But then we have $M=E(M_n)$. So we have a chain of cyclic submodules with the same injective envelope with each $M_n$ noetherian but the injective envelope itself is not noetherian. \qed \\
+
+\subsection{Invariant Basis Number}
+
+\begin{dfn}[Invariant Basis Number]
+A ring $R$ has an invariant basis number if given a free module $F$, any two bases of $F$ have the same cardinality. 
+\end{dfn}
+
+It is enough to look at finitely generated free modules. Recall that ``free" means that it has a basis which is a linearly independent set that generates the module. 
+
+\begin{thm}
+Let $F$ be a $R$-module, then $F$ is free if and only if $F \cong \bigoplus_{i \in \mathcal{I}} R_i$, where $R_i=_R R$.
+\end{thm}
+
+Proof: If $F$ is free with basis $\{e_i\}_{i \in \mathcal{I}}$, then $F=\bigoplus_{i \in \mathcal{I}}$. Then we have an isomorphism $\bigoplus_{i \in \mathcal{I}} R \rightarrow F=\bigoplus_{i \in \mathcal{I}} Re_i$ given by $(r_i)_i \mapsto \sum r_i e_i$ where both $r_i \in R$ and $\sum r_i e_i$ have finite support. 
+
+The reverse direction is an exercise. \qed \\
+
+\begin{thm} \label{finbases}
+Let $F$ be a finitely generated free module, then every basis of $F$ is finite. 
+\end{thm}
+
+Proof: Let $x_1,x_2,\cdots,x_n$ be a set of generators for $F$. Choose a basis $B=\{e_i\}_{i \in \mathcal{I}}$ of $F$. All the $x_i$ are linear combinations of elements from $B$. To express the $x_1,\cdots,x_n$ as such linear combinations, we use only finitely many of the $e_i$'s, say $\{e_i\}_{i \in \mathcal{I}_0}$, where $\mathcal{I}_0 \subset \mathcal{I}$ is finite. 
+
+Let $B_0=\{e_i\}_{i \in \mathcal{I}_0}$. Now $B_0$ is clearly a basis, but $B_0 \subset B$. But $B$ is a basis so that $B_0=B$. \qed \\
+
+\begin{thm}
+Let $F$ be a free module but not finitely generated. Any two bases of $F$ have the same cardinality. 
+\end{thm}
+
+Proof: Let $B_1,B_2$ be two bases of $F$. But by Theorem \ref{finbases}, both must be infinite. Let $B_2'$ be the members of $B_2$ used in the linear combinations to express elements of $B$, as in the construction of Theorem \ref{finbases}. So as $B_2'$ generates $F$, $B_2'$ is a basis. However, $B_2' \subset B_2$ implies that $B_2'=B_2$. But then 
+\[
+|B_2|=|B_2'| \leq \aleph_0 \cdot |B_1|=|B_1|
+\]
+where the inequality follows from the finite linear combinations used above and the final equality holds because $B_1$ is infinite. \qed \\
+
+\begin{thm}
+Every division ring has an invariant basis number.
+\end{thm}
+
+Proof: The proof is identical to the standard proof of this fact for fields. \qed \\
+
+\begin{thm}
+Every commutative ring has an invariant basis number. 
+\end{thm}
+
+Proof: Assume that $R^n \cong R^m$ as $R$-modules. Let $K$ be $R/M$, where $M$ is a maximal idea, $M \lhd R$. So $K$ is a field. We have the following isomorphism of $R/M$-modules - not $R$-modules
+\[
+R/M \otimes_R R^n \cong R/M \otimes_R R^m
+\]
+Then
+\[
+R/M \otimes_R \underbrace{R \oplus R \oplus \times \oplus R)}_{n \text{ times}} \cong R/M \otimes_R \underbrace{(R \oplus R \oplus \times \oplus R)}_{m \text{ times}}
+\]
+Then
+\[
+\bigoplus^n \bigg( R/M \otimes_R R \bigg) \cong \bigoplus^m \bigg(R/M \otimes_R R\bigg)
+\]
+is an isomorphism of $K$-modules. We have the following isomorphism of $R/M$-modules
+\[
+R/M \otimes_R R \cong R/M=K
+\]
+so that $K^n \cong K^m$ as $\oplus^n K \cong \oplus^m K$. But as $K$ is a field, it has invariant basis number so that $n=m$. \qed \\
+
+\begin{thm}
+If $R$ is a local ring (not necessarily commutative), then $R$ has an invariant basis number.
+\end{thm}
+
+Proof: Let $M=J$, the Jacobson radical of $R$. Then $K=R/J$ is a division ring. The proof is then the same proof as the previous Theorem. \qed \\
+
+\begin{thm}
+Let $R,S$ be rings, with $S$ having an invariant basis number. Let $\varphi: R \rightarrow S$ be a ring homomorphism. Then $R$ has invariant basis number.
+\end{thm}
+
+Proof: Note that if $R$ is commutative then $S=R/M$ and $\varphi$ is the canonical surjection, $R$ local then $S=R/J$ and $\varphi$ is the canonical surjection.
+
+We have $R^m \cong R^n$. Observe that $S$ is a right $R$-module via
+\[
+s \cdot r \defeq s\varphi(r)
+\]
+where $s \varphi(r)$ is multiplication in $S$. But then we have the following isomorphism of left $S$-modules
+\[
+S \otimes_R R^m \cong S \otimes_R R^n
+\]
+But then we have
+\[
+S \otimes_R R^m \cong S^m \text{     and     } S \otimes_R R^n \cong S^n
+\]
+isomorphic as $S$-modules. Then using the fact that there is an isomorphism of $S$-modules $S \otimes_R R \cong S$ via $s \otimes_R 1 \mapsto s$. But $S$ has invariant basis number so $m=n$. Therefore, $R$ has invariant basis number. \qed \\
+
+\begin{lem}\label{fittinglemmahom}
+Let $M$ be noetherian and $\varphi: M \rightarrow N$ onto. Then $\varphi$ is an isomorphism. (This is part of Fitting's Lemma.)
+\end{lem}
+
+Proof: Exercise \\
+
+\begin{thm}
+Let $R$ be a left noetherian ring, then $R$ has invariant basis number.
+\end{thm}
+
+Proof: Let $\{e_1,\cdots,e_n\}$ and $\{f_1,\cdots,f_n\}$ two basis of a free module $F$. Assume that $m \geq n$. Now $F$ is a finitely generated $R$-module, $R$ left noetherian, so that $F$ is a noetherian module. There exists a homomorphism $\varphi: F \rightarrow F$. It is enough to say where the basis goes as $F$ is free.
+\[
+\begin{split}
+\varphi(f_1)&=e_1 \\
+\varphi(f_2)&=e_2 \\
+&\vdots \\
+\varphi(f_n)&=e_n
+\end{split}
+\]
+so that $\varphi(f_i)=0$ if $i>n$. But $\varphi$ is clearly onto. But by Lemma \ref{fittinglemmahom}, $\varphi$ is an isomorphism. Therefore, $\ker \varphi=0$ so that there are no $f_i$, where $i>n$, so that $m=n$. \qed \\
+
+\begin{cor}
+Every semisimple ring has invariant basis number.
+\end{cor}
+
+\begin{cor}
+Every left artinian ring has invariant basis number.
+\end{cor}
+
+
+Back to injective modules \\
+
+We have the following modification of Baer's Criterion:
+
+\begin{thm}
+Let $E$ be an $R$-module. Then $E$ is injective if and only if for all left ideals $I$ of $R$ such that $I \ess R$, every homomorphism $I \rightarrow E$ can be extended to a homomorphism $R \rightarrow E$.
+\end{thm}
+
+Proof: This will come shortly. (See Theorem \ref{mbc}.) \qed \\
+
+\begin{ex}
+$E(_\Z \Z)=\Q$. We can generalize this example to the following: If $R$ is an integral domain with field of fractions $F$, then $E(R)=F$. Note that we have $0 \lhd R$, a prime ideal. Then $E(R/(0))$ generates ``more or less" all injective modules. 
+\end{ex}
+
+We have proved that if $R$ is a ring and $M$ a module, then there exists an injective hull (or envelope) of $M$. That is, there exists an injective module $E$ and a monomorphism $M \stackrel{f}{\rightarrow} E$ and $E$ ``minimal" with this property - ``minimal" in the sense that if there is another injective module $E'$, then
+\[
+\begin{tikzcd}
+0 \arrow{r} & M \arrow{r}{f} \arrow{dr}{g} & E \arrow[dotted]{d}{f'} \\
+ & & E'
+\end{tikzcd}
+\]
+with $f'$ a monomorphism. This is another way of saying there exists a left minimal monomorphism from $M \stackrel{f}{\rightarrow} E$; that is, for all diagrams
+\[
+\begin{tikzcd}
+M \arrow{r}{f} \arrow{d}{f'} & E \arrow{dl}{h} \\
+E' & 
+\end{tikzcd}
+\]
+there is an isomorphism $h$ making the diagram commute. (Exercise) 
+
+\begin{rem}
+Let $M$ be a module. A projective cover of $M$ is a projective module $D$ mapping onto $M$, $P \stackrel{f}{\rightarrow} M$ with $f$ right ``minimal"; that is, 
+\[
+\begin{tikzcd}
+P \arrow{dr}{f} \arrow{dd}{h} & & 0 \\
+& M \arrow{ru} \arrow{dr} & \\
+P' \arrow{ru}{f'} & & 0  
+\end{tikzcd}
+\]
+then there is an isomorphism $h$ making the diagram commute.
+\end{rem}
+
+\begin{prop}[Projective Cover]
+Let $P$ be projective: $P \stackrel{f}{\rightarrow} M \rightarrow )$ is a projective cover if for all $Q \stackrel{g}{\rightarrow} M \rightarrow 0$ with $Q$ projective, then there exists an onto map $h: Q \rightarrow P$
+\[
+\begin{tikzcd}
+P \arrow{dr}{f} & & 0 \\
+& M \arrow{ru} \arrow{dr} & \\
+Q \arrow{ru}{g} \arrow{uu}{h}  & & 0  
+\end{tikzcd}
+\]
+This projective cover (if it exists) is unique up to isomorphism. 
+\end{prop}
+
+Proof: Exercise. \\
+
+\begin{ex}
+There is no projective cover for $\Z/2\Z$ as a $\Z$-module. The only possible candidate is $\Z$ because it being projective makes it free.
+\[
+\Z \stackrel{\pi}{\longrightarrow} \Z_2
+\]
+But we have
+\[
+\begin{tikzcd}
+\Z \arrow{rr}{\pi} & & \Z_2 \\
+& \Z \arrow{lu}{\times 3} \arrow{ru}{\pi} & 
+\end{tikzcd}
+\]
+Looking where 1 maps, 
+\[
+\begin{tikzcd}
+3 \arrow{rr}{\pi} & & \overline{1} \\
+& 1 \arrow{lu}{\times 3} \arrow{ru}{\pi} & 
+\end{tikzcd}
+\]
+But the multiplication map is not an isomorphism. 
+\end{ex}
+
+\begin{thm}
+The following are equivalent for a ring $R$: 
+\begin{enumerate}[(1)]
+\item Every module has a projective cover.
+\item Every flat module is projective. 
+\end{enumerate}
+\end{thm}
+
+So here we have flat $=$ projective. There is also a notion of a flat cover. 
+
+\begin{dfn}[Flat Cover]
+A flat cover of $M$ is a map $X \stackrel{f}{\rightarrow} M \rightarrow 0$, where $X$ is flat and $f$ is right minimal in the previously mentioned sense. 
+\end{dfn}
+
+The existence of flat covers was only solved in the last 10 years. 
+
+\begin{thm}
+If $R$ is a ring, then $R$ has a flat cover and this cover is unique up to isomorphism. 
+\end{thm}
+
+\begin{thm}
+Let $R$ be a left artinian ring. Let $M$ be a finitely generated, then $M$ has a projective cover. 
+\end{thm}
+
+``Proof": We always have $P \stackrel{f}{\rightarrow} M \rightarrow 0$, where $f$ is an epimorphism and $P$ is a finitely generated projective module. As $R$ is artinian, it is noetherian so that $P$ is both artinian and noetherian. Hence, $P$ has finite length. Pick $P$ projective having the smallest length mapping onto $M$. This will serve as a projective cover of $M$. \qed \\
+
+
+
+
+Back to injective modules \\
+
+\begin{lem}
+Let $R$ be a ring and $M$ be an $R$-module. Let $K,L \leq M$ with $K \ess M$, then $K \cap L \ess L$.
+\end{lem}
+
+Proof: Let $0 \neq X \leq L$. Then
+\[
+X \cap (K \cap L)=X \cap K
+\]
+\qed \\
+
+\begin{lem}
+If $\{L_i\}_{i=1}^n$ is a collection of submodules of a module $M$ with $L_i \ess M$, then $\cap_{i=1}^n L_i$ is essential in $M$.
+\end{lem}
+
+Proof: It is enough to show the statement for the intersection of two modules, the general case follows by induction. Let $0 \neq X \leq M$. Then
+\[
+\begin{split}
+X \cap (L_1 \cap L_2)&= (X\cap L_1) \cap L_2 \\
+&=S' \cap L_2
+\end{split}
+\]
+where $S'=X \cap L_1$ is nonzero as $L_1 \ess M$. But then $S' \leq M$ so that $S' \cap L_2 \neq 0$. \qed \\
+
+
+\begin{lem}
+Let $L_i \ess M_i$ for some $i=1,2,\cdots,n$, then $\oplus_{i=1}^n L_i \ess \oplus_{i=1}^n M_i$.
+\end{lem}
+
+Proof: It is enough to show this for the direct sum of two modules as the general case follows via induction. Let $0 \neq x \in  M_1 \oplus M_2$. We show that $\langle x \rangle \cap (L_1 \oplus L_2) \neq 0$. This is equivalent to showing $L_1 \oplus L_2$ is essential in $M_1 \oplus M_2$. Let $x=m_1+m_2$. As $x \neq 0$, one of the $m_i$ must be nonzero. Without loss of generality, suppose that $m_1 \neq 0$. Now $L_1 \ess M_1$ so that there exists $0 \neq r \in R$ with $0 \neq rm_1\defeq l_1 \in L_1$. Then
+\[
+rx=rm_1+rm_2=l_1+rm_2
+\]
+If $rx=$ is the sum of a nonzero term with something else, as the sum in $M_1 \oplus M_2$ is direct, there is only one way to write 0 so that $rx \neq 0$. \\
+
+Case 1: If $rm_2=0$, then we are done since $0 \neq rx \in L_1 \subset L_1 \oplus L_2$. \\
+
+Case 2: As $L_2 \ess M_2$, there exists $0\neq s \in R$ with $0\neq srm_2\defeq l_2$. Then
+\[
+(sr)x=sl_1+srm_2=sl_1+l_2
+\]
+as $srx \neq 0$, by the uniqueness of the direct sum, we have $\langle x \rangle \cap (L_1 \oplus L_2) \neq 0$. \qed \\
+
+\begin{prop}
+Let $K,L \leq M$ with $L \ess M$. Then
+\begin{enumerate}[(1)]
+\item $E(L)=E(M)$
+\item If $L=L_1 \oplus L_2 \oplus \cdots \oplus L_m$, then $E(L)=E(L_1) \oplus E(L_2) \oplus \cdots \oplus E(L_n)$.
+\item There exists $X \leq M$ with $K \oplus X \ess M$. In particular, 
+\[
+\begin{split}
+E(M)&= E(K \oplus X) \\
+&=E(K) \oplus E(X)
+\end{split}
+\]
+so that $E(K)$ is a direct summand of $E(M)$. 
+\end{enumerate}
+\end{prop}
+
+Proof: (1) If $L \ess M \ess E(M)$, then $L \ess E(M)$ so that $E(M)=E(L)$. \\
+
+(2) If $L_i \ess E(L_i)$, then $L_1 \oplus \cdots \oplus L_n \ess \underbrace{E(L_1) \oplus \cdots \oplus E(L_n)}_{\text{injective}}$. By the same argument as in (1), 
+\[
+E(L_1) \oplus \cdots \oplus E(L_n)=E(L)
+\]
+
+(3) We look at $S=\{X \leq M \;|\; X \cap K=0\}$. We know that $S \neq \emptyset$ as $0 \in S$. We apply Zorn's Lemma. (Why?) There is a minimal element $X$. We know that $X \cap K=0$ and $XL \leq M$. But then $K+X =K \oplus X \leq M$. We want to show that $K\oplus X$ is essential in $M$, to do so we use the maximality of $X$. 
+
+Exercise (The rest of (3) follows from (2) and (1)). \qed \\
+
+\begin{thm}[Modification of Baer's Criterion]\label{mbc}
+Let $E$ be an $R$-module, then $E$ is injective if and only if for every left ideal $I \ess R$ and any homomorphism $f: I \rightarrow E$, $f$ can be extended to $R$.
+\[
+\begin{tikzcd}
+0 \arrow{r} & I \arrow{r}{\text{incl}} \arrow{d}{f} & R \arrow[dotted]{dl}{\exists g} \\
+& E & 
+\end{tikzcd}
+\]
+\end{thm}
+
+Proof: The forward direction is trivial. Now let $I$ be a left ideal of $R$ and $f: I \rightarrow E$, then by (3) of the previous proposition, there exists $J \leq R$ be a left ideal such that $I \oplus J \ess R$.
+\[
+\begin{tikzcd}
+I \arrow[hookrightarrow]{r}{\text{incl}_1} \arrow{d}{f} & I \oplus J \arrow[hookrightarrow]{r}{\text{ess,incl}_2} \arrow{dl}{\overline{f}} & R \arrow{dll}{\exists g} \\
+E
+\end{tikzcd}
+\]
+where $I \hookrightarrow I \oplus J$ is given by $a \mapsto \begin{pmatrix} a \\ 0 \end{pmatrix}$ and $\overline{f}$ is given by $\begin{pmatrix} a \\ b \end{pmatrix} \mapsto f(a)$. Observe that $\overline{f} \circ \text{incl}_1=f$ and $g \circ \text{incl}_2=\overline{f}$. Therefore, $f$ can be extended to $R$. \qed \\
+
+\begin{prop}
+Let $R$ be an integral domain and $F$ be the field of fractions of $R$, then $E(R)=F$. 
+\end{prop}
+
+Proof: It is easy to see that $R \ess F$. It remains to show that $F$ is injective. We use Baer's Criterion. Let $I \lhd R$ and let $f: I \rightarrow F$.
+\[
+\begin{tikzcd}
+0 \arrow{r} & I \arrow{d}{f} \arrow[hookrightarrow]{r}{\text{incl}} & R \\
+& F & 
+\end{tikzcd}
+\]
+Note that for all $0 \neq a,b \in I$, we have $f(ab)=af(b)=bf(a)$. But then $f(a)/a=f(b)/b \in F$. Let $u \in F$ be $f(a)/a$ for $0 \neq a \in I$. We want a map $g: R \rightarrow F$.
+\[
+\begin{tikzcd}
+0 \arrow{r} & I \arrow{d}{f} \arrow[hookrightarrow]{r}{\text{incl}} & R \arrow[dotted]{dl}{g} \\
+ & F & 
+\end{tikzcd}
+\]
+Let $g(r) \defeq ru \in F$. This map is a homomorphism. (Exercise) If $r=a \in I$, then $g(a)=ua=f(a)$ by the above definition. So $g|_I=f$. \qed \\
+
+\subsection{Uniform Modules}
+
+\begin{dfn}[Indecomposable]
+A module $M$ is indecomposable if one cannot write $M$ as a direct sum of two nonzero proper submodules. That is, $M$ cannot be written as $M=M_1 \oplus M_2$, where $M_1,M_2 \leq M$ and $M_1 \neq 0 \neq M_2$.
+\end{dfn}
+
+Earlier we say that $R$ is noetherian if and only if every direct sum of injective modules is injective. We will prove that if $R$ is noetherian then every injective module is a direct sum of indecomposable injective modules. So ``knowing" the indecomposable modules means knowing all injective modules. 
+
+\begin{dfn}[Uniform Dimension]
+Let $M$ be a module over $R$. Then the uniform dimension of $M$, denoted $\udim M$,  is the largest integer $k$ such that there exists an inclusion $L_1 \oplus L_2 \oplus \cdots \oplus L_k \subseteq M$, where $0 \neq L_i \leq M$. If no such $k$ exists, we say that the uniform dimension of $M$ is infinite. By definition, $\udim M=0$ if and only if $M=0$/
+\end{dfn}
+
+\begin{ex}
+Look at $_\R \Q$. If $\{e_i\}_{i \in \R}$ is a basis for $\Q$, then $\Q=\oplus \R e_i$ so that $\udim _\R \Q=\infty$.
+\end{ex}
+
+\begin{ex}
+Let $S$ be a simple module. Then $\udim S=1$.
+\end{ex}
+
+\begin{ex}
+Let $M$ be an artinian module. Then $\soc M \neq 0$. Submodules of artinian modules are artinian so there are finitely many submodules (as $M$ has finite composition length). Then $\soc M=S_1 \oplus \cdots \oplus S_k \leq M$. We claim that $\udim M=k$. It is clear that $\udim M \geq k$. We want to show that $\udim M$ cannot be greater than $k$. Assume that there exists $m>k$ and nonzero submodules $L_1,\cdots,L_m$ of $M$ with $L_1 \oplus \cdots \oplus L_m \leq M$. As $M$ is artinian, $L_i$ is artinian for all $i$. So there is at least one simple submodule. So $L_1 \oplus \cdots \oplus L_m$ has at least $m$ simple submodules - all distinct. This contradicts the fact that $M$ is the sum of only $k$ simple submodules. Therefore, $\udim M=k$.
+\end{ex}
+
+\begin{dfn}[Uniform]
+An $R$-module $M$ is uniform if $\udim M=1$.
+\end{dfn}
+
+\begin{rem}
+A uniform module is always indecomposable. However, the other direction is almost never true. (Think about making $\soc M$ ``large".) 
+\end{rem}
+
+Uniform Modules
+
+If $M$ is a uniform module then by definition $\udim M=1$. We have seen that every uniform module is indecomposable. The converse is almost never true. 
+
+\begin{ex}
+Let $k$ be a field. Let $R$ be the ring $R=k[x,y]/(x,y)^2$. Then as a vector space,
+\[
+R=k[x,y]/(x,y)^2=k \oplus k\overline{x} \oplus k \overline{y}
+\]
+So $\dim_k R=3$. Therefore, $R$ is a commutative artinian ring. Let $J=\langle \overline{x},\overline{y} \rangle$. We have $J \lhd R$ and $R/J \cong K$. So $R$ is a local artinian ring but not semisimple as the Jacobson radical, $J$, is nonzero. What is $\soc R$? As $\dim_k R=3$, $\dim \soc R<3$. In fact, one can show that 
+\[
+\soc R=R \overline{x} \oplus R \overline{y}
+\]
+so that $\dim \soc R=2$. Then $R$ contains the sum of 2 simple modules so $\udim R>1$ so $R$ is not uniform. However, $R$ viewed as a module over itself is indecomposable. (Exercise: Suppose $R$ decomposes and look at how to write 1 as a sum of 2 idempotent and orthogonal then contradiction) 
+\end{ex}
+
+\begin{lem}
+Let $M \neq 0$ be a module. The following are equivalent: 
+\begin{enumerate}[1.]
+\item $M$ is uniform.
+\item For any nonzero submodules $X,Y$ of $M$, $X \cap Y \neq 0$.
+\item For any nonzero submodule $L \leq M$, we have $L \ess M$. 
+\end{enumerate}
+\end{lem}
+
+Proof: Exercise \\
+$1 \rightarrow 2$: $X+Y \subset M$. $2 \rightarrow 3$: Take 2 submodules intersection nonzero. 
+
+\begin{dfn}
+Let $R$ be a ring, then a proper left ideal $I$ is (meet) irreducible if whenever $I=A \cap B$ for some left ideals $A,B$, then $A=I$ or $B=I$.
+\end{dfn}
+
+\begin{lem}\label{exerciselem}
+Let $I \lhd R$ be an ideal. Then $I$ is meet irreducible if and only if the intersection of any two nonzero left ideals in $R/I$ is nonzero if and only if $R/I$ is uniform. 
+\end{lem}
+
+Proof: Exercise (Use the Correspondence Theorem) \\
+
+\begin{lem}
+Let $E \neq 0$ be an injective $R$-module, where $R$ is a commutative ring. The following are equivalent:
+\begin{enumerate}[1.]
+\item $E$ is uniform.
+\item $E$ is the injective hull of some uniform module.
+\item $E \cong E(R/I)$ is the injective envelope of $I \lhd R$ is a meet irreducible ideal.
+\item $E$ is isomorphic to the injective hull of each of its nonzero submodules.
+\item $E$ is indecomposable. 
+\end{enumerate}
+\end{lem}
+
+Proof: $1 \rightarrow 5$: This is clear. \\
+
+$5 \rightarrow 4$: Let $0 \neq L \leq E$, then $E(L)$ is isomorphic to a direct summand of $E$. Then $E=E(L) \oplus E'$ but $E$ is indecomposable so that $E'=0$. \\
+
+$3 \rightarrow 2$: This follows from Lemma \ref{exerciselem}. \\
+
+$2 \rightarrow 1$: Let $E=E(M)$, where $M$ is a uniform module. But $M \ess E$ so that $\udim M =\udim E=1$. \\
+
+$4 \rightarrow 3$: Find an ideal $I$ such that $R/I$ is uniform and is isomorphic to a submodule of $E$. Let $0 \neq x \in E$. Let $x=\langle x \rangle=Rx \leq E$. Let $0 \neq Y$ be a submodule of $X$: $Y \leq X \leq E$. But $Y \ess X$ and $Y \ess E$ so that $X \ess E$. Let $R \stackrel{\varphi}{\rightarrow} X \rightarrow 0$ be given by $\varphi(r)=rx$. Let $I=\ker \varphi$, which is the left annihilator of $X$. We know $I \lhd R$ so that $R/I \cong X$ so that $E(R/I) \cong E(X)=E$. $I$ is meet irreducible as $R/I$ is isomorphic to a uniform module and a previous lemma. \qed \\
+
+\begin{rem}
+The previous lemma holds for arbitrary rings. The change is $I$ is a left ideal of $R$ is meet irreducible if and only if 0 is not the intersection of 2 nonzero left submodules of $R/I$, where in this case $R/I$ is not necessarily a ring but is still a module.
+\end{rem}
+
+\begin{thm}
+Let $R$ be a left noetherian ring. Let $E \neq 0$ be an injective module, then $E$ is uniquely a direct sum of indecomposable injective modules. 
+\end{thm}
+
+The following lemma demonstrates the uniqueness of the preceding Theorem. 
+
+\begin{lem}
+Let $E=\oplus_{i \in \mathcal{I}} E_i$ be a direct sum of indecomposable modules over some left noetherian ring $R$. Assume $E \supset I_1 \oplus \cdots \oplus I_n$ for some uniform injective submodules $I_1,I_2,\cdots,I_n$. Then there exists distinct $i_1,i_2,\cdots,i_n \in I$ such that $E_{i_1} \cong I_1,E_{i_2} \cong I_2,\cdots,E_{i_n} \cong I_n$. 
+\end{lem}
+
+Proof: We proceed by induction on $n$. Let $0 \neq x \in I_1$. Let $M=Rx \leq I_1$. $M$ is also uniform so $x \in I_1 \subset E$. Now $X$ has finite support in $E$ so there exists $i_1,i_2,\cdots,i_k \in I$ with $M \subseteq E_{i_1}\oplus \cdots \oplus E_{i_k} \defeq E' \leq E$. Let
+\[
+0 \longrightarrow K_j \longrightarrow E \stackrel{\pi_j}{\longrightarrow} E_{i_j} \longrightarrow 0
+\]
+for $j=1,2,\cdots,k$, where $K_j=\ker \pi_j$ and $\pi_j$ is the canonical projection. As $M \leq E'$, we know that $\cap_{j=1}^k M \cap K_j=0$. (Exercise) But $M$ is uniform and $M \cap K_j \leq M$ and is nonzero. But this cannot be so as $M$ is uniform so by an earlier lemma, one of the intersections is 0. Without loss of generality, assume that $M \cap K_1=0$. Now $M \ess I_1$ and $I_1 \cap M \cap K_1=0$ so that $(I_1 \cap K_1) \cap M=0$. We know $I_1 \cap K_1$ and $M$ is a submodule of $I_1$. But $I_1$ is uniform so that the intersection is again zero. As $M \neq 0$, $I_1 \cap K_1=0$. Then $I_1+K_1=I_1 \oplus K_1$. Furthermore, $\pi_1(I_1) \cong I_1$ since $\pi_1|_{I_1}$ is a monomorphism. (Exercise) Now $\pi_1(I_1) \subseteq E_{j_1}$ so that $I_1 \stackrel{\sim}{\hookrightarrow} E_{j_1}$. But $I_1$ and $E_{j_1}$ are uniform injective modules so that $E_{j_1} \cong I_1$. 
+
+The induction case is an exercise. $I_2 \oplus \cdots \oplus I_n \stackrel{\sim}{\hookrightarrow} M/I_1$ using the fact $M \subseteq E_{i_1}\oplus \cdots \oplus E_{i_k} \defeq E' \leq E$. 
+\[
+M/I_1 \cong \bigoplus_{j \neq 1} E_j
+\]
+it then follows from induction. \qed \\
+
+As a consequence, we obtain 
+
+\begin{thm}
+Let $R$ be a left artinian ring. Let $S_1,\cdots,S_n$ be a complete set of simple $R$-modules. Then every injective module is uniquely (up to isomorphism) a direct sum of injective envelopes of these simple modules. Consequently, there are finitely many nonisomorphic indecomposable injective modules.
+\end{thm}
+
+Proof: Let $S$ be a simple module. We look at $E(S)$. We know that $E(S)$ is uniform as $S \ess E(S)$. Therefore, each $E(S_i)$ is indecomposable and injective. Let $E$ be an indecomposable injective module. Choose a nonzero finitely generated submodule of $E$. As this submodule is finitely generated over an artinian ring, this submodule is artinian. This artinian submodule must contain a simple submodule, say $S$. Now $S \subset \text{ summand } \subset E$, so that $S \subset E$ is simple. As $E$ is uniform, $S$ must be uniform as $X \oplus Y \subset E(S)$, $L \leq M$ so that $\udim L \leq \udim M$ with equality if $L \ess M$. But as $S$ is uniform, it must be so. But as $S$ is uniform, $\udim S=1$. Therefore, $S \ess E$ but $E=E(S)$ as $E$ is injective. \qed \\
+
+\begin{rem}
+Let $R$ be a left artinian ring. Each indecomposable projective module is of the form (up to isomorphism) $Re$, where $e$ is a primitive idempotent of $R$. (Exercise) That is, $e$ cannot be written as a direct sum of two idempotents, i.e. $e \neq e_1+e_2$ with $e_i^2=e_i$ and $e_1e_2=e_2e_1=0$.
+\end{rem}
+
+\begin{rem}
+Indecomposable injective is equivalent to uniform. 
+\end{rem}
+
+\begin{rem}
+The number of nonisomorphic indecomposable projective modules is the same as the number of nonisomorphic simple modules which is the same as the number of nonisomorphic indecomposable injective modules.
+\[
+\begin{tikzcd}
+P_1 \arrow{dr} &          &     &   P_2 \arrow{dr} &              &      &             &    & P_n \arrow{dr}    &             &       \\
+        &  S_1 \arrow{dr} \arrow[hookrightarrow]{dl}  &     &          &   S_2 \arrow{dr} \arrow[hookrightarrow]{dl}     &      &  \cdots  &    &             & S_n \arrow{dr} \arrow[hookrightarrow]{dl}      &       \\   
+E_1 &    &   0      &   E_2 &              &  0   &             &    & E_n     &             & 0      \\ 
+\end{tikzcd}
+\]
+\end{rem}
+
+\begin{rem}
+If $R$ is a finite dimensional $k$-algebra, $k$ a field, then $R$ is both left/right artinian so that it is both left and right noetherian.
+\[
+\text{left }R\text{ modules} \stackrel{D}{\longleftrightarrow} \text{right }R\text{ modules}
+\]
+where $D$ is a ``duality map". We have $D(_R M)=\text{Hom}_k(M,k)$ a right $R$-module, consisting of linear functionals on $M$, and $D(M_R)$ a left $R$-module. But then $M$ is finitely generated over $R$ if and only if $M$ is finite dimensional over $k$. The map $D$ takes projective modules and sends them to injective modules and vice versa. The map $D$ also takes indecomposable left modules and sends them to indecomposable right modules and vice versa.
+\[
+M \longrightarrow D(M) \longrightarrow D(D(M)) \cong M
+\]
+where the isomorphism follows as vector spaces \emph{and} modules. 
+\[
+E \longrightarrow D(E) \longrightarrow D(D(E)) \cong E
+\]
+where $E$ is an indecomposable injective module, $D(E)$ is a finite dimensional indecomposable injective module, and $D(D(E))$ is finite dimensional. 
+\end{rem}
+
+The following is commentary of a homework problem referring to a commutative local artinian ring.
+
+\begin{ex}
+Let $R=k[x]/\langle x^n \rangle$ or $k[x,y,z]/(x,y,z)^n$, where $k$ is a field, are examples of a commutative local artinian ring.
+\end{ex}
+
+Our goal is to describe all indecomposable injective modules over a commutative noetherian ring. This is Mattis' Theorem.
+
+\begin{thm}
+If $R$ is noetherian, then every injective module is a direct sum of indecomposable injective modules. This decomposition is unique up to isomorphism. 
+\end{thm}
+
+It remains to describe the indecomposable injective modules over a commutative noetherian ring. To do this, we introduce primes and primary ideals. We show that irreducible modules are primary and that primary ideals are irreducible. Then we show that every ideal is the finite intersection of irreducible ideals.
+
+\begin{thm}[Mattis' Theorem]
+Let $R$ be a commutative noetherian ring. Let $\spec R$ be the set of prime ideals of $R$. Then there is a one-to-one correspondence between $\spec R$ and the set of isomorphism classes of indecomposable injective $R$-modules given by
+\[
+P \text{ prime} \stackrel{\sim}{\longrightarrow} E(R/P)
+\]
+\end{thm}
+
+\begin{rem}
+We claim that $P$ prime implies that $P$ is irreducible. If $P=A \cap B$, where $A,B$ are ideals of $R$, then $P \supseteq AB$. However, $P$ being prime implies that $P \supset A$ or $P \supset B$. But then $P=A$ or $P=B$ so $P$ is irreducible. Therefore, we know that we have a map $\spec R$ to the isomorphism classes of indecomposable injective $R$-modules. We that if $R$ is an integral domain, $E(R)$, the injective envelope of $R$, is the field of fractions of $R$. Then $P$ a prime ideal of $R$ corresponds to $E(R/P)$.
+\end{rem}
+
+It remains to show that this map is one-to-one and onto. Let $R$ be a commutative ring. An ideal $R \lhd R$ is a minimal prime ideal if it is prime and if $P' \subseteq P$, then $P'$ prime implies that $P'=P$.
+
+\begin{ex}
+$\langle 0 \rangle \lhd \Z$ is minimal prime. In fact, this is true in every integral domain. 
+\end{ex}
+
+\begin{rem}
+Assume $P_1,P_2$ are both minimal prime. If $P_1 \not\subseteq P_2$ and $P_2 \not\subseteq P_1$, we say that $P_1,P_2$ are incomparable. 
+\end{rem}
+
+\begin{thm}
+Let $P$ be a prime ideal in $R$, then $P$ contains a minimal prime ideal.
+\end{thm}
+
+Proof: If $P$ is minimal, we are done. If not, $P$ contains properly some prime ideal. Let $S=\{Q\lhd R\;|\; Q <P,Q \text{ prime}\}$ and order $S$ by inclusion. We want to find a minimal element. Pick a chain $\{Q_i\}_{i \in \mathcal{I}}$ in $S$. Look at $\cap_{i \in \mathcal{I}} Q_i$. We want to show that this is a prime ideal. Let $ab \in \cap Q_i$. So for all $i$, $ab \in Q_i$. Assume $a,b \notin \cap_{i \in \mathcal{I}} Q_i$. Then $a \notin Q_{i_0}$ but that $b \in Q_{i_0}$ for some $i_0 \in \mathcal{I}$. Assume $b \notin Q_{j_0}$ but $a \in Q_{j_0}$ for some $j_0 \in \mathcal{I}$. This is a chain, so say without loss of generality $Q_{i_0} \leq Q_{j_0}$. But $b \in Q_{i_0}$ so that $b \in Q_{j_0}$, a contradiction. So there exists a lower bound. Using Zorn's Lemma, $S$ has a minimal element. \qed \\
+
+\begin{lem}
+Let $P_1,P_2,\cdots,P_n$ be incomparable prime ideals of $R$ such that $P_1P_2\cdots P_n=0$, then the set $\{P_1,P_2,\cdots,P_n\}$ is the set of all minimal prime ideals of $R$.
+\end{lem}
+
+Proof: We show first by contradiction that each $P_i$ is a minimal prime. Assume there exists a prime ideal $P$ such that $P_i \supsetneq P$ for some $i$. Then $P_i \supsetneq P \supset 0=P_1P_2\cdots P_n$. But $P$ is prime so that $P \supseteq P_j$ for some $j=1,2,\cdots,n$. Then
+\[
+P_i \supsetneq P \supset P_j
+\]
+if $i \neq j$, then $P_i$ and $P_j$ are comparable, a contradiction. If $i=j$, then $P_i=P$, a contradiction. Therefore, all the $P_i$ are minimal prime ideals.
+
+Now we want to show that this is all the minimal prime ideals of $R$. Assume that $P$ is a minimal prime ideal of $R$.
+\[
+P \supseteq 0 =P_1P_2\cdots P_n
+\]
+so $P\supseteq P_j$ for some $j$. But $P_j$ a minimal prime ideal forces $P=P_j$. \qed \\
+
+\subsection{Primary Ideals}
+
+\begin{dfn}[Primary Ideal]
+A proper ideal $Q \lhd R$ is called primary if whenever $ab \in Q$, then $a \in Q$ or $b^n \in Q$ for some $n\geq 1$. 
+\end{dfn}
+
+\begin{rem}
+It is immediate that $P$ prime ideal that $P$ is a primary ideal. However, the other direction need not be true.
+\end{rem}
+
+\begin{ex}
+Let $R=\Z$ and $Q=\langle 4 \rangle$. Let $ab \in \langle 4 \rangle$. Then $ab=4k$ for some integer $k$. Then $2 \mid ab$ so that $2 \mid a$ or $2 \mid b$. If $2 \mid a$ then $4 \mid a^2$ so that $a^2 \in Q$. If $2 \mid b$, then for the same reason, $b^2 \in Q$. So $Q$ is a primary ideal. However, $Q$ is not prime. Let $a=b=2$.
+\end{ex}
+
+\begin{ex}
+Let $R=\Z$, then $Q \lhd \Z$ is primary if and only if $Q=\langle p^n \rangle$ for some prime $p$ and $n \geq 1$. To see this, assume to the contrary that $Q=\langle d \rangle$ with $p_1,q_1 \mid d$, for distinct primes $p_1,q_1$. Let $A=p^nq^m$, were $p \neq q$ are primes. Let $a=p^n$ and $b=q^mc$. Now no power of $a,b \in Q$ but $ab \in Q$. For the opposite direction, let $ab \in \langle p^n \rangle$. Then $p \mid a$ or $p \mid b$. If $p \mid a$, the $p^n \mid a^n$. If $p \mid b$, then $p^n \mid b^n$ so $a^n$ or $b^n \in Q$.
+\end{ex}
+
+\begin{prop}
+Let $R$ be a commutative noetherian ring. Then
+\begin{enumerate}[(i)]
+\item Every ideal of $R$ is a finite intersection of irreducible ideals.
+\item Every ideal of $R$ is a primary ideal
+\end{enumerate}
+Therefore, every ideal of $R$ is a finite intersection of primary ideals.
+\end{prop}
+
+Proof: We prove the first part by contradiction. Assume there exist a counterexample. As $R$ is noetherian, there exists a maximal counterexample, say $I$. Now $I$ cannot be irreducible. If $I$ were reducible, then it must be the finite intersection so that $I=A \cap B$, where $I \subsetneq A$ and $I \subsetneq B$ and $A,B$ are not a counterexample to the statement of the proposition. But $A,B$ are obtained through finite intersections so that $I$ comes from a finite intersection, a contradiction. 
+
+Now let $Q$ be a irreducible ideal. We want to show that $Q$ is primary. Let $M \defeq R/Q$. We know that $M$ is uniform. Furthermore, $M$ is finitely generated being a quotient of finitely generated modules. Let $a,b \in Q$. We look at $\ann_M(b)$:
+\[
+\ann_M(b)=\{x \in M\;|\; bx=0\}
+\]
+We have
+\[
+\ann_M(b) \leq \ann_M(b^2) \leq \cdots
+\]
+is an ascending chain. Then as $M$ is a noetherian (begin a finitely generated $R$-module where $R$ is noetherian), this chain stabilizes at some power of $b$, say $b^n$. Then we have $\ann_M(b^n)=\ann_M(b^{2n})$. We claim that $b^nM \leq M$ (because $R$ is commutative, this is indeed a submodule). We claim
+\[
+b^nM \cap \ann_M(b^n)=0
+\]
+To see this, let $v \in b^nM \cap \ann_M(b^n)$. Then $b^nv=0$ and $v=b^nx$ for some $x \in M$. But $b^{2n}x=0$ so that $x \in \ann_M(b^{2n})=\ann_M(b^n)$. So $b^nx=0$ so that $b=0$. Now $M \supseteq b^nM \oplus \ann_M(b^n)$. But $M$ is uniform so that $b^M=0$ or $\ann_M(b^n)=0$. 
+
+If $b^nM=0$, then $b^nR/Q=0$ so that $b^nR \mod Q=0$ which of course implies that $b^n \in Q$. On the other hand, if $\ann_M(b^n)=0$, we have $a+Q=Q$ so that $a \in Q$. (Why?) Now $\ann_M(b^n)=\ann_M(b)=0$ is in $M$. \qed \\
+
+\begin{rem}
+A primary ideal need not imply that the ideal is irreducible. 
+\end{rem}
+
+\begin{dfn}[Minimal Prime]
+Let $I \lhd R$. A prime ideal $P \supseteq I$ is a minimal prime over $I$ (or a covering of $I$) if there does not exist a prime ideal $P_0$ such that $P>P_0 \geq I$. 
+\end{dfn}
+
+\begin{rem}
+This type of ideal corresponds to the minimal prime ideals in $R/i$.
+\end{rem}
+
+\begin{lem}
+Let $R$ be a commutative noetherian ring. Let $Q \lhd R$ be a primary ideal. Let $P=\sqrt{Q}=\{x\in R\;|\;x^n \in Q\text{ for some }n \in \N\}$, then $P$ is a prime ideal containing $Q$ and $P^m \subseteq Q \subseteq P$ for some $m \geq 1$. Furthermore, $P$ is the unique minimal prime ideal over $Q$.
+\end{lem}
+
+Proof: If $I \lhd R$, then $\sqrt{I}=\{x\in R\;|\; x^n \in I \text{ for some }n\geq 1\}$. So we always have $I \leq \sqrt{I}$ (these are ideals in a commutative ring so $\sqrt{I} \lhd R$). We show $P=\sqrt{Q}$ is prime. Let $ab \in P$, then $(ab)^n \in Q$ for some $n$. Then $a^nb^n \in Q$. If $a^n \in Q$, then $a \in P$. If $b^m \in Q$, then $b^{nm} \in Q$ so that $b \in P$. Therefore, $P$ is prime.
+
+ Now $R$ is noetherian, so $P=\sqrt{Q}$ is finitely generated. Say $P=\langle x_1,x_2,\cdots,x_n\rangle$. So for all $i$, there is a $n_i$ such that $x_i^{n_i} \in Q$. Let $m=\max \{m_i\}_{i=1}^n$. Then $x_i^{mn} \in Q$ so that $P^{mn} \subseteq Q$. 
+
+To see uniqueness, let $P^n \leq Q \leq P$, where $P$ is prime and $P^n \leq Q \leq P' \leq P$, where $P'$ is prime. Then $P' \geq P^n$ and as $P'$ is prime, $P' \supseteq P$ so that $P'=P$. \qed \\
+
+\begin{dfn}[p-primary]
+A primary ideal $Q$ is called $p$-primary if $P=\sqrt{Q}$, where $P$ is prime. 
+\end{dfn}
+
+\begin{lem}
+Let $R$ be a commutative noetherian ring. Let $P$ be a prime ideal of $R$. Then
+\begin{enumerate}[(i)]
+\item A finite intersection of $p$-primary ideal is $p$-primary. (For this, one does not need noetherian.)
+\item If $Q$ is a $p$-primary ideal and $0 \neq x \leq R/Q$, then there is $0 \neq Y \leq X$ such that for all $y \in Y$, $\ann_R(y)=P$. 
+\end{enumerate}
+\end{lem}
+
+Proof: To see the first part, let $Q=Q_1 \cap Q_2 \cdots Q_n$, where $Q_i$ is $p$-primary. We want to show that $Q$ is primary with $P=\sqrt{Q}$. Now $\sqrt{Q_i}=P$ for all $i$. Let $x \in P$. Then for all $i$, there is a $n_i$ such that $x^{n_i} \in Q_i$. Let $k=\max \{n_i\}$. Then $x^k \in Q_i$ for all $i$ so that $x \in Q$. But then $P \subseteq \sqrt{Q}$. Now let $x \in \sqrt{Q}$. Then $x^m \in Q$ for some $m \geq 1$. Now as $x \in \sqrt{Q_i}$ for all $i$ which implies that $x \in P$. Therefore, $P=\sqrt{Q}$. 
+
+Now we want to show that $Q$ is primary. Let $ab \in Q$. Assume that $b \notin \sqrt{Q}$; that is, $b^n \notin Q$ for all $n$. But $ab \in Q_i$ for all $i$. As $P=\sqrt{Q}$ and $Q_i$ is primary for all $i$, the fact that $b^n \in Q_i$ for all $n$ implies that $a \in Q_i$ for all $i$.
+
+We now show the second part. Let $0 \neq X \leq R/Q$. Then $X=Z/Q$ for some submodule $Q <Z\leq R$ (this is via the Correspondence Theorem). By the previous lemma, we choose $m$ minimal with the property that $ZP^m \leq Q$. Let $Y=(ZP^{m-1}+Q)/Q$. We know that $Y \neq 0$ as $ZP^{n-1} \not\subset Q$ so that $PY=0$. 
+
+So for every $0 \neq y \in Y$, we have $Py=0$ so that $P \in \ann_R(y)$. We need to demonstrate equality. Let $0\neq y \in \ann_R(y)$. Say $y=a+Q$. We know $a \notin Q$ for otherwise $y=a+Q=0$. Let $b \in \ann_R(y)$. Then $0=by=ab+Q$ so that $ab \in Q$. Now as $a \notin Q$ and $Q$ being primary implies that $b^k \in Q$ for some $k$. Therefore, $b \in P$. So $\ann_R(y) \subseteq P$. \qed \\
+
+\begin{thm}[Mattis' Theorem]
+Let $R$ be a commutative noetherian ring. Recall $\spec R$ is the set of prime ideals of $R$. Let $I$ be the set of isomorphism classes of indecomposable injective $R$-modules. Then there is a one-to-one correspondence between $\spec R$ and $I$ given by
+\[
+\begin{split}
+\spec R &\stackrel{\varphi}{\longrightarrow} I \\
+P &\mapsto E(R/P)
+\end{split}
+\]
+\end{thm}
+
+Proof: As $P$ prime implies that $P$ is irreducible, there is indeed a map. First, we show that $\varphi$ is onto. Let $E \in I$ be an indecomposable injective module. Let $0\neq x \in E$. Let $Q=\ann_R(x)$. Then $R/Q \cong Rx \leq E$. But $E=E(Rx)$ as $Rx \leq E$ so that $E(Rx) \leq R$. But $E=E(Rx) \oplus E'$ so that $E=E(Rx)$ as $E$ is indecomposable. But we also have $E(Rx) \cong E(R/Q)$. Then $E \cong E(R/Q)$ is indecomposable. So $Q$ is irreducible. But $Q$ is primary so $Q$ is $p$-primary. That is, $P=\sqrt{Q}$. By the previous lemma, this shows that there exists a nonzero $y \in R/Q$ with $\ann_R(y)=P$. Now $R/P \cong Ry \leq R/Q$ so that $E(R/P) \cong E(Ry) \leq E(R/Q)$. But $E(Ry) \cong E$ so that $E(R/P) \cong E$. Therefore, $\varphi$ is surjective. 
+
+Now we show that $\varphi$ is injective. Assume $P,P'$ are prime ideals with $E\defeq E(R/P) \cong E(R/P') \defeq E'$. Using the previous lemma (How?), $E$ contains a submodule $Y$ with $\ann_R(y)=P$ for all $0 \neq y \in Y \neq 0$. There is a submodule $Y'$ of $E'$ with $\ann_R(y')-P'$ for all $0 \neq y' \in Y' \neq 0$. But $E$ is uniform so that $Y \cap Y' \neq 0$. Then there exists $0 \neq z\in Y \cap Y'$. But then $P=\ann_R(z)=P'$ so that $P=P'$. Therefore, $\varphi$ is injective. \qed \\
+
+\begin{lem}
+Every finitely generated module contains a uniform submodule.
+\end{lem}
+
+Proof: Assume not. Let $V_0=M$. We show by induction on $n$ that $M$ contains nonzero submodules $X_n,Y_n$ with $Y_{n-1} \supseteq X_n \oplus Y_n$ (why?). Continue with $M \supseteq \oplus_{n=1}^\infty X_n$. But $M$ is finitely generated so the generators are supported by finitely many $X$ so that the sum cannot be infinite or otherwise we contradict the fact that $M$ is noetherian. \qed \\
+
+\begin{thm}
+Let $R$ be noetherian. Then every injective module is a direct sum of indecomposable injective modules. This decomposition is unique up to isomorphism and reshuffling. 
+\end{thm}
+
+Proof: Let $E$ be an injective module. For the purposes of this problem, we say that $F=\{E_i\}_{i \in \mathcal{I}}$ a family of indecomposable injective submodules of $E$ is free if $\sum_i E_i=\bigoplus_i E_i$. That is, for all finite subsets $E_{i_1},E_{i_2},\cdots,E_{i_t}$ of $F$, we have $\left(\sum_{j \neq k} E_{i_j} \right) \cap E_{i_k}=0$. 
+
+Let 
+\[
+S=\{F\;|\; F \text{ is a free family of indecomposable injective submodules of }E\}
+\]
+Order $S$ by inclusion. We claim that $S \neq \emptyset$. We show this below. Assuming $S \neq \emptyset$, Zorn's Lemma applied so that $S$ has a maximal element under inclusion, say $F_0$. Let $M=\oplus_{E' \in F_0} E' \leq E$. So $M$ splits in $E$: $E= M \oplus X$, where $0 \neq X$ is injective. But every injective module contains an indecomposable injective submodule. Then $X$ contains $E''$, an indecomposable injective modulo. Then $F_0 \cup E'' \supset F_0$, a contradiction the maximality of $F_0$. Therefore, $X=0$ so that $E=M$, as desired. 
+
+We now only need prove our assertion that $S \neq \emptyset$. We know that $0 \neq X \in E$. We look at $Rx < E$, which is finitely generated. By the previous Lemma, we know that $Rx$ contains $U$, where $U$ is uniform. So $E(U)<E$ but this is an injective envelope of a uniform indecomposable module so that $E(U)$ is indecomposable. [$Rx$ is a noetherian module as it is finitely generated and $R$ is noetherian.] \qed \\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

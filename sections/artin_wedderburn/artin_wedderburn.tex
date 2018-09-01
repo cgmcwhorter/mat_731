@@ -1,0 +1,541 @@
+% !TEX root = ../../rings_mods.tex
+
+\newpage
+\section{Semisimple Rings \& Modules}
+
+\subsection{Simple Rings \& Modules}
+
+\begin{dfn}[Simple Ring/Module]
+Let $R$ be a ring then an $R$-module $S\neq 0$ is simple if there are no nontrivial proper submodules. Note that simple is also at times called irreducible. 
+
+A module $M$ is called semisimple (or completely irreducible) if each of its submodules is a direct sum of submodules. That is for all $L \leq M$, there is $X \leq M$ such that $M=L \oplus X$. 
+\end{dfn}
+
+\begin{example}
+Let $K$ be a field. Then $_KK$ is simple. Let $M$ be a vector space over $K$. Let $\mathcal{L} \leq M$ be a subspace of $M$. Every vector space has a basis and every vector subspace has a basis which can be extended to a basis of the whole space. Pick a basis $B$ of $\mathcal{L}$ and extend this to a basis $\overline{B}$ of $M$. Then $\overline{B}=B \sqcup B'$ for some $B'$. Let $X= \langle B' \rangle$, then $M= \mathcal{L} \oplus X$.
+\end{example}
+
+\begin{example}
+Every simple module is semisimple.
+\end{example}
+
+\begin{example}
+Every division ring $D$ is a simple ring and a simple $D$-module. 
+\end{example}
+
+\begin{example}
+If $S$ is simple, let $0 \neq x \in S$. Then $S=\langle x \rangle=Rx$. Therefore, every simple module is cyclic. Cyclic modules need not be simple. Take the cyclic $\Z$-module $Z_6$.
+\end{example}
+
+\begin{example}
+Let $_RS$ be simple. Then $S=Rx$ for some $0 \neq x \in S$. Let $R \stackrel{f}{\rightarrow} Rx$ given by $r \mapsto rx$ be a homomorphism of left modules. If $f$ is onto, as $Rx$ is a submodule, $R/\ker f \stackrel{\sim}{\rightarrow} Rx=S$. We also know $\ker f$ is a maximal ideal by the Correspondence Theorem.
+
+\end{example}
+
+It is useful at this point to recall Schur's Lemma.
+
+\begin{lem}[Schur's Lemma]
+Let $S$ be a simple module. Then $\text{End}_R(S)$ is a division ring.
+\end{lem}
+
+However, the converse need not be true.
+
+\begin{lem}[Modular Law]
+Let $A,B,C \leq M$ be $R$-submodules of the $R$-module $M$ with $B \leq A$. Then
+\begin{enumerate}[(i)]
+\item 
+\[
+A \cap (B \oplus C) = (A \cap B) \oplus (A \cap C) = B \oplus (A \cap C)
+\]
+\item If $A \oplus C=B \oplus C$ then $A=B$ and $A \cap C= A \cap B$.
+\end{enumerate}
+\end{lem}
+
+\begin{prop}
+Submodules and homomorphic images of semisimple modules are semisimple.
+\end{prop}
+
+Proof: Let $M$ be semisimple. Let $\mathcal{L} \leq M$. Let $X \leq \mathcal{L}$. We need show that $X$ is a direct summand of $\mathcal{L}$. We know that as $X \leq M$ and $M$ is semisimple, $M=X \oplus K$ for some $K \leq M$. We need make $\mathcal{L}$ appear in this decomposition. Consider $\mathcal{L} \cap M=\mathcal{L}$. By the Modular Law,
+\[
+\mathcal{L}=\mathcal{L} \cap M=(\mathcal{L} \cap X) \oplus (\mathcal{L} K)
+\]
+But $\mathcal{L} \cap X=X$ and $X \cap K=\emptyset$. Therefore, $(\mathcal{L} \cap X) \cap (\mathcal{L} \cap K)=\emptyset$. Therefore, $L= X \oplus (\mathcal{L} \cap K)$. 
+
+Now we show that the quotient of a semisimple module is semisimple. That is, we want to show that $M/L$ is semisimple. As $M$ is semisimple, $M=\mathcal{L} \oplus K'$ for some $K' \leq M$. But then we have $M/L=L \oplus K'/L \cong K' \leq M$. As $K'$ is semisimple, being a submodule of a semisimple module, it must be that $M/L$ is semisimple.  
+
+\begin{lem}
+Let $M$ be a module and $\{S_i\}_{i \in \mathcal{I}}$ be a family of distinct simple submodules of $M$ that generates $M$; that is, $M=\sum_{i \in \mathcal{I}} S_i$. Then if $\mathcal{L} \leq M$ then there exists a $J \subseteq I$ such that $M=\mathcal{L} \oplus \bigoplus_{j \in J} S_j$. In particular, $M$ is semisimple. 
+\end{lem}
+
+Proof: Note first that $\sum_{j \in J} S_j = \oplus_{j \in J} S_j$ for all subsets $J \subseteq I$. We want to show that the sum on the left is direct. That is, (after a possible relabeling) $(S_1+S_2+\cdots+S_t) \cap S_{t+1}=0$. Suppose that this is not the case. Then we have for some $t$, $S_{t+1}=S_1+S_2+\cdots+S_t$, where $\langle x \rangle=S_{t+1}$. Write $x=s_1+\cdots+s_t$. Without loss of generality, assume that $s_1 \neq 0$. Now $S_1=\langle s_1 \rangle$, $S_2 =\langle s_2 \rangle$, $\cdots$, $S_l=\langle s_l \rangle$. Then we have $S_{t+1}=S_1+S_2+\cdots+S_t$ with the right side being simple if and only if $l=1$. But then $S_{t+1}=S_1$, contradicting the fact that the family of simple submodules was distinct. Now let $S$ denote all subsets of $K_i$ of $\mathcal{I}$ with the property that their sum
+\[
+L+ \bigoplus_{k \in K} S_k
+\]
+is an internal direct sum. We know that $S\neq \emptyset$ as $\emptyset \in S$. We now apply Zorn's Lemma. (Why?) Say $S$ has maximal element $J$ with respect to inclusion. Then 
+\[
+L+\bigoplus_{j \in J} S_j = L+\bigoplus_{j \in J} S_j \defeq L'
+\]
+We want to show that $L'=M$. Suppose that this is not the case. Assume $L' <M$. As the $S_i$ generate $M$, there must be some $S_i \leq M$ not contained in $L$.  So $S_i \cap L=0$ as $L \leq M$ and $S_i$ is simple. Now let $J_0\defeq J \cup \{i\}$, where $i$ is the index of $S_i$ where $S_i \cap L =0$. Then $L+\bigoplus_{j \in J_0} S_j$ is direct. However, this contradicts the maximality of $J$. \qed \\
+
+\begin{lem}
+If $M$ is a semisimple module, then $M$ contains a simple submodule.
+\end{lem}
+
+Proof: Let $0 \neq x \in M$. Let $S$ be all submodules of $M$ not containing $x$. We know that $S$ is nonempty as $0 \in S$. Order $S$ by inclusion. We use Zorn's Lemma. (Why?) So $S$ has a maximal element  $N$. Now $N \leq M$ so that $M=N \oplus S$ (because $M$ is semisimple) for some $S \leq M$. We claim that $S$ is simple. 
+
+Assume that $S$ is not simple. Therefore, $S$ contains a nonzero submodule $T$. But $S$ is semisimple being a submodule of a semisimple module. Then $S=T \oplus V$ for some submodule $V$. But then we have $M=N \oplus T \oplus V$. We claim that either $x\notin N \oplus T$ or $x\notin N \oplus V$. Assume to the contrary that $x=a+v=b+t$ for some $a,b \in N$, $v \in V$, and $t \in T$. So $a-b=t-v \in N \cap (T \oplus V)$. However, $T \oplus V=S$ and $N \cap S=0$ so that $a=b$ and $t=v$. As $T \cap V=0$, we have $t=v=0$. This implies $a=b$ so that $x=a=b \in N$, contradicting the definition of $N$. So $x \notin N \oplus T$ or $x \notin N \oplus V$. However, this contradicts the maximality of $N$ so that $S$ is a simple module of $M$. \qed \\
+
+\begin{thm}
+The following are equivalent for an $R$-module $M$:
+\begin{enumerate}[(i)]
+\item $M$ is a direct sum of simple submodules.
+\item $M$ is a direct sum of simple of simple submodules.
+\item $M$ is semisimple. 
+\end{enumerate}
+\end{thm}
+
+Proof: $1 \rightarrow 2$: This follows directly from the preceding lemma. \\
+
+$2 \rightarrow 3$: This follows from the final part of the preceding lemma. \\
+
+$3 \rightarrow 1$: Let $L$ be the sum of all simple submodules of $M$. We want to show that $L=M$. Assume to the contrary that $L<M$. Then there is a $x \in M$ with $x \notin L$. Let $S$ denote the set of all submodules $K$ of $M$ containing $L$ not containing $x$. We know that $S$ is nonempty as $L \in S$. Order $S$ by inclusion and apply Zorn's Lemma. Therefore, $S$ has a maximal element $K_0$. So $x \notin K_0$ and $L \subseteq K_0 \subseteq M$. However, as $M$ is semisimple, we know that $M=K_0 \oplus U$ for some $U \leq M$. Now $U$ cannot be simple for otherwise it would be contained in $L$ and hence $K_0$ (this would be a contradiction as $K_0 \cap U=0$). 
+
+Let $A$ be a proper nonzero submodule of $U$. We have $U=A \oplus B$ for some nonzero submodule $B$. Then $M=K_0\oplus A \oplus B$. We claim that $x \notin K_0 \oplus A$ or $x \notin K_0 \oplus B$. We use the idea of the previous lemma. Write $x=k_1+a=k_2+b$ for some $k_1,k_2 \in K_0$, $a \in A$, and $b \in B$. Then $k_1-k-2=b-a \in K_0 \cap (A \oplus B)=0$. Therefore, $k_1=k_2$ and $a=b=0$. Then $x \in K_0$, a contradiction. Then either $x \in K_0 \oplus A$ or $x \notin K_0 \oplus B$. But in either case, this contradicts the maximality of $K_0$. Therefore, $L=M$ and we are done. \qed \\
+
+\subsection{Composition Series}
+
+\begin{dfn}[Series]
+Let $M$ be an $R$-module. A chain of submodules of $M$
+\[
+0=M_0 \leq M_1 \leq M_2 \leq \cdots \leq M_n=M
+\]
+is called a series for $M$. The length of the above series is $n$. The modules $M_1/M_0,M_2/M_1,\cdots,M_n/M_{n-1}$ are called the factors for the series. Two series of a module $M$ are equivalent if they have the same length and factors (corresponding) are isomorphic in the same order.
+\end{dfn}
+
+\begin{dfn}[Refinement]
+A series $0=N_0\leq N_1 \leq N_2 \leq \cdots \leq N_p=M$ is a refinement of $0=M_0 \leq M_1 \leq M_2 \leq \cdots \leq M_n=M$ if for all $1\leq i \leq n$, there is a $j$ so that $M_i=N_j$.
+\end{dfn}
+
+We have an important Lemma whose proof will come later.
+
+\begin{thm}[Schreier-Zasenhaus Lemma]
+Any two series of a module have equivalent refinements.
+\end{thm}
+
+\begin{dfn}[Composition Series]
+Let $M$ be an $R$-module. A composition series (if it exists) of $M$ is a series of the form
+\[
+0=M_0 < M_1 < M_2 < \cdots < M_n=M
+\]
+where $M_{i+1}/M_i$ is simple. 
+\end{dfn}
+
+\begin{rem}
+We know that if $0=M_0 \leq M_1 \leq M_2 \leq \cdots \leq M_n=M$ is a composition series then for all $i$, $M_i < M_{i+1}$ is a maximal submodule. Therefore, if we refine a composition series we can only insert modules already present so that we obtain $\{0\}$ composition factors (because of the repeated submodules). But then any two composition series should be equivalent.  
+\end{rem}
+
+\begin{thm}[Jordan-H\"older Theorem]
+Any two composition series of a module are equivalent. Furthermore, if a module $M$ has a composition series and $0=N_0 < N_1 < N_2 < \cdots < N_t=M$ is a series for $M$ with nonzero factors, then this series can be refined into a composition series. 
+\end{thm}
+
+\begin{dfn}
+Assume that $M$ has a composition series
+\[
+0=M_0 < M_1 < M_2 < \cdots < M_n=M
+\]
+Then $n$ is called the length of $M$, denoted $l(M)$. The composition factors of $M$ are $\{M_1/M_0,\cdots,M_n/M_{n-1}\}$.
+\end{dfn}
+
+\begin{rem}
+Nonisomorphic modules need not have unique composition factors! 
+\end{rem}
+
+\begin{thm}[Schreier-Zasenhaus Lemma]
+Any two series of a module have equivalent refinements.
+\end{thm}
+
+Proof: Let $M$ be a module and
+\[
+\begin{split}
+0&=M_0 \leq M_1 \leq M_2 \leq \cdots \leq M_n=M \\
+0&=N_0 \leq N_1 \leq N_2 \leq \cdots \leq N_m=M
+\end{split}
+\]
+be two series for the module $M$. Refine the first series by inserting $M_{ij}=M_i+(M_{i+1} \cap N_j)$ for $i=0,1,2,\cdots,n$ and $j=0,1,\cdots,m$. Observe that for all $i$, $M_i=M_{i,0}$ as $M_i+(M_{i+1} \cap N_0)=M_i+(M_{i+1} \cap 0)=M_i$. Observe further that $M_{i,m}=M_{n+1}$ as $N_m=M$. Then we have
+\[
+M_i=M_{i,0} \leq M_{i,1} \leq M_{i,2} \leq \cdots \leq M_{i,m}=M_{n+1}
+\]
+Then $\{M_{i,j}\}$ order appropriately with $M$ on ``top" is a refinement of the first series. 
+\[
+M_{0,0} \leq M_{0,1} \leq \cdots \leq M_{0,m} \leq M_{1,0} \leq \cdots \leq M_{1,m} \leq \cdots \leq M_{n,m}=M
+\]
+Observe that $M_{i+1,0}=M_{i,m}$. The composition factors of $\{M_{i,j}\}$ are of the form $M_{i,j+1}/M_{i,j}$ for $i=0,1,\cdots,n-1$ and $j=0,1,\cdots,m-1$. We use the Second Isomorphism Theorem and the Modular Law along with the fact that $M_{i,j}=M_i+(M_{i+1} \cap N_{j+1})$ and 
+\[
+M_{i,j}+(M_{i+1} \cap N_{j+1})=M_i+(M_{i+1} \cap N_j)+(M_{i+1} \cap N_{j+1})
+\]
+Now let $A=M_{i,j}$ and $B=M_{i+1} \cap N_{j+1}$. Then 
+\[
+\begin{split}
+M_{i,j+1}/M_{i,j} &= \frac{M_i+(M_{i+1} \cap N_{j+1})}{M_{i,j}} \\
+&=(A+B)/A 
+\end{split}
+\]
+By the Second Isomorphism Theorem,
+\[
+\begin{split}
+M_{i,j+1}/M_{i,j} &= \frac{M_i+(M_{i+1} \cap N_{j+1})}{M_{i,j}} \\
+&=(A+B)/A \\
+&\cong B/(A \cap B ) \\ 
+&=\frac{M_{i+1}\cap N_{j+1}}{M_{i,j} \cap (M_{i+1}\cap N_{j+1})} \\
+&=\frac{M_{i+1} \cap N_{j+1}}{(M_{i+1}\cap N_{j+1})\cap M_{i,j}} \\
+&=\frac{M_{i+1} \cap N_{j+1}}{(M_{i+1} \cap N_{j+1}) \cap (M_i+(M_{i+1} \cap N_J))}
+\end{split}
+\]
+Then by the Modular Law,
+\[
+\begin{split}
+&=\frac{M_{i+1} \cap N_{j+1}}{(M_{i+1} \cap N_{j+1}) \cap (M_i+(M_{i+1} \cap N_J))} \\
+&=\frac{M_{i+1} \cap N_{j+1}}{M_{i+1} \cap N_{j+1} \cap M_i+M_{i+1} \cap N_j} \\
+&=\frac{M_{i+1} \cap N_{j+1}}{M_i \cap N_{j+1} + M_{i+1} \cap N_j}
+\end{split}
+\]
+Notice that this is symmetric in $M,N$. This tells us how to deal with the second series, $\{N_{i,j}\}_{\stackrel{i=0,1,\cdots,n}{j=0,1,\cdots,m}}$. Now 
+\[
+N_{i,j}=N_j+(M_i \cap N_{j+1})
+\]
+And it all works the same as before mutatis mutandis. Finally, the refinement with $\{N_{i,j}\}$ is equivalent with the refinement for the series involving $\{M_{i,j}\}$. \qed \\
+
+Now any two composition series of a module are equivalent so any two have the same length and same \emph{\underline{set}} of composition factors. 
+
+\begin{ex}
+Suppose $M=S+T=S\oplus T$, where $S \neq T$ are simple submodules. 
+\[
+\begin{split}
+0&\subset S \subset M \text{ with composition factors }\{S,T \cong M/S\}\\
+0&\subset T \subset M \text{ with composition factors }\{T,S\} 
+\end{split}
+\]
+\end{ex}
+
+\begin{ex}
+An example of a module with no simple submodule (hence no composition series) is $_\Z \Z$ as it has no simple submodule. The only simple $\Z$-modules are isomorphic to $\Z/p\Z$, where $p$ is some prime. But we have $\Hom_\Z(\Z/p\Z,\Z)=0$ as $\Z/p\Z$ is torsion and $\Z$ is free. Of course, one can show that $\Hom_\Z(\Z/n\Z,\Z)=0$ for $n \neq 1$ (one only need look where 1 goes). 
+\end{ex}
+
+\begin{dfn}[Length]
+We have $l(M)$ denoting the length of the composition series for a module $M$ (if such a series exists). If $M$ has no composition series we say that the length of $M$ is infinite and write $l(M)=\infty$.
+\end{dfn}
+
+\begin{thm}
+If $0 \longrightarrow L \longrightarrow M \longrightarrow N \longrightarrow 0$ is a short exact sequence, then $l(M)=l(L)+l(N)$. Stated differently, let $M$ be an $R$-module. Let $L \leq M$. Then $M$ has a composition series if and only if $L$ and $M/L$ have composition series. When this happens $l(M)=l(L)+l(M/L)$. This implies that if $M=\bigoplus_{i=1}^n S_i$, where $S_i$ is a simple submodule, then $M$ has a composition series of length $n$ so that $l(M)=n$.
+\end{thm}
+
+Proof: The infinite cases are easy. Assume $0 \neq L \leq M$. Assume that $M$ has a composition series. Consider a series for $M$
+\[
+0 < L < M
+\]
+If this is a composition series, we are done. (Why?) If not, we can refine it to a composition series. Insert submodules between 0 and $L$ and $L$ and $M$. The composition series obtained
+\[
+0=M_0 < M_1 < \cdots < M_k=L < \cdots< M_n=M
+\]
+Where we say that without loss of generality $M_k=L$. But $0=M_0 < M_1 < \cdots < M_k=L$ is a composition series for $L$. Therefore, $l(L)=k$. Now we have
+\[
+M_k=L <M_{k+1}< \cdots< M_n=M
+\]
+and
+\[
+0=L/L=M_k/L < M_{k+1}/L < \cdots< M_n/L=M/L=N
+\]
+is a composition series for $M/L$. Therefore, $l(M/L)=n-k$. But then together $L,M/L=N$ are composition series for $M$ so that $l(M)=l(L)+l(M/L)=l(L)+l(N)$. 
+
+The reverse direction is an exercise (use the correspondence theorem). 
+
+Now if $M=S_1+S_2+\cdots+S_n=S_1\oplus S_2 \oplus \cdots \oplus S_n$, then
+\[
+0=M_0<S_1<S_1+S_2<\cdots<S_1+S_2+\cdots+S_n=M
+\] 
+is a composition series of length $n$ for $M$. 
+
+\begin{rem}
+Artinian rings always have simple submodules. 
+\end{rem}
+
+\begin{thm}
+Let $M$ be an $R$-module. Then $M$ ha a composition series if and only if $M$ is both artinian and noetherian. 
+\end{thm}
+
+Proof: We proceed by induction on $l(M)$. If $M$ is simple, we are done as every simple module is both artinian and noetherian. So the case where $l(M)=1$ is trivial. No assume that statement is true for any integer up to $n-1$. Let $n=l(M)>1$. Let $S=M_1$ be a simple submodule of $M$. 
+\[
+0=M_0 <M_1=S<M
+\]
+so that we have a short exact sequence
+\[
+0 \longrightarrow S \longrightarrow M \longrightarrow M/S \longrightarrow 0
+\]
+But $l(M/S)=n-1$. By the induction hypothesis, $S,M/S$ are both noetherian and artinian. But then the ends of the short exact sequence are artinian/noetherian so that $M$ is artinian/noetherian. 
+
+Now assume that $M$ is artinian and noetherian. As $M$ is artinian, there exists a simple submodule of $M$, say $M_1$. We look at $M/M_1$. This is a homomorphic image of a artinian module so that $M/M_1$ is artinian. Hence, $M/M_1$ has a simple submodule, say $M_2$. By the Correspondence Theorem, we have $M_2 \supset M_1$. We continue this process to obtain
+\[
+0=M_0<M_1<M_2\cdots
+\]
+But as $M$ is noetherian, this process must terminate sot that there is an $n$ such that the chain stabilizes. 
+\[
+0=M_0<M_1<M_2<\cdots<M_{n-1}<M_n=M
+\]
+But then $M$ has a composition series. \qed \\
+
+\subsection{Wedderburn Rings}
+
+\begin{dfn}[Wedderburn Ring]
+A ring $R$ is a left Wedderburn ring if it is left artinian and has no nonzero nilpotent left ideals. That is, if $I$ is a left ideal of $R$ and $I^m=0$, then $I=0$.
+\end{dfn}
+
+We say also that a left ideal of $R$ is a minimal left ideal in $R$ if and only if it is a simple left ideal when viewed as a module over $R$. 
+
+\begin{lem}\label{idemlemma}
+Let $_R I$ be a left ideal of $R$, then
+\begin{enumerate}[(i)]
+\item $I=Re$, where $e$ is an idempotent of $R$, if and only if $I$ is a direct summand of $R$ as a left module.
+\item If $I$ is a minimal left ideal of $R$ then either $I^2=0$ or $I=Re$. 
+\end{enumerate}
+\end{lem}
+
+Proof: 
+\begin{enumerate}[(i)]
+\item If $I=Re$ and $e=e^2$, then $R=Re \oplus R(1-e)$. Assume then that $R=I \oplus J$. Then $1=e+f$, where $e \in I$ and $f \in J$. Let $x \in I$. Then $x=x \cdot 1=1 \cdot x$. We have $x \in I$ and $x=xe+xf$, where $xe \in I$ and $xf \in J$. So as $I \cap J=0$, $xf=0$ so that $x=xe \in Re$. But $1 \in Re$ so that $x=e$ and as above we must have $e=x=xe=ee=e^2$. 
+
+\item Let $_R I$ be a minimal left ideal. Assume that $I^2 \neq 0$. Then there is $0 \neq a \in I$ such that $Ia= \neq 0$. But $Ia \subset I$ is a nonzero left ideal. As $I$ is minimal, it must be that $Ia \supset I$ so that $Ia=I$. But $a \in Ia$ so there is $e \in I$ so that $a=ea$. Now $0 \neq Re \subset I$. As $I$ is minimal, $I \subset Re$ so that $I=Re$. We are done except for that we demand $e^2=e$. Assume that $e \neq e^2$. 
+\[
+\begin{split}
+a&=ea \\
+ea&=e^2 a \\
+a=e^2 a \\
+a-e^2a&=0
+\end{split}
+\]
+Consider $(e-e^2)a=0$. Let $J=\{r \in I \;|\; ra=0\}$. We know $0 \neq e-e^2 \in J$. Now $J$ is a left ideal contained in $I$ so that $J \subset I$. But $I \subset J$ so that by minimality, $I=J$. But $Ia \neq 0$ so $J$ cannot be $I$ so that $Ja \neq 0$, contrary to the definition of $J$. Therefore, $e^2=e$. 
+\end{enumerate}
+\qed \\
+
+
+\subsection{Semisimple Rings}
+
+\begin{dfn}[Semisimple Ring]
+A ring $R$ satisfying any of the equivalent conditions of Theorem \ref{conditions} is called a left semisimple ring. 
+\end{dfn}
+
+\begin{thm}\label{conditions}
+The following are equivalent for a ring $R$:
+\begin{enumerate}[(i)]
+\item Every left $R$-module is projective.
+\item Every left $R$-module is injective. 
+\item $_R R$ is semisimple.
+\item $R$ is a left Wedderburn ring. 
+\end{enumerate}
+\end{thm}
+
+Proof: $(i\rightarrow iv)$: 
+
+$(i \rightarrow ii)$: Let $A$ be an $R$-module. Then there exists an injective module $E$ with the property that $0 \longrightarrow A \ma{f} E$ so that
+\[
+0 \longrightarrow A \ma{f} E \longrightarrow B \longrightarrow 0
+\]
+where $B= \coker f$. But $B$ is projective so the sequence splits so that $E \cong A \oplus B$. But $A$ is a summand of an injective module so that $A$ is injecitve. 
+
+$(ii \rightarrow i)$: Every module is a quotient of a projective module. We look at the kernel of the sequence and realize that the sequence splits. So we have that the module is isomorphic to a sum of projective modules and hence is projective. 
+
+$(i,ii \rightarrow iii)$: Let $M$ be an $R$-module. Let $L \leq M$. We know that $L$ is injective so there exists $K \leq M$ with $M=K \oplus L$. But then $M$ is semisimple. 
+
+$(iii \rightarrow iv)$: Trivial
+
+$(iv \rightarrow i)$: We know that $_R R$ is semisimple. So $R$ is a direct sum of simple submodules. So every free module is isomorphic to a direct sum of copies of $R$ so that it is isomorphic to a direct sum of simple submodules. All modules are quotients of free modules. All free modules are semisimple. So the quotient of semisimple modules are semisimple. Let $M$ be a module then
+\[
+0 \longrightarrow A \hookrightarrow F \longrightarrow M \longrightarrow 0
+\]
+Where $F$ is free so that it is semisimple. We know $F=A \oplus M'$, where $M' \cong M$. But this shows that $M$ is projective. 
+
+$(iv \rightarrow v)$: Suppose $_R R$ is semisimple. So $R=\sum_{i \in \mathcal{I}} S_i=\bigoplus_{i \in \mathcal{I}} S_i$; that is, $R$ is a direct sum of simple submodules. We want to show that this sum is finite. We know $1 \in R$ so that $1 \in \sum_{i \in \mathcal{I}} S_i$. Without loss of generality, say $1=s_1+\cdots+s_n \in S_1+\cdots+S_n$. But then $r=r \cdot 1=r(s_1+\cdots+s_n)$ so that $R=S_1 \oplus \cdots \oplus S_n$, a direct sum of finitely many simple submodules. Each of these simple submodules have length 1. So $R$ has length $n$. To see this, 
+\[
+0 \longrightarrow S_1 \longrightarrow S_1 \oplus S_2 \oplus \cdots \oplus S_n \longrightarrow S_2 \oplus \cdots \oplus S_n \longrightarrow 0
+\]
+We know $l(S_1)=1$ and by induction $l(S_2 \oplus \cdots \oplus S_n)=n-1$ so that $l(S_1 \oplus \cdots \oplus S_n)=n$. As $R$ has finite length, $R$ is both noetherian and artinian when viewed as a left $R$-module. Let $_R I$ be an ideal of $R$. Now $_R R$ is semisimple by assumption so that we can write $R=I \oplus J$ for some $J$. We also have $I=Re$ with $e=e^2$ by Lemma \ref{idemlemma}. Furthermore, $e^n \neq 0$ for any $n$. But then $I$ cannot be nilpotent. Therefore, $R$ is left Wedderburn. 
+
+$(v \rightarrow i,ii,iii)$: By Lemma \ref{idemlemma}, every minimal left ideal $I$ of $R$ has the form $I=Re$, where $e$ is an idempotent. But these ideals are projective so that every minimal left ideal is projective. It is enough to show that every left ideal is projective. (Why?) To do this, it is enough to show that every left ideal is a direct sum of minimal left ideals. 
+
+Assume that this is not the case. Let 
+\[
+S=\{\text{all left ideals not the sum of minimal left ideals} \}
+\]
+Assume $S \neq \emptyset$. As $R$ is artinian, there is a minimal element in $S$, say $L$. We look at the left ideals of $L$. Say there exists $_R I \subsetneq L$ with $I$ a minimal left ideal. Now $I$ is not nilpotent by assumption. So $I=Re$ forcing $R=I \oplus J$ for some left ideal $J$. By the Modular Law,
+\[
+L=(L \cap I) \oplus (L \cap J)=I \oplus (L \cap J)
+\]
+Now $L \cap I=I$ as $I \subset L$. We know that $I \oplus (L \cap J) \neq 0$ as $L \cap J \subset L$. But this is a sum of minimal left ideals. This shows that $L$ is the sum of minimal left ideals, a contradiction. But then every left ideal of $R$ is projective. \qed \\
+
+\begin{cor}
+Let $R$ be a left semisimple ring. Let $_R M$ be a finitely generated module. Then $M$ has a composition series of finite length. In particular, $M$ is noetherian and artinian. 
+\end{cor}
+
+Proof (Sketch): Now as $R$ is semisimple so that $R$ is left artinian. But then $M$ is finitely generated artinian. So there exists
+\[
+\underbrace{R \oplus \cdots \oplus R}_{n \text{ times}} \ma{\pi} M \longrightarrow 0
+\]
+But $l(R)$ is finite so that $l(R^n)<\infty$. But then $M$ is a quotient module with finite length so that $l(M)<\infty$. But then $M$ is noetherian and artinian. \qed \\
+
+\subsection{Nilpotent Ideals} 
+
+\begin{dfn}[Nil]
+Let $R$ be a ring. A left ideal $I$ of $R$ is called nil if every element of $I$ is nilpotent.
+\end{dfn}
+
+By definition, if $_R I$ is nilpotent then $_R I$ is nil. It should be noted that if $_R I$ is a nilpotent ideal, then $IR$ is a right ideal. If $I^n=0$, then $(IR)^n=0$ so $IR$ is a two-sided nilpotent ideal (hence also a nil ideal). But then every left/right nilpotent ideal is contained in a two-sided nilpotent ideal. Furthermore, if $x \in R$ is nilpotent then $1-x$ is invertible as $(1-x)(1+x+\cdots+x^{n-1})=1$ from the fact that $x^n=0$. 
+
+\begin{prop}
+Let $I \unlhd R$ be a two sided nil ideal of $R$. Then
+\begin{enumerate}[(i)]
+\item If $J/I$ is a left nil ideal of $R/I$ then $J$ is a nil left ideal of $R$.
+\item If $I,J \unlhd R$ are nil then $I+J$ is nil and any arbitrary sum of two sided nil ideals is nil.
+\end{enumerate}
+\end{prop}
+
+Proof:
+\begin{enumerate}[(i)]
+\item Let $x \in J$. We want to show that $x$ is nilpotent. We look at $x+I \in J/I$. We know that $x+I$ is nilpotent so that $(x+I)^n=x^n+J=0=I$. But then $x^n \in I$. As $I$ is nil, $I^m=0$ so that $(x^n)^m=x^{nm}=0$.
+\item We look at $I+J/I$ is a nil ideal of $R/I$. (Why?) Then by the previous part, $I+J$ is nil. By induction, a finite sum of nil ideals is nil. Let $\{I_k\}$ be a family of nil ideals $I_k \lhd R$. Let $x \in \sum_k I_k$, where $x$ is a finite sum. Without loss of generality, assume that $x \in I_1 +\cdots+I_n$. But then $x$ is nilpotent.  
+\end{enumerate}
+
+\begin{conject}[K\"othes Conjecture]
+If $I,J$ are left nil ideals in a ring $R$, then $I+J$ is nil. 
+\end{conject}
+
+Despite it's unusual simplicity, K\"onthes Conjecture has gone unsolved for 85 years.
+
+\begin{dfn}[Nilradical]
+Let $R$ be a ring. Then the nilradical of $R$, denoted $\nil(R)$ is a sum of all two sided nil ideals of $R$.
+\end{dfn}
+
+Note that $\nil(R/\nil(R))=0$ (Exercise: Use the Correspondence Theorem) This shows that $R/\nil(R)$ has no nonzero two sided nil ideals. 
+
+\begin{thm}
+Let $R$ be a left artinian ring. Let $N$ be $\nil(R)$. Then $R/N$ is a left Wedderburn ring and $N$ is the unique largest nilpotent 2-sided ideal of $R$.
+\end{thm}
+
+\begin{thm}[Variation on Nakayama's Lemma]
+Let $R$ be a ring. Let $I$ be a nilpotent left ideal of $R$. Let $M$ be a left $R$-module and let $L \leq M$. Assume that $M=L+IM$ then $M=L$. In particular, if $M=IM$ then $M=0$. 
+\end{thm}
+
+Proof: We show this by induction on $I$. Let $M=L+I^iM$. Now
+\[
+M=L+IM=L+I(L+IM)=L+IL+I^2M=L+I^2(L+IM)=\cdots
+\]
+If $I^i=0$ for some $i$, that is if $I$ is nilpotent, then $L=M$. If $L=0$, then $M=IM$. \qed \\
+
+\begin{thm}
+Let $_R S$ be a simple $R$-module. Let $I$ be a nilpotent left ideal. Then $IS=0$.
+\end{thm}
+
+Proof: We know that $IS \leq S$. But $S$ is simple. Then either $IS=S$ but by the previous theorem, $S=0$. But this is not possible as $S$ is simple or $IS=0$. \qed \\
+
+Notice that we then know that if $R$ is a left artinian ring and $N=\nil(R)$, we know that $N$ is nilpotent. So for all simple modules $S$, $NS=0$. Furthermore, as a semisimple ring is a sum of simple submodules we have
+\[
+N(S_1 \oplus S_2 \oplus \cdots \cdots S_n)=0
+\]
+as $N$ annihilates all the $S_i$. It is our goal to show that if $R$ is a left Wedderburn ring, then $R$ is left semisimple. We have already shown that every left ideal of $R$ is a sum of minimal left ideals so that it is a sum of simple submodules and $_R R$ is semisimple. 
+
+\begin{thm}
+Let $R$ be a left artinian ring. Let $N$ be the nilradical of $R$. Then $R/N$ is left Wedderburn and $N$ is the unique nilpotent two-sided ideal of $R$.
+\end{thm}
+
+Proof: As $R$ is left artinian, we know that $R/N$ is left artinian. We also know that $\nil(R/N)=0$. So $R/N$ has no nonzero two-sided nil ideals. We want to show that $R/N$ has no nilpotent left ideals. If $A \neq 0$ was such then $A \cdot R/N$ is a two-sided nilpotent ideal of $R/N$. But then $A \cdot R/N$ is a nonzero two-sided nil ideal, a contradiction. So $R/N$ is left Wedderburn. 
+
+It remains to show that $N$ is the unique two-sided ideal of $R$. We look at $N \supseteq N^2 \supseteq \cdots$. As $R$ is left artinian, this chain must stabilize. Then $N^k=N^{k+n}$ for some $n \in \N$. Let $I=\{r \in R\;|\; N^kr=0\}$. As $0 \in I$, $I$ is nonempty. Since $N \lhd R$, $I$ is a left ideal. It is enough to prove that $I=R$. Then $N^k \cdot 1=N^k=0$. 
+
+Assume that $I \neq R$. Then $I \subsetneq R$. Let $S$ be the set of all left ideals of $R$ properly containing $I$. As $R$ is artinian, $S$ has a minimal element, say $J$. Then $I \subsetneq J$. Let $a \in J \setminus I$. Then $\langle a,I \rangle \supset I$. But by the minimality of $J$, we have $I+Ra=J$. Then 
+\[
+\begin{split}
+1+NJ&=I+N(I+Ra) \\
+&=I+NI+Na \\
+&=I+Na
+\end{split}
+\]
+But $I \subset I+NJ \subset J$. Assume $NJ \not\subseteq I$ so we have $I \subsetneq I+NJ$. By minimality, $I+Na=I+NJ=J$. But then $a=i+xa$ for some $i \in I$ and $x \in N$. Then $(1-x)a=i$. As $x$ is nilpotent, we know that $1-x$ is invertible. Now let $y \in R$ such that $y=(1-x)^{-1}$. Then $a=yi \in I$. But this is a contradiction as $a \in J \setminus I$. Then $NJ \subset I$. Finally, we have
+\[
+N^{k+1}J \subset N^kI=0
+\]
+so $N^kJ=0$. But this is the defining property of $I$ so that $J=I$, a contradiction. Therefore, it must be that $I=R$. \qed \\
+
+\begin{thm}
+Let $R$ be a left artinian ring. Then up to isomorphism there are finitely many simple left $R$-modules, $S_1,\cdots,S_n$, and every simple $R$-module can be written up to isomorphism uniquely as a direct sum of simple modules. 
+\end{thm}
+
+Proof: We have seen that if $_R S$ is simple then $NS=0$, where $N$ is the nilradical (though this is true for all left nilpotent ideals). So every simple $R$-module $S$ can be viewed as a simple $R/N$-module. Then $(r+M)s=rs$. (Exercise) 
+
+Conversely, if $S$ is a simple $R/N$-module then $S$ is also a simple $R$-module by restriction of scalars
+\[
+r \cdot s=(r+N)s
+\]
+so there is a one-to-one correspondence between the simple left $R$-modules and simple left $R/N$-modules. We want to show that there are finitely many nonisomorphic simple $R/N$-modules. As $R/N$ is left Wedderburn, we know that $R/N$ is a direct sum of simple submodules. We want this to be a finite sum. But $R/N$ is also left artinian so it is a finite sum as there would otherwise be an infinite descending chain of submodules. Now say $R/N=S_1 \oplus \cdots \oplus S_n$, where the $S_i$ are simple modules. 
+
+We need show that these are all the simple submodules. We know that the simple modules are isomorphic to $R/J$, where $J$ is a maximal ideal. So $R\longrightarrow T \longrightarrow 0$, where $T$ is simple. But then $R/N/A \stackrel{\sim}{\longrightarrow} T$.
+\[
+0 \longrightarrow A \longrightarrow R/N \longrightarrow T \longrightarrow 0
+\] 
+where $R/N$ is semisimple. But then this sequence splits so that $T=R/A$. But then $T$ is one of the $S_i$. To see uniqueness, Note that $M$ is semisimple and finitely generated so that $M$ is a finite direct sum of simple modules. (Why?) Assume that $M=S_1 \oplus \cdots \oplus S_n=T_1 \oplus \cdots \oplus T_n$, where the $S_i,T_j$ are simple. Assume that $s \geq n$. We prove this by induction on $s$. If $s=1$, we are done. If $s>1$, then $S_1 \subseteq T_1 \oplus \cdots \oplus T_s$. Pick a generator for $S_1$ in one of the $T_j$, then there is a $j$ with $S_1=T_j$. (Why?) Without loss of generality, assume that $S_1=T_1$. We have
+\[
+\begin{tikzcd}
+0 \arrow{r} & S_1 \arrow{d}{\sim} & S_1 \oplus \cdots \oplus S_n \arrow{d}{\sim} \arrow{r} & S_2 \oplus \cdots \oplus S_n \arrow[dotted]{d}{\exists !} \arrow{r} & 0 \\
+0 \arrow{r} & T_1 & T_1 \oplus \cdots \oplus T_n \arrow{r} & T_2 \oplus \cdots \oplus T_s \arrow{r} & 0 
+\end{tikzcd}
+\]
+then using the Isomorphism Theorem along with the fact that $S_1 \cong T_1$. Therefore, $n=s$. \qed \\
+
+\begin{thm}[Hopkins-Levitsky Theorem]
+Let $R$ be a left artinian ring then every finitely generated $R$-module has finite lengths (so that it has a composition series). As a module has finite length if and only if $R$ is artinian and noetherian.
+\end{thm}
+
+Proof: Let $M$ be finitely generated. Let $N=\nil(R)$. We know that $N$ is nilpotent. Let $k$ be such that $N^k=0$ and $N^{k-1} \neq 0$. As $M$ is finitely generated over $R$, we know that $_R M$ is artinian. So every submodule of $M$ is artinian. 
+\[
+M \geq NM \geq N^2M \geq \cdots \geq N^kM=0
+\]
+Note that $N^iM=N^{i+1}M=N(N^iM)$ so $N^iM=0$ as $N$ is nilpotent. So the above inclusions are proper. We look at $N^iM/N^{i+1}M$. We know that this is artinian, being the quotient of artinian modules over $R/N$. As $N$ annihilates each of them, we know that this is also left Wedderburn. Each of the $N^iM/N^{i+1}M$ is a direct sum of simple submodules and are artinian so that they are a finite direct sum. Then $N^iM/N^{i+1}M$ must have finite length. Induction will show that $N$ must therefore have finite length.
+
+Suppose $N^{k-1}M=N^{k-1}M/N^kM$ has finite length. Then
+\[
+0 \longrightarrow \underbrace{N^{k-1}M}_{\text{finite length}} \longrightarrow N^{k-2}M \longrightarrow \underbrace{N^{k-2}M/N^{k-1}M}_{\text{finite length}} \longrightarrow 0
+\]
+So the module must have finite length. We ``keep moving to the left" so that we know all the $N^iM$ have finite length. This must be true especially for $i=0$, so that $M$ has finite length. But then $M$ is both artinian and noetherian as a left $R$-module. Specializing to $M_R=R$, we know that $R$ is noetherian. \qed \\
+
+We know that a left artinian \emph{ring} is a left noetherian \emph{ring}. In general, an artinian module need not be noetherian modules. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

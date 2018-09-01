@@ -1,0 +1,555 @@
+% !TEX root = ../../rings_mods.tex
+\section{Exact Sequences}
+\subsection{Exactness}
+
+
+\begin{dfn}[Exactness]
+A pair of module homomorphisms $A\ma{f} B$, $B \ma{g} C$ is said to be exact at $B$ provided $\im f = \ker g$. We represent `visually' as
+	\[
+	A \ma{f} B \ma{g} C.
+	\]
+For longer sequences, 
+	\[
+	A_0 \ma{f_1} A_1 \ma{f_2} A_2 \ma{f_3} \cdots \ma{f_n} A_n
+	\]
+is exact provided $\im f_i=\ker f_{i+1}$ for $1 \leq i \leq n-1$. For infinite sequences, we say the sequence is exact if and only if $\im f_i=\ker f_{i+1}$ for all $i$. 
+\end{dfn}
+
+
+\begin{rem}
+Generally, $A \ma{f} B \ma{g} C$ does not mean that we have exactness at $B$ but merely $gf=0$.
+\end{rem}
+
+
+\begin{ex} \hfill
+\begin{enumerate}[(i)]
+\item A sequence $0 \ma{} A \ma{f} B$ is exact if and only if $f$ is injective.
+\item A sequence $B \ma{g} C \ma{} 0$ is exact if and only if $g$ is surjective.
+\item A sequence $0 \ma{} A \ma{h} B \ma{} 0$ is exact if and only if $h$ is an isomorphism.
+\item A sequence $0 \ma{} A \ma{f} B \ma{g} C \ma{} 0$ is exact if and only if $f$ is injective, $g$ is surjective, and $\im f=\ker g$. 
+\item Let $A$ be a submodule of $B$, then the sequence $0 \ma{} A \ma{f} B \ma{g} B/A \ma{} 0$ is exact. 
+\item If $A \subseteq B \subseteq C$ is a tower of submodules, then there is an exact sequence $0 \ma{} B/A \ma{} C/B \ma{} C/A \ma{} 0$. 
+\end{enumerate} \xqed
+\end{ex}
+
+
+\begin{dfn}[Short Exact Sequence]
+An exact sequence of the form 
+	\[
+	0 \ma{} A \ma{f} B \ma{g} C \ma{} 0
+	\]
+is called a short exact sequence. This is also referred to as an extension of $A$ by $C$. [Note that other authors would define this to be an extension of $C$ by $A$, and others call the module $B$ the extension.] 
+\end{dfn}
+
+
+\begin{prop}
+If $0 \ma{} A \ma{f} B \ma{g} C \ma{} 0$ is a short exact sequence, then $A \cong \im f$ and $B/\im f \cong C$.
+\end{prop}
+
+\pf Clearly, $f$ is injective. Changing the target space gives an isomorphism $A \to \im f$. The First Isomorphism Theorem gives $B/ \ker g \cong \im g$. By exactness, $\ker g = \im f$ and $\im g=C$. Therefore, $B/\im f \cong C$. \qed \\
+
+
+
+\subsection{The Short 5 Lemma}
+
+
+
+\begin{lem}[The Short 5 Lemma] \label{lem:shortfive}
+Let $R$ be a ring and let
+	\[
+	\begin{tikzcd}
+	0 \arrow{r} & A \arrow{r}{f} \arrow{d}{\alpha} & B \arrow{r}{g} \arrow{d}{\beta} & C \arrow{r} \arrow{d}{\gamma} & 0 \\
+	0 \arrow{r} & A' \arrow[swap]{r}{f'} & B' \arrow[swap]{r}{g'} & C' \arrow{r} & 0
+	\end{tikzcd}
+	\]
+be a commutative diagram of $R$-modules and $R$-module homomorphisms such that each row is a short exact sequence, then 
+	\begin{enumerate}[(i)]
+	\item If $\alpha,\gamma$ are monomorphisms then $\beta$ is a monomorphism.
+	\item If $\alpha,\gamma$ are epimorphisms then $\beta$ is an epimorphism. 
+	\item If $\alpha,\gamma$ are isomorphisms then $\beta$ is an isomorphism. 
+	\end{enumerate}
+\end{lem}
+
+\pf Notice that (iii) follows from the first two propositions, so it suffices to prove (i) and (ii). Our proof is by `diagram chase'.
+
+\begin{enumerate}[(i)]
+\item Let $b \in B$ such that $\beta(b)=0$, we want $b=0$ (so we are going to show that the kernel is trivial). 
+	\[
+	\begin{tikzpicture}
+	\matrix (m) [matrix of nodes, row sep=3em,
+	column sep=3em, text height=1.5ex, text depth=0.25ex]
+	{ $B$ & $C$  \\
+	  $B'$ & $C'$ \\ };
+	\path[->]
+	(m-1-1) edge node[above] {$g$} (m-1-2)
+             edge node[left] {$\beta$} (m-2-1)
+             edge [bend left=90, looseness=2,snake it] (m-2-2)
+             edge [bend right=90, looseness=2, snake it] (m-2-2);
+	\path[->]
+	(m-1-2) edge node[right] {$\gamma$} (m-2-2);
+	\path[->]
+	(m-2-1)  edge node[below] {$g'$} (m-2-2);
+	\end{tikzpicture}
+	\]
+We look at $\gamma(g(b))$ and using the fact that the diagram commutes to find
+	\[
+	\gamma(g(b))=g'(\beta(b))=g'(0)=0.
+	\]
+But $\gamma$ is a monomorphism so that $g(b)=0$. Therefore as the rows are exact, $g \in \ker g=\im f$. Then we have $b=f(a)$ for some $a \in A$. We can then use our other commuting diagram:
+	\[
+	\begin{tikzpicture}
+	\matrix (m) [matrix of nodes, row sep=3em,
+	column sep=3em, text height=1.5ex, text depth=0.25ex]
+	{ $A$ & $B$  \\
+	  $A'$ & $B'$ \\ };
+	\path[->]
+	(m-1-1) edge node[above] {$\alpha$} (m-1-2)
+             edge node[left] {$f$} (m-2-1)
+             edge [bend left=90, looseness=2,snake it] (m-2-2)
+             edge [bend right=90, looseness=2,snake it] (m-2-2);
+	\path[->]
+	(m-1-2) edge node[right] {$\beta$} (m-2-2);
+	\path[->]
+	(m-2-1)  edge node[below] {$f'$} (m-2-2);
+	\end{tikzpicture}
+	\]
+Using our initial assumption that $\beta(b)=0$, we have
+	\[
+	f'(\alpha(a))=\beta(f(a))=\beta(b)=0.
+	\]
+Then $f'$ is injective so that it must be $\alpha(a)=0$. We have $\alpha$ injective by assumption so that it must be that $a=0$. Finally, we know that $b=f(a)=f(0)=0$ so that $\beta$ must be a monomorphism. 
+
+\item Let $b' \in B'$. We want to show that there is a $b \in B$ such that $\beta(b)=b'$. We know that $g$, $g'$, and $\alpha$ are surjective. We proceed by going about the following diagram clockwise, ``adjusting our target'' so that we hit our goal ``the long way'' [about the diagram]. 
+	\[
+	\begin{tikzpicture}
+	\matrix (m) [matrix of nodes, row sep=3em,
+	column sep=3em, text height=1.5ex, text depth=0.25ex]
+	{ $B$ & $C$  \\
+	  $B'$ & $C'$  \\};
+	\path[->]
+	(m-1-1) edge node[above] {$g$} (m-1-2)
+             edge node[left] {$\beta$} (m-2-1)
+             edge [bend left=90, looseness=2,snake it] (m-2-2)
+             edge [bend right=90, looseness=2,snake it] (m-2-2);
+	\path[->]
+	(m-1-2) edge node[right] {$\gamma$} (m-2-2);
+	\path[->]
+	(m-2-1)  edge node[below] {$g'$} (m-2-2);
+	\end{tikzpicture}
+	\]
+We know that $g'(b') \in C$. As $\gamma$ is an epimorphism, there is some $c \in C$ such that $g'(b')=\gamma(c)$. But $g$ is an epimorphism so that $c=g(b)$ for some $b \in B$. Now we use the commutativity of the diagram to find
+	\[
+	g'(\beta(b))=\gamma(g(b))=\gamma(c)=g'(b'),
+	\]
+which is only helpful in that we now know $g'(\beta(b))-g'(b')=0$; that is, that $g'\big(\beta(b)-b'\big)=0$. What we is for $\beta(b)-b'=0$. However, this is not necessarily so. But we do know that $\beta(b)-b' \in \ker g'=\im f$. So say $f'(a')=\beta(b)-b'$ for some $a' \in A'$. The $\beta(b)-b'$ is like an `error'. Using the fact that $\alpha$ is an epimorphism, $a'=\alpha(a)$ for some $a \in A$. Now consider $b-f(a) \in B$ (this is our adjusting the `error'). We have $\beta\big(b-f(a)\big)=\beta(b)-\beta(f(a))$. 
+
+Now using the commutativity of the diagram, we have
+	\[
+	\beta(f(a))=f'(\alpha(a))=f'(a')=\beta(b)-b',
+	\]
+where the last equality follows from the last fact mentioned in the preceding paragraph. But then
+	\[
+	f'(a')=\beta(b)-b'=\beta(b)-(\beta(b)-b')=b'.
+	\]
+Now as $f(a) \in B$, there exists a $b_0 \in B$ such that $b_0=f(a)$ so that $\beta(b_0)=b'$. But then $\beta$ is an epimorphism. \qed \\
+\end{enumerate}
+
+
+
+\subsection{Isomorphisms of Short Exact Sequences}
+
+
+
+Suppose we have two exact sequences $0 \ma{} A \ma{} B \ma{} C \ma{} 0$ and $0 \ma{} A' \ma{} B' \ma{} C' \ma{} 0$ with isomorphisms $f: A \to A'$, $g: B \to B'$, and $h: C \to C'$. We can represent this diagrammatically below:
+	\[
+	\begin{tikzcd}
+	0 \arrow{r} & A \arrow[shift left=1.5ex]{d}{f} \arrow{r} & B \arrow[shift left=1.5ex]{d}{g} \arrow{r} & C \arrow[shift left=1.5ex]{d}{h} \arrow{r} & 0 \\
+	0 \arrow{r} & A' \arrow{u}{f^{-1}} \arrow{r} & B' \arrow{u}{g^{-1}} \arrow{r} & C' \arrow{u}{h^{-1}} \arrow{r} & 0
+	\end{tikzcd}
+	\]
+
+
+An isomorphism between these two exact sequences will be maps $f,g,h$ such that $f,g,h$ are isomorphisms \emph{and} they make the diagram commute. [The commutativity is key!] We need the diagram to commute with $f,g,h$ and $f^{-1},g^{-1},h^{-1}$. However, follows from the commutativity of the diagram with $f,g,h$: consider the following diagram of short exact sequences that commutes with isomorphisms $f$, $g$, $h$,
+	\[
+	\begin{tikzcd}
+	0 \arrow{r} & A \arrow[shift left=1.5ex]{d}{f} \arrow{r}{s} & B \arrow[shift left=1.5ex]{d}{g} \arrow{r}{t} & C \arrow[shift left=1.5ex]{d}{h} \arrow{r} & 0 \\
+	0 \arrow{r} & A' \arrow{u}{f^{-1}} \arrow{r}{s'} & B' \arrow{u}{g^{-1}} \arrow{r}{t'} & C \arrow{u}{h^{-1}} \arrow{r} & 0
+	\end{tikzcd}
+	\] 
+We want to check if $sf^{-1}(a')=g^{-1}s'(a')$ for all $a' \in A'$. We have $f^{-1}(a')=a \in A$ for some $a$. That is, $f(a)=a'$. Then we have $s'(a')=s'f(a)$. The commutativity of the diagram in $f,g$ gives $s'f(a)=gs(a)$. Then
+	\[
+	\begin{split}
+	s'f(a) &=s'(a') \\ 
+	gs(a) &=s'(a') \\
+	g^{-1}gs(a) &=g^{-1}s'(a') \\
+	s(a) &= g^{-1}s'(a') \\
+	sf^{-1}(a') &= g^{-1}s'(a'),
+	\end{split}
+	\]
+as desired. We need now check commutativity of the right square. That is, we want to show that $tg^{-1}(b')=h^{-1}t'(b')$ for all $b' \in B'$. We have $g^{-1}(b') = b \in B$ for some $b \in B$ so that $g(b)=b'$. The commutativity of the diagram in $g,h$ gives $t'g(b)=ht(b)$. Then
+	\[
+	\begin{split}
+	t'(b') &= t'g(b) \\
+	t'(b') &= ht(b) \\
+	h^{-1}t'(b') &= h^{-1}ht(b) \\
+	h^{-1}t'(b') &= t(b) \\
+	h^{-1}t'(b') &= tg^{-1}(b'),
+	\end{split}
+	\]
+as desired. One can easily verify that isomorphisms of short exact sequences form an equivalence relation.
+
+
+\begin{thm}\label{thm:splitseq}
+Let $R$ be a ring and
+	\[
+	0 \ma{} N \ma{f} M \ma{g} P \ma{} 0
+	\]
+a short exact sequence of $R$-module homomorphisms. Then the following conditions are still equivalent:
+	\begin{enumerate}[(i)]
+	\item There is an $R$-module homomorphism $f': M \rightarrow N$ with $f' \circ f=1_N$.
+	\item There is an $R$-module homomorphism $g': P \rightarrow M$ with $g \circ g'=1_P$.
+	\item The given sequence is isomorphic with the identity maps on $N$ and $P$ to the direct sum exact sequence
+	\[
+	0 \ma{} N \ma{i_1} N \oplus P \ma{\pi_2} P \ma{} 0,
+	\]
+and up to isomorphism there is only one such sequence. In particular, $M \cong N \oplus P$.
+	\end{enumerate}
+\end{thm}
+
+\pf It is clear that (iii) implies (i) and (ii): for (iii) implies (i), take $f'$ to be the projection of $M \cong N \oplus P$ onto $N$, while for (iii) implies (ii), take $g'$ to be the inclusion of $P$ into $M \cong N \oplus P$. It now remains to show (i) and (ii) imply (iii). 
+
+Now assume there is an $R$-module homomorphism $f': M \rightarrow N$ with $f' \circ f=1_N$. Consider the following diagram:
+	\[
+	\begin{tikzcd}
+	0 \arrow{r} & N \arrow{r}{f} \arrow{d}{1_N} & M \arrow{d}{(f',g)} \arrow{r}{g} & P \arrow{d}{1_P} \arrow{r} & 0 \\
+	0 \arrow{r} & N \arrow{r}{i_1} & N \oplus P \arrow{r}{\pi_2} & P \arrow{r} & 0
+	\end{tikzcd}
+	\]
+One routinely verifies that the diagram is commutative with exact rows. As the left and right vertical maps are isomorphisms, so too must the middle map be an isomorphism by Lemma~\ref{lem:shortfive}.
+
+Now assume there is an $R$-module homomorphism $g': P \rightarrow M$ with $g \circ g'=1_P$. Consider the following diagram:
+	\[
+	\begin{tikzcd}
+	0 \arrow{r} & N \arrow{d}{1_N} \arrow{r}{i_1} & N \oplus P \arrow{d}{f+g'} \arrow{r}{\pi_2} & P \arrow{r} \arrow{d}{1_N} & 0 \\
+	0 \arrow{r} & N \arrow{r}{f} & M \arrow{r}{g} & P \arrow{r} & 0
+	\end{tikzcd}
+	\]
+where $(f+g')(n,p)=f(n)+g'(p)$. One routinely verifies that the diagram is commutative with exact rows. As the left and right vertical maps are isomorphisms, so too must the middle map be an isomorphism by Lemma~\ref{lem:shortfive}. \qed \\ 
+
+
+\begin{dfn}[Split Exact Sequence]
+A short exact sequence satisfying any of the equivalent conditions of Theorem~\ref{thm:splitseq} is said to be split or a split exact sequence. The maps $h$, $k$ are sometimes called splittings.
+\end{dfn}
+
+
+\begin{rem}
+If we change $R$-modules with groups and $R$-maps with group homomorphisms, the statements of Theorem~\ref{thm:splitseq} are no longer equivalent. Specifically, conditions (i) and (ii) are no longer equivalent. For a short exact sequence $1 \ma{} H \ma{f} G \ma{g} K \ma{} 1$, (i) corresponds to $G$ being $H \times K$ while (ii) corresponds to $G$ being $H \rtimes K$. The underlying reason is the general non-abelianness of groups. However for a short exact sequence of abelian groups, (i) and (ii) are again equivalent (this is the special case of $R=\Z$, as abelian groups are $\Z$-modules). 
+\end{rem}
+
+
+\begin{ex}
+Let $R=k$ be a field. Every short exact sequence of $R$-modules, i.e. of vector spaces over $k$, 
+	\[
+	0 \ma{} U \ma{f} V \ma{g} W \ma{} 0
+	\]
+is split exact: if $\{b_i\}_{i \in \mathcal{I}}$ is a basis of $W$, one can choose inverse images $c_i \in g^{-1}(b_i)$ by the surjectivity of $g$. Then there is a (unique) linear map $g': W \to V$ with $g'(b_i)=c_i$. Hence, $gg'=1_W$. Therefore by Theorem~\ref{thm:splitseq}, the sequence is split exact. One can prove this similarly by choosing a basis for $U$, identify $U$ with its image in $V$ via the injection $f$, and then extend this to a basis for $V$. \xqed
+\end{ex}
+
+
+
+\subsection{Idempotents and Indecomposables}
+
+
+
+\begin{dfn}[Idempotent]
+Let $R$ be a ring with unity. Then $e \in R$ is an idempotent if $e^2=e$. 
+\end{dfn}
+
+
+\begin{ex} \hfill
+\begin{enumerate}[(i)]
+\item In any ring, 0 is an idempotent. If $R$ is any ring with identity, then 1 is an idempotent. 
+
+\item Let 
+	\[
+	R= \left\{ \begin{pmatrix} a & 0 & 0 \\ b & d & 0 \\ c & e & f \end{pmatrix} \;\big|\; a,b,c,d,e,f \in \R \right\}
+	\]
+Then the following elements are idempotents:
+	\[
+	e_1 = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \quad e_2=\begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \quad e_3= \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+	\]
+
+\item If $0 \ma{} A \ma{f} B \ma{g} C \ma{} 0$ is a split short exact sequence, there is a map $h: C \to B$ such that $gh=1_C$. Then $hg \in \End B$ is an idempotent as $(hg)^2=(hg)(hg)=h(gh)g=h1g=hg$.
+\end{enumerate} \xqed
+\end{ex}
+
+
+Let $M$ be an $R$-module and let $\End_R(M)=\{f: M \rightarrow M\;|\; f \text{ homomorphism}\}$. Then $\End_R(M)$ is a ring. We define $(f +g)(m)\defeq f(m)+g(m)$ and $gf \defeq g\circ f$. One should verify that these are homomorphisms and also verify the distributive property.
+
+
+\begin{dfn}[Indecomposable]
+A module $M$ is indecomposable if whenever $M=A \oplus B$, where $A,B \leq M$, then either $A$ or $B$ is zero. That is, $M$ cannot be written nontrivially as a direct sum of $M$-submodules. If $M$ is not indecomposable, then we say that $M$ is decomposable.
+\end{dfn}
+
+
+\begin{rem}
+Let $M=A \oplus C$ be a nonzero decomposable module, where $A$, $C$ are proper submodules of $M$.
+	\[
+	\begin{tikzcd}
+A \arrow[yshift=0.75ex]{r}{i_A} & M=A \oplus C \arrow[yshift=-0.75ex]{l}{\pi_A} \arrow[yshift=0.75ex]{r}{\pi_C} & C \arrow[yshift= -0.75ex]{l}{i_C}
+	\end{tikzcd}
+	\]
+where $i_A,i_C$ are the canonical injections. We think of $i_A=\begin{pmatrix} 1 \\ 0 \end{pmatrix}$ and $\pi_A=\begin{pmatrix} 1 & 0 \end{pmatrix}$. We have $\pi_A i_A=1_A$ and $\pi_C i_C=1_C$. Now define
+	\[
+	\begin{split}
+	e_A \defeq i_A \pi_A: M \rightarrow M \\
+	e_C \defeq i_C \pi_c: M \rightarrow M
+	\end{split}
+	\]
+Observe that 
+	\[
+	e_A^2=(i_A\pi_A)( i_A \pi_A)=i_A (\pi_A i_A) \pi_a=i_A 1_A \pi_A=i_A\pi_A=e_A
+	\]
+so that $e_A$ is an idempotent. Similarly, $e_C$ is an idempotent. Furthermore, one can verify that $e_A \neq 1_H \neq e_C$ so that $e_A,e_C$ are nontrivial idempotents. Therefore, we always have nontrivial idempotents whenever $M$ is decomposable. That is, $\End_R(M)$ always has nontrivial idempotents whenever $M$ is decomposable. By contrapositive, if $\End_R(M)$ has no nontrivial idempotents, then $M$ is indecomposable. 
+\end{rem}
+
+
+We summarize the preceding remark in the following proposition:
+
+
+\begin{prop}
+If $\End_R(M)$ has no nontrivial idempotents, then $M$ is indecomposable. 
+\end{prop}
+
+
+\begin{dfn}[Orthogonal Idempotents]
+Two idempotents $e_1$, $e_2$ in any ring $R$ are orthogonal if $e_1e_2=e_2e_1=0$.
+\end{dfn}
+
+
+\begin{ex} Suppose we have a short exact sequence
+	\[
+	0 \ma{} A \ma{f} M \ma{g} C \ma{} 0
+	\]
+By Theorem~\ref{thm:splitseq}, $M \cong A \oplus C$. We can then consider $A$ and $C$ as submodules of $M$. This gives us the following:
+	\[
+	\begin{tikzcd}
+	A \arrow[yshift=1ex]{r}{i_A} & M=A \oplus C \arrow[yshift=-1ex]{l}{\pi_A} \arrow[yshift=1ex]{r}{\pi_C} & C \arrow[yshift=-1ex]{l}{i_C} 
+	\end{tikzcd}
+	\]
+But then $e_A+e_C=i_A\pi_A+i_C\pi_C=1_M$. Furthermore, $e_Ae_C=e_Ce_A=0$ so that $e_A$ and $e_C$ are orthogonal idempotents. \xqed
+\end{ex}
+
+
+\begin{lem}
+Let $M$ be an $R$-module and let $e: M \rightarrow M$ be an idempotent map, i.e. $e^2=e$, then
+	\[
+	M=\ker e \oplus \im e
+	\]
+\end{lem}
+
+\pf First, we show that $\im (1-e)=\ker e$. If $x \in \ker e$, then $x=x-e(x)=(1-e)(x) \in \im(1-e)$, showing $\ker e \subseteq \im (1-e)$. Now let $x \in \im(1-e)$ so that $x=(1-e)(y)$ for some $y \in M$. 
+	\[
+	e(x)=e(1-e)(y)=(e-e^2)(y)=(e-e)(y)=0(y)=0.
+	\]
+But then $x \in \ker e$, showing $\im(1-e) \subseteq \ker e$. Therefore, $\im(1-e)=\ker e$. 
+
+By the work above, it suffices to prove $M=\im(1-e) \oplus \im e$. Let $x \in M$. Then
+	\[
+	x=(1-e)(x)+e(x) \in \im(1-e)+\im(e)
+	\]
+To show that the sum is direct, we need only show that $\im(1-e) \,\cap\, \im(e)=0$. We know that $\im(1-e)=\ker e$. Now let $x \in \ker e \,\cap\, \im e$. Then $x=e(y)$ for some $y \in M$ and because $x \in \ker e$, we have
+	\[
+	0=e(x)=e(e(y))=e^2(y)=e(y)=x
+	\]
+so that the intersection is trivial. \qed \\
+
+
+
+\subsection{The Functor $\Hom_R(M,-)$}
+
+
+
+Now we look a bit more at exact sequences. Let $A$, $B$ be $R$-modules. Usually, $\Hom_R(A,B)$ is an abelian group only. Given another module $M$ and a homomorphism $f: A \to B$, we have an induced homomorphism of abelian groups
+	\[
+	f_*= \Hom_R(M,A) \ma{} \Hom_R(M,B) 
+	\]
+given by $f_*(g)\defeq fg$, where $g \in \Hom_R(M,A)$, i.e. $g: M \to A$:
+	\[
+	M \ma{g} A \ma{f} B
+	\]
+One need show that this is a homomorphism of abelian groups. But first, we introduce the universal property of the kernel and cokernel. 
+
+
+\begin{dfn}[Universal Property of the Kernel/Cokernel]
+Let $\beta: X \rightarrow Y$ be a homomorphism. A kernel of $\beta$ is a homomorphism $\gamma: Z \rightarrow X$ such that
+	\begin{enumerate}[(i)]
+	\item If we have $Z \ma{\gamma} X \ma{\beta} Y$, then $\beta \gamma=0$.
+	\item For all homomorphisms $T \ma{\alpha} X$ with $\beta \alpha=0$
+		\[
+		\begin{tikzcd}
+		\; & T \arrow[swap,dotted]{dl}{s} \arrow{d}{\alpha} & \; \\
+		 Z  \arrow[swap]{r}{\gamma} &  X \arrow[swap]{r}{\beta} & Y
+		\end{tikzcd}
+		\]
+Then there exists a unique $s: T \to Z$ such that $\alpha=\gamma s$.
+	\end{enumerate}
+
+Let $\beta: X \rightarrow Y$ be a homomorphism. A cokernel of $\beta$ is a morphism $Y \stackrel{\gamma}{\longrightarrow} Z$ such that
+	\begin{enumerate}[(i)]
+	\item $\gamma \beta=0$
+	\item If there is a homomorphism $Y \stackrel{\alpha}{\longrightarrow} T$, then there exists a unique homomorphism $s: Z \rightarrow T$.
+		\[
+		\begin{tikzcd}
+		X \arrow{r}{\beta} & Y \arrow{r}{\gamma} \arrow[swap]{d}{\alpha} & Z \arrow[dotted]{dl}{s} \\
+		& T & 
+		\end{tikzcd}
+		\]
+\end{enumerate}
+\end{dfn}
+
+
+Again, note that this merely defines what it takes to be a kernel or cokernel. We have not proved that such objects exist. Indeed for a general category, there will not be a kernel and cokernel. However, these objects will exist in our most important category---$R$-modules. 
+
+
+\begin{prop} \label{prop:homexact}
+Let $R$ be a ring. Let 
+	\[
+	0 \ma{} A \ma{f} B \ma{g} C \ma{} 0
+	\]
+be a short exact sequence. Let $M$ be an $R$-module. Then we have an induced exact sequence
+	\[
+	0 \ma{} \Hom_R(M,A) \ma{f_*} \text{Hom}_R(M,B) \ma{g_*} \Hom_R(M,C) 
+	\]
+\end{prop}
+
+\pf We first show that $f_*$ is a monomorphism. Suppose $h: M \to A$ is such that $f_*(h)=0$, i.e. $fh=0$. Since $f$ is injective, this implies that $h=0$. But then $\ker f_*=0$ so that $f_*$ is injective. 
+
+
+Now we wish to show exactness at $\Hom_R(M,B)$; that is, we want to show $\im f_*=\ker g_*$. Let $h \in \Hom_R(M,A)$. Then
+	\[
+	g_* f_*(h)=g_*(fh)=g (fh)=(gf) h
+	\]
+Our original sequence was exact so that $gf=0$. Then $g_*f_*(h)=(gf)h=0(h)=0$, showing $\im f_* \subseteq \ker g_*$. To show $\ker g_* \subseteq \im f_*$, we use the universal property of the kernel. Let $h \in \ker g_*: \Hom_R(M,B) \to \Hom_R(M,C)$. Then we have a composition of maps $M \ma{h} B \ma{g} C$ with $gh=0$. We want to show $h \in \im f_*$. Observe we have the diagram
+	\[	
+	\begin{tikzcd}
+	\; & \;& M \arrow[swap,dotted]{dl}{s} \arrow{d}{h} & \; & \; \\
+	0 \arrow{r} & A \arrow[swap]{r}{f} & B \arrow[swap]{r}{g} & C \arrow{r} & 0
+	\end{tikzcd}
+	\]
+
+Now $gf=0$ and $A \cong \im f= \ker g$. By the universal property of the kernel, there exists a unique map $s: M \to A$ making the diagram commute. But then by the commutativity of the diagram,
+	\[
+	h=fs=f_*(s),
+	\]
+so that $\ker g_* \subseteq \im f_*$. But then $\im f_*=\ker g_*$ so that the sequence is exact at $\Hom_R(M,B)$. \qed \\
+
+
+\begin{rem}
+Note in the result above, we did not make use of the fact that $g$ is surjective, i.e. we need only start with an exact sequence $0 \ma{} A \ma{f} B \ma{g} C$.
+\end{rem}
+
+
+One might ask if the induced map $g_*$ is onto. Generally, the map $g_*: \Hom_R(M,B) \to \Hom_R(M,C)$ is not onto. 
+
+
+\begin{ex}
+Let $R=\Z$. Consider the exact sequence of $R$-modules
+	\[
+	0 \ma{} \Z \ma{i} \Q \ma{\pi} \Q/\Z \ma{} 0.
+	\]
+Note that the coset $\frac{1}{2}+\Z \in \Q/\Z$ has order two and that there are no nonzero elements in $\Q$ with finite order. Apply the map $\Hom_\Z(\Z/2\Z,-)$ to obtain the exact sequence
+	\[
+	0 \ma{} \Hom_\Z(\Z/2\Z,\Z) \ma{i_*} \Hom_\Z(\Z/2\Z,\Q) \ma{\pi_*} \Hom_\Z(\Z/2\Z,\Q/\Z) \ma{} 0.
+	\]
+Now $\Hom_\Z(\Z/2\Z,\Q/\Z) \neq 0$ since it contains the nonzero map $[1] \mapsto \frac{1}{2}+\Z$. However, $\Hom_\Z(\Z/2\Z,\Q)=0$ by the remarks above. But then $\pi_*$ cannot be surjective. \xqed
+\end{ex}
+
+
+\begin{ex}
+Let $R=\Z$.
+	\[
+	0 \ma{} 2\Z \ma{i} \Z \ma{g} \Z/2\Z \ma{} 0
+	\]
+Let $M=\Z/2\Z$. Then
+	\[
+	0 \ma{} \Hom(\Z/2\Z,2\Z) \ma{f^*} \Hom(\Z/2\Z,\Z) \ma{g^*} \Hom(\Z/2\Z,\Z/2\Z)
+	\]
+Observe that $\Z/2\Z$ is a torsion submodule of the free module $\Z$ so that $\Hom(\Z/2\Z,\Z)=0$. Also, observe that $ \Hom(\Z/2\Z,2\Z)=0$ so the above series is equivalent to 
+	\[
+	0 \ma{} 0 \ma{} 0 \ma{g^*} \Hom(\Z/2\Z,\Z/2\Z)
+	\]
+and $\Hom(\Z/2\Z,\Z/2\Z) \neq 0$ so that $g^*$ is not onto. \xqed
+\end{ex}
+
+
+Let us put this in broader terms: we begin with a sequence of $R$-modules $M$, $A$, $B$, and $C$ with maps between them. Applying the map $\Hom_R(M,-)$ (this is said $\Hom_R$ $M$ ``blank'') gives us abelian groups $\Hom_R(M,A)$, $\Hom_R(M,B)$, and $\Hom_R(M,C)$. In categorical terms, $\Hom_R(M,-)$ is a (covariant) functor from $R$-modules to abelian groups. While the original sequence is exact, the newly obtained sequence is only exact ``on the left''. In categorical terms, $\Hom_R(M,-)$ is a left exact functor. The functor $\Hom_R(-,M)$ is similarly left exact but requires the original sequence to be exact on the right.
+
+
+\begin{prop} \label{prop:homexact2}
+Let $R$ be a ring. Let
+	\[
+	0 \ma{} A \ma{f} B \ma{g} C \ma{} 0
+	\]
+be a short exact sequence. Let $M$ be an $R$-module. Then we have an induced exact sequence
+	\[
+	0 \ma{} \Hom_R(C,M) \ma{g^*} \Hom_R(B,M) \ma{i^*} \Hom_R(A,M),
+	\]
+where $g^*: \Hom_R(C,M) \to \Hom_R(B,M)$ is given by $g^*(f)=fg$, where $f: C \to M$. and $i^*$ is defined mutatis mutandis. 
+\end{prop}
+
+\pf L.T.R.. \qed \\
+
+
+\begin{rem}
+As with Proposition~\ref{prop:homexact}, we do not need the original sequence to be exact on the left, only on the right. That is, we need only begin with an exact sequence $A \ma{} B \ma{} C \ma{} 0$.
+\end{rem}
+
+
+Note that Proposition~\ref{prop:homexact2} says that $\Hom_R(-,M)$ is a (left exact) contravariant functor from $R$-modules to abelian groups. Putting Proposition~\ref{prop:homexact} and Proposition~\ref{prop:homexact2} together, we obtain the following theorem:
+
+
+\begin{thm}
+$\Hom$ is a left exact functor from $R$-modules to abelian groups. 
+\end{thm}
+
+
+Note that while Proposition~\ref{prop:homexact} and Proposition~\ref{prop:homexact2} do not generally yield exact sequence (only left exact), they do yield exact sequences when applied to split exact sequences.
+
+
+\begin{prop}
+Let $0 \ma{} A \ma{f} B \ma{g} C \ma{} 0$ be a split exact sequence. Let $M$ be an $R$-module. Then the sequence
+	\[
+	0 \ma{} \Hom_R(M,A) \ma{f_*} \Hom_R(M,B) \ma{g_*} \Hom_R(M,C) \ma{} 0
+	\]
+is exact.
+\end{prop}
+
+\pf From Proposition~\ref{prop:homexact}, we need only show that the sequence is exact at $\Hom_R(M,C)$; that is, we need show that $g^*_M$ is onto. Let $h \in \Hom_R(M,C)$.
+	\[
+	\begin{tikzcd}
+	B \arrow[yshift=0.5ex]{r}{g} & C \arrow[yshift=-0.5ex]{l}{i} \arrow{r} & 0 \\
+	& M \arrow[swap]{u}{h} \arrow[dotted]{ul}{s}
+	\end{tikzcd}
+	\]
+We want $h=g_*(s)$ for some function $s: M \to B$. Using the fact that the original sequence is split exact, let $i$ be such that $gi=1_C$. Define $s=ih: M \to B$ and observe
+	\[
+	g_*(s)=g_*(ih)=g(ih)=(gi)h=1_Ch=h,
+	\]
+which is exactly what we had hoped to show. \qed \\
+
+
+Note that in a special case, we even have a partial converse to Proposition~\ref{prop:homexact}
+
+
+\begin{prop}
+Let $f: A \to B$ and $g: B \to C$ be $R$-maps. If for every $R$-module $M$,
+	\[
+	0 \ma{} \Hom_R(C,M) \ma{g^*} \Hom_R(B,M) \ma{f^*} \Hom_R(A,M)
+	\]
+is an exact sequence of abelian groups, then
+	\[
+	A \ma{f} B \ma{g} C \ma{} 0
+	\]
+is an exact sequence of $R$-modules. 
+\end{prop}

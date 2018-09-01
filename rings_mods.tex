@@ -1,0 +1,147 @@
+\documentclass[11pt, twoside]{article}
+
+\usepackage[]{geometry}
+
+\usepackage{
+	amsmath,
+  	amssymb,
+  	amsthm,
+	bbm,
+  	%bm,              		% boldsymbol
+  	bookmark,        		% replaces (and loads) hyperref
+	%chngcntr,			% for counterwithin
+	enumerate,
+	fancyhdr,			% better headers
+	float,				% forced image placement
+  	mathrsfs,        		% mathscr
+  	mathtools,       		% allows prescript
+  	microtype,       		% improved looks
+	multicol,
+  	tikz-cd,         		% better commutative diagrams
+  	thmtools,        		% custom end to example environment
+	%totcount,		% define counters
+	%wrapfig,
+	xcolor,
+  	rings_mods 		% custom style file
+}
+
+
+
+\definecolor{SUOrange}{RGB}{212,69,0}
+
+\usetikzlibrary{calc,matrix,arrows,shapes.geometric,positioning,decorations.pathmorphing}
+\tikzset{snake it/.style={-stealth,
+decoration={snake, 
+    amplitude = .4mm,
+    segment length = 2mm,
+    post length=0.9mm},decorate}}
+
+\usepackage[
+	hyperref = true,      	% links to online documents
+  	backend  = bibtex,    % use bibtex instead of biber
+  	sorting  = nyt,       	% sorts by (name, year, title)
+  	style  = alphabetic 	% citations look like [Har77]
+]{biblatex}
+\addbibresource{rings_mods.bib}
+
+\usepackage[all]{xy}
+\hypersetup{
+	colorlinks = true,
+  	linkcolor  = blue,
+  	urlcolor   = cyan
+}
+\PassOptionsToPackage{hyphens}{url}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{14pt}
+\fancyhead[CE]{}
+\fancyhead[CO]{}
+\fancyhead[RE]{\thepage}
+\fancyhead[LO]{\thepage}
+
+
+%\usepackage[bitstream-charter]{mathdesign}
+%\usepackage[T1]{fontenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+
+
+\begin{document}
+
+
+
+\pagestyle{empty}
+\begin{flushright}
+\begin{tabular}{ll}
+\raisebox{-.5\height}{\includegraphics[scale=0.25]{syracuse_seal.jpg}} & {\color{SUOrange}\Huge Syracuse University } \\
+\end{tabular}
+\end{flushright}
+\vspace{2in}
+
+{\color{SUOrange} \Huge \noindent MATH 731: \\[0.2cm] Rings and Modules \\[0.2cm] 
+\rule{0.65\textwidth}{0.05cm} \\[0.2cm]}
+
+{\color{SUOrange} \large \noindent Professor: Dr. Dan Zacharia \\ Notes By: Caleb McWhorter }
+
+\vfill
+\begin{center} {\huge \color{SUOrange} Fall 2014} \end{center}
+
+
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+\pagestyle{fancy}
+\setcounter{section}{0}
+\setcounter{page}{1}
+
+
+
+
+\input{sections/introduction/introduction.tex}
+\input{sections/category_theory/category_theory.tex}
+\input{sections/exactness/exactness.tex}
+\input{sections/projective_injective/projective_injective.tex}
+\input{sections/tensor_flat/tensor_flat.tex}
+\input{sections/noetherian_artinian/noetherian_artinian.tex}
+\input{sections/artin_wedderburn/artin_wedderburn.tex}
+\input{sections/more_injectives/more_injectives.tex}
+\input{sections/exercises/exercises.tex}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

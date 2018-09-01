@@ -1,0 +1,167 @@
+% !TEX root = ../../rings_mods.tex
+\section{Exercises}
+
+\prob Recall that if $f: A \to B$ is a map of $R$-modules, then we defined $\ker f$ as a pair $(K,i)$, where $i: K \to A$ satisfying the following conditions
+	\begin{enumerate}[(i)]
+	\item the composition $fi=0$
+	\item whenever $g: L \to A$ is such that $fg=0$, the map $g$ factors through $i$, i.e. there exists a map $h: L \to K$ with $ih=g$
+	\end{enumerate}
+\begin{enumerate}[(a)]
+\item Prove that the kernel is unique up to isomorphism; that is, if $(K',i')$ is another kernel of $f$, then there exists an isomorphism $t: K \to K'$ such that $i't=i$.
+\item Let $\ker f$ be the `usual' kernel of $f: A \to B$; that is, the set of all $x \in A$ with $f(x)=0$. Prove that the pair $(\ker f,j)$, where $j$ is the usual inclusion map, is a kernel of the map $f$.
+\item Prove that if the pair $(K,i)$ is a kernel of the map $f: A \to B$, then $i$ is one-to-one.
+\item Let $0 \ma{} A \ma{f} B \ma{g} C$ be exact. Prove that the pair $(A,f)$ is a kernel of the map $g$. \\
+\end{enumerate}
+
+
+\prob Let $R$ be a ring and let $e$ be an idempotent of $R$. Prove that $1-e$ is also an idempotent of $R$ and that $e$ and $1-e$ are orthogonal to each other. Then prove that $R= Re \oplus R(1-e)$. Deduce that for each idempotent, $e$, of $R$, the module $Re$ is projective. \\
+
+
+\prob Prove that $\Z/4\Z$ is \emph{not} a projective $\Z$-module. \\
+
+
+\prob Prove that a direct sum of divisible modules is divisible, and that a quotient of a divisible module is divisible. \\
+
+
+\prob Let $R$ be a ring. Prove that the following statements are equivalent:
+	\begin{enumerate}[(a)]
+	\item The sequence of $R$-modules $M_1 \ma{f} M_2 \ma{g} M_3 \ma{} 0$ is exact. 
+	\item For every $R$-module $X$, the sequence of abelian groups
+		\[
+		0 \ma{} \Hom_R(M_3,X) \ma{g_X^*} \Hom_R(M_2,X) \ma{f_X^*} \Hom_R(M_1,X)
+		\]
+	is exact, where $f_X^*$ and $g_X^*$ are defined in the `obvious' way. \\
+	\end{enumerate}
+
+
+\prob Let $R$ be a ring and let $A \ma{f} B \ma{g} C \ma{} 0$ be an exact sequence of left $R$-modules. Use the proceeding two exercises to prove that for every right $R$-module $M$, the sequence 
+	\[
+	M \otimes_R A \ma{1_M \otimes f} M \otimes_R B \ma{1_M \otimes g} M \otimes_R C \ma{} 0
+	\]
+is exact. \\
+
+
+\prob Let $R$ be a commutative ring and let $S$ be a multiplicative subset of $R$. Let $R_S$ be the ring of fractions of $R$. Prove the following:
+	\begin{enumerate}[(a)]
+	\item For every $R$-module $M$, we have a natural isomorphism of $R_S$-modules $R_S \otimes_R M \ma{\sim} M_S$. 
+	\item $R_S$ is a flat $R$-module. Then show that $\Q$ is flat over $\Q$ but is not projective over $\Z$. \\
+	\end{enumerate}
+
+
+\prob Let $R,S,$ and $T$ be three rings and consider $_R A_S$ and $_S B_T$.
+	\begin{enumerate}[(i)]
+	\item Assume that $B$ is a flat $T$-module and that $A$ is a flat $S$-module. Prove that $A \otimes_S B$ is a flat $T$-module.
+	\item Assume that $R$ is a commutative ring and that $A$ and $B$ are projective $R$-modules. Prove that $A \otimes_R B$ is a projective $R$-module too. \\
+	\end{enumerate}
+
+
+\prob Let $R$ be the following ring where the addition and multiplication are the usual addition and multiplication of matrices
+	\[ R=\begin{pmatrix} \R & 0 \\ \R & \Q \end{pmatrix} \]
+and let 
+	\[ I=\begin{pmatrix} 0 & 0 \\ a & 0 \end{pmatrix}, \]
+where $a \in \R$.
+	\begin{enumerate}[(i)]
+	\item Show that as a right $R$-module, $I$ is both a Noetherian and an Artinian module. 
+	\item Show that as a left $R$-module, $I$ is neither Noetherian nor Artinian. 
+	\item Show that $R$ is both right Noetherian and right Artinian ring, but neither a left Noetherian or left Artinian ring. \\
+	\end{enumerate}
+
+
+\prob Let $R$ be a ring. An idempotent $e \in R$ is \emph{central} if $er=re$ for all $r \in R$. Let $I$ be a two-sided ideal of $R$. Prove that $I=Re$ for some central idempotent $e$ if and only if $R=I \oplus J$ for some two-sided ideal of $J$. \\
+
+
+\prob Prove that all the $R$-modules are free over a ring $R$ if and only if $R$ is a division ring. \\
+
+
+\prob Let $S$ be a ring and let $R=M_n(S)$. Prove that all the ideals of $R$ are of the form $M_n(I)$ for some $I \lhd S$. \\
+
+
+\prob Prove that a left artinian ring with no nonzero nilpotent elements and no nontrivial central idempotents is a division ring. \\
+
+
+\prob Let $e$ and $f$ be idempotents in a ring $R$. Prove the following:
+	\begin{enumerate}[(i)]
+	\item If $M$ is a left $R$-module then we have an isomorphism of abelian groups $\text{Hom}_R(Re,M) \cong eM$. Is this isomorphism natural?
+	\item Prove that $\text{Hom}_R(Re,Rf) \cong eRf$. Show that if $e \neq 0$ then $\text{End}_R(Re)$ is isomorphic as a ring to $eRe$. \\
+	\end{enumerate}
+
+
+\prob Let $\Z$ denote the ring of integers and let $\Q$ denote the rational numbers. Show that $\Q/\Z$ is a torsion $\Z$-module. \\
+
+
+\prob Keeping the notation from the previous exercise, let $M$ be the $\Z$-submodule of $\Q/\Z$ generated by all the elements of the form $1/p^n+\Z$ with $n$ running over the set of \emph{positive} integers. 
+	\begin{enumerate}[(i)]
+	\item Prove that $M$ is not a finitely generated $\Z$-module by showing that $\text{ann}(M)=0$ while $\text{ann}(L) \neq 0$ for each finitely generated submodule $L$ of $M$. 
+	\item Conclude that $M$ is not a noetherian module over the integers. \\
+	\end{enumerate}
+
+
+\prob Keeping the notation from the previous two exercises, for each positive integer $n$, let $M_n$ be the submodule of $M$ generated by $1/p^n + \Z$. Prove the following:
+	\begin{enumerate}[(i)]
+	\item $M_1 \subset M_2 \subset M_3 \subset \cdots \subset M_n \subset \cdots$
+	\item $M_n \neq M_{n+1}$ for each $n=1,2,\cdots$.
+	\item $M$ is the union of all the $M_n$.
+	\item For each $n$, $M_n$ is isomorphic to $\Z/p^n/Z$. \\
+	\end{enumerate}
+
+
+\prob Keeping the notation from the previous three exercises,
+	\begin{enumerate}[(i)]
+	\item Show that every non-zero element of $M$ can be written as $m/p^n+\Z$ for some $n$, where $p$ does not divide $m$.
+	\item Show that if $p$ does not divide $m$, then $M_n$ is the submodule of $M$ generated by $m/p^n+\Z$.
+	\item Show that the $M_n$ are the only nonzero proper submodules of $M$. Hence $M$ has the property that every proper submodule is cyclic, even though $M$ itself is infinitely generated.
+	\item Show that $M$ is an artinian $\Z$-module which is not finitely generated; hence, it is not a noetherian module. \\
+	\end{enumerate}
+
+
+\prob 
+	\begin{enumerate}[(i)]
+	\item Let $0=M_0 \subset M_1 \subset M_2 \subset \cdots \subset M_n=M$ be a series for a module $M$ and assume that for each $i$ the inclusion $M_i \subset M_{i+1}$ splits. Prove that
+	\[ M \cong \bigoplus_{i=0}^{n-1} M_{i+1}/M_i \]
+\item Assume that $M$ is a semisimple module. Show that $M$ is the direct sum of the factors in any composition series. \\
+	\end{enumerate}
+
+
+\prob For which values of $n$ is the ring $\Z/n\Z$ semisimple? \\
+
+
+\prob Let $0 \longrightarrow M_n \longrightarrow M_{n-1} \longrightarrow \cdots \longrightarrow M_1 \longrightarrow M_0 \longrightarrow 0$ be a long exact sequence of modules of finite length.
+	\[ l(M_0)=\sum_{i=1}^n (-1)^{i+1} l(M_i) \] 
+where $l(M)$ denote the length of a module $M$. \\
+
+
+\prob Fittings Lemma: Let $M$ be a module and let $f: M \rightarrow M$ be an endomorphism of $M$.
+	\begin{enumerate}[(i)]
+	\item If $M$ is a noetherian module then $\ker f^n \cap \im f^n=0$ for some integer $n$. Conclude that if $f$ is surjective then it is an isomorphism. 
+	\item If $M$ is an artinian module, prove that $\im f^n+ \ker f^n=M$ for some $n$. Conclude that $f$ is an isomorphism if $f$ is one-to-one. 
+	\item If $M$ is a module of finite length, prove that there is an integer $n$ such that $M=\im f^n \oplus \ker f^n$. \\
+	\end{enumerate}
+
+
+\prob Let $R$ be a commutative local artinian ring with maximal ideal $\mathfrak{m}$. Let $\mathbbm{k}$ denote the residue field $\mathbbm{k}=R/\mathfrak{m}$. Assume also that there is a ring map $\mathbbm{k} \rightarrow R$ such that the composition with the usual surjection $R \rightarrow \mathbbm{k}$ is an isomorphism of $\mathbbm{k}$. Show that for every module $M$ of finite length we have
+	\[ l(M)=\dim_\mathbbm{k} M \]
+where $\dim_\mathbbm{k}$ denotes the dimension as a $\mathbbm{k}$-vector space. \\
+
+
+\prob Let $R$ be a left artinian ring and let $I$ and $J$ be two nilpotent left ideals in $R$. Prove that $I+J$ is also nilpotent. \\
+
+
+\prob Let $R$ be a local commutative ring and let $M$ and $N$ be two finitely generated non-zero $R$-modules. Prove that $M \otimes_R N \neq 0$. \\
+
+
+\prob Let $M$ be a module over a ring $R$ and assume that $M$ decomposes as a direct sum of submodules $L_1,L_2 \cdots, L_n$:
+	\[ M=L_1 \oplus L_2 \oplus \cdots \oplus L_n. \] 
+Prove that there exist idempotent homomorphisms $e_i: M \rightarrow M$ for $i=1,2,\cdots,n$ such that for each $i \neq j$, we have $e_i e_j=0$ and $1_M=e_1+\cdots+e_n$. \\
+
+
+\prob Using the previous exercise, show that a nonzero module $M$ is indecomposable if the only idempotent homomorphisms $M \rightarrow M$ are the zero homomorphism and $1_M$. \\
+
+
+\prob Let $M$ be a module and let $K$ be a submodule. We say that $K$ is \emph{superfluous} in $M$, denoted $K \ll M$, if whenever $K+L=M$ for some $L \leq M$, then $L=M$. We say that an epimorphism $f: M \rightarrow N$ is superfluous if $\ker f \ll M$. \\
+
+
+Prove that an epimorphism $f: M \rightarrow N$ is superfluous if and only if all homomorphisms $h$, $fh$ is an epimorphism if and only if $h$ is an epimorphism. \\
+
+
+\prob Let $M$ be a module and let $L,K$ be two submodules of $M$. Prove that $K \cap L \ess M$ if and only if $K \ess M$ and $L \ess M$. \\
+

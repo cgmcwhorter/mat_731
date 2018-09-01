@@ -1,0 +1,389 @@
+% !TEX root = ../../rings_mods.tex
+\newpage
+\section{Elementary Category Theory}
+\subsection{$R$-modules}
+
+
+\begin{dfn}[$R$-module]
+Let $R$ be a ring. A left $R$-module is an additive abelian group, $M$, together with a function $\cdot: R \times M \rightarrow M$ (the image of $(r,m)$ being denoted $r\cdot m$, or simply $rm$ when no confusion will likely arise) such that for all $r,s \in R$ and $m,n \in M$, the following axioms hold:
+	\begin{itemize}
+	\item $r(m+n)=rm+rn$
+	\item $(r+s)\, m=rm+sm$
+	\item $r(sm)=(rs)\,m$
+	\end{itemize}
+If $1_R \in R$ then we also demand the following axiom and call $M$ a unitary $R$-module.
+	\begin{itemize}
+	\item $1_R\, m=m$ 
+	\end{itemize}
+A right $R$-module is defined mutatis mutandis. If $M$ is both a left and right module, $M$ is called a $R$-bimodule. 
+\end{dfn}
+
+
+\begin{rem}
+We will often denote a left $R$-module $M$ as $_{R}M$, a right $R$-module as $M_R$, and a $R$-bimodule as $_RM_R$. For a $R$-bimodule, we do not require $rm=mr$ for all $m \in M$ and $r \in R$. Furthermore, if $R$ is a division ring (or field), then a unitary $R$-module is called a vector space. 
+\end{rem}
+
+
+\begin{ex} \hfill
+\begin{enumerate}[(i)]
+\item For any additive abelian group $A$, we can make $A$ into a $R$-module by defining $r \cdot a=0$ for all $r \in R$ and $a \in A$. 
+
+\item If $A$ is an abelian group and $R:=\End A$ is the endomorphism ring of $A$, then $A$ is a unitary $R$-module via the action $f \cdot a \defeq f(a)$, i.e. via evaluation.
+
+\item Let $S$ be a ring and $R=M_n(S)$. If $I \subset S$ is a two-sided ideal, e.g. $S=\Z$ and $I=2\Z$, then
+	\[
+	M(I)=\{M \in R \;|\; \text{ All entries of }M \text{ are in }I\}
+	\]
+is a two-sided ideal of $R$; that is, $M(I)$ is a $R$-bimodule. Furthermore, $S^n$ can be made into a $R$-bimodule: if $\overline{s} \in S^n$, write $\overline{s}$ as a row vector and compute $\overline{s}r$ via normal matrix multiplication. Writing $\overline{s} \in S^n$ as a column vector, compute $r \overline{s}$ via normal matrix multiplication. 
+\end{enumerate} \xqed
+\end{ex}
+
+
+\begin{ex}
+Let $S$ be a ring and let $R=M_n(S)$. Let
+	\[
+	P_i=\{M \in R \;|\; M \text{ is 0 everywhere except perhaps in the }i\text{th row.}\}
+	\]
+If $P_i$ is a right ideal of $R$, then $P_i$ is a right $R$-module. Why?
+	\[
+	\begin{pmatrix}
+	0 & 0 & \cdots & 0 & 0 \\
+	\vdots & 0 & \cdots & 0 & \vdots \\
+	\sim & \sim & \cdots & \sim & \sim \\
+	\vdots & 0 & \cdots & 0 & \vdots \\
+	0 & 0 & \cdots & 0 & 0 \\
+	\end{pmatrix}
+	\begin{pmatrix}
+	\sim & \sim & \sim & \sim & \sim \\
+	\sim & \sim & \sim & \sim & \sim \\
+	\sim & \sim & \sim & \sim & \sim \\
+	\sim & \sim & \sim & \sim & \sim \\
+	\sim & \sim & \sim & \sim & \sim \\
+	\end{pmatrix}=
+	\begin{pmatrix}
+	0 & 0 & \cdots & 0 & 0 \\
+	\vdots & 0 & \cdots & 0 & \vdots \\
+	\sim & \sim & \cdots & \sim & \sim \\
+	\vdots & 0 & \cdots & 0 & \vdots \\
+	0 & 0 & \cdots & 0 & 0 \\
+	\end{pmatrix}
+	\]
+Of course, letting
+	\[
+	Q_i=\{M \in R \;|\; M \text{ is 0 everywhere except perhaps in the }i\text{th column.}\}
+	\]
+If $Q_i$ is a left ideal of $R$, then $Q_i$ is a right $R$-module by the same argument as above mutatis mutandis. \xqed
+\end{ex}
+
+
+\begin{ex}
+Let $I$ be a left ideal of $R$. Then $I$ is a $R/I$-module via the action $r(x+I):=rx+I$ for all $r \in R$ and $x \in R$. However, $R/I$ need not be a ring unless $I \lhd R$; that is, if $I$ is a two-sided ideal of $R$. \xqed
+\end{ex}
+
+
+\begin{dfn}[Ring Homomorphism]
+Let $M,N$ be modules over a ring $R$. A function $f: M \rightarrow N$ is a $R$-module homomorphism provided for all $x,y \in M$ and $r \in R$
+	\begin{itemize}
+	\item $f(x+y)=f(x)+f(y)$
+	\item $f(rx)=rf(x)$
+	\end{itemize}
+\end{dfn}
+
+
+\begin{dfn}[Submodule]
+Let $R$ be a ring, $M$ a $R$-module, and $N$ a nonempty subset of $M$. Then $N$ is a submodule of $M$ provided that $N$ is also a $R$-module, i.e. $N$ is an additive subgroup of $M$ and $rn \in N$ for all $n \in N$. Of course, that means $rx-y \in N$ for all $x,y \in N$ because $1_R \in R$.
+\end{dfn}
+
+
+\begin{ex}
+If $R$ is a ring and $f: M \rightarrow N$ is an $R$-module homomorphism, then $\ker f$ is a submodule of $M$ and $\im f$ is a submodule of $N$. If $P$ is a submodule of $N$, then $f^{-1}(N)$ is a submodule of $M$. \xqed
+\end{ex}
+
+
+\begin{rem}
+Submodules are to modules as normal subgroups are to groups and ideals are to  rings. Unlike groups and rings, we can always form the quotient module as the underlying structure of a module is an abelian group. 
+\end{rem}
+
+
+\begin{thm}
+Let $N$ be a submodule of $M$ over a ring $R$. Then the quotient group $M/N$ is a $R$-submodule with the action of $R$ on $M/N$ given by $r(m+N)=rm+B$ for all $r \in R, m \in M$. The projection map $\pi: M \rightarrow M/N$ given by $m \mapsto m+N$ is a $R$-module homomorphism. Moreover, the map is an epimorphism. 
+\end{thm}
+
+
+The Isomorphism Theorem for Rings carry over to modules mutatis mutandis:
+
+\begin{thm}[First Isomorphism Theorem]
+If $\phi: M \to N$ is a $R$-map, then there is an $R$-isomorphism $\phi: M/\ker \phi \to N$ given by $m+\ker \phi \mapsto \phi(m)$. 
+\end{thm}
+
+\begin{thm}[Second Isomorphism Theorem]
+If $A,B$ are submodules of a $R$-module $M$, then there is a $R$-isomorphism $A/(A \cap B) \to (A+B)/B$.
+\end{thm}
+
+\begin{thm}[Third Isomorphism Theorem]
+If $A \subseteq B \subseteq M$ is a tower of submodules of a $R$-module $M$, then there is an isomorphism 
+	\[
+	(M/A)/(B/A) \ma{} M/B
+	\]
+\end{thm}
+
+\begin{thm}[Fourth Isomorphism Theorem/Correspondence Theorem]
+If $N$ is a submodule of a $R$-module $M$, then there is a bijection of submodules of $M$ containing $N$ and submodules of $M/N$. 
+\end{thm}
+
+
+\subsection{Categories and Functors}
+
+\begin{dfn}[Category]
+A category $\mathcal{C}$ consists of three things: a class $\text{obj }\mathcal{C}$ of objects, a set of morphisms $\Hom(A,B)$ for every ordered pair $(A,B)$ of objects of $\mathcal{C}$, and composition $\Hom(A,B) \times \Hom(B,C) \to \Hom(A,C)$ denoted by $(f,g) \mapsto gf$ for every ordered triple $(A,B,C)$ of objects of $\mathcal{C}$. These are subject to the following axions:
+	\begin{enumerate}[(i)]
+	\item the Hom sets are pairwise disjoint; that is, for each $f \in \Hom(A,B)$ have a unique domain and a unique target. 
+	\item for each object $A$ in $\text{obj }\mathcal{C}$, there is an identity morphism $1_A \in \Hom(A,A)$ such that $f1_A=f$ and $1_Bf=f$ for all $f: A \to B$.
+	\item composition is associative: given morphisms $A \ma{f} B \ma{g} C \ma{h} D$, then $h(gf)=(hg)f$.
+	\end{enumerate}
+\end{dfn}
+
+
+\begin{ex} \hfill
+\begin{enumerate}[(i)]
+\item \textbf{Sets.} The objects in this category are sets (not proper classes), morphisms are functions, and composition is the usual composition of functions. 
+\item \textbf{Groups}. The objects in this category are groups, morphisms are homomorphisms, and composition is the usual composition of functions.
+\item \textbf{Top.} The objects in this category are topological spaces, morphisms are continuous functions, and composition is the usual composition of functions. 
+\item Any partially ordered set (poset) $P$ can be regarded as a category: the objects are elements of $P$, the Hom sets are either empty or have only one element
+	\[
+	\Hom(x,y)=
+	\begin{cases}
+	\emptyset, & \text{if } x \not\preceq y \\
+	\{\iota_y^x\}, & \text{if } x \preceq y
+	\end{cases}
+	\]
+where $\iota_y^x$ is the unique element in the Hom set when $x \preceq y$, and composition is given by $\iota_z^y \iota_y^x=\iota_z^x$. 
+
+\item \textbf{Ab.} The objets are abelian groups, morphisms are homomorphisms, and composition is the usual function composition.
+
+\item \textbf{Rings.} The objects are rings, morphisms are ring homomorphisms (we assume that rings have unity and for a morphism $\phi: R \to S$, $\phi(1_R)=1_S$).
+
+\item $_R$\textbf{Mod.} The objects are left $R$-modules, morphisms are $R$-homomorphisms, and composition is the usual function composition. Note that if $R=\Z$, then $_\Z\textbf{Mod}=\textbf{Ab}$.
+\end{enumerate} \xqed
+\end{ex}
+
+
+\begin{dfn}[Subcategory]
+A category $\mathcal{S}$ is a subcategory of a category $\mathcal{C}$ if
+	\begin{enumerate}[(i)]
+	\item $\text{obj } \mathcal{S} \subseteq \text{obj }\mathcal{C}$
+	\item $\Hom_\mathcal{S}(A,B) \subseteq \Hom_\mathcal{C}(A,B)$ for all $A,B \in \text{obj }\mathcal{S}$
+	\item if $f \in \Hom_\mathcal{S}(A,B), g \in \Hom_\mathcal{S}(B,C)$, then $gf\in\Hom_\mathcal{S}(A,C)$ is equal to the composite $gf \in \Hom_\mathcal{C}(A,C)$
+	\item if $A \in \text{obj } \mathcal{S}$, then $1_A \in \Hom_\mathcal{S}(A,A)$ is the same as $1_A \in \Hom_\mathcal{C}(A,A)$. 
+	\end{enumerate}
+A subcategory $\mathcal{S}$ of $\mathcal{C}$ is a full subcategory if for all $A,B \in \text{obj }\mathcal{S}$, $\Hom_\mathcal{S}(A,B) = \Hom_\mathcal{C}(A,A)$. 
+\end{dfn}
+
+
+\begin{ex} \hfill
+	\begin{enumerate}[(i)]
+	\item \textbf{Ab.} is a subcategory of \textbf{Groups}. In fact, \textbf{Ab.} is a full subcategory of \textbf{Groups}. 
+	\item \textbf{Haus.}, the category of Hausdorff topological spaces, is a subcategory of \textbf{Top.}. 
+	\item If $\mathcal{C}$ is any category and $\mathcal{S} \subseteq \mathcal{C}$, then the full subcategory generated by $\mathcal{S}$, denoted by $\mathcal{S}$, is the subcategory with $\text{obj }(\mathcal{S})=\mathcal{S}$ and with $\Hom_\mathcal{S}(A,B)=\Hom_\mathcal{C}(A,B)$ for all $A,B \in \text{obj }(\mathcal{S})$. 
+	\end{enumerate} \xqed
+\end{ex}
+
+
+\begin{dfn}[Functor]
+If $\mathcal{C}$ and $\mathcal{D}$ are categories, a functor $T: \mathcal{C} \to \mathcal{D}$ is a function such that
+	\begin{enumerate}[(i)]
+	\item if $A \in \text{obj }\mathcal{C}$, then $T(A) \in \text{obj }\mathcal{D}$
+	\item if $f: A \to A'$ in $\mathcal{C}$, then $T(f): T(A) \to T(A')$ in $\mathcal{D}$
+	\item if $A \ma{f} A' \ma{g} A''$ in $\mathcal{C}$, then $T(A) \ma{T(f)} T(A') \ma{T(g)} T(A'')$ in $\mathcal{D}$ and $T(gf)=T(g)T(f)$.
+	\item $T(1_A)=1_{T(A)}$ for every $A \in \text{obj }\mathcal{C}$
+	\end{enumerate}
+\end{dfn}
+
+
+\begin{rem}
+A functor as defined above is a covariant functor as given $f: A \to A'$, $T(f): T(A) \to T(A')$. If a functor is such that given $f: A \to A'$, $T(f): T(A') \to T(A)$, then $T$ is called a \emph{contravariant functor}. 
+\end{rem}
+
+
+\begin{ex} \hfill
+	\begin{enumerate}[(i)]
+	\item If $\mathcal{C}$ is a category, then the \emph{identity functor} $1_\mathcal{C}: \mathcal{C} \to \mathcal{C}$ is given by $1_\mathcal{C}(A)=A$ for all objects $A \in \text{obj }(\mathcal{C})$ and $1_\mathcal{C}(f)=f$ for all morphisms $f$ in the category $\mathcal{C}$.
+	\item If $\mathcal{C}$ is a category and $A \in \text{obj }(\mathcal{C})$, then the \emph{Hom functor} $T_A: \mathcal{C} \to \textbf{Sets}$, denoted $\Hom(A, -)$, is defined by
+		\[
+		T_A(B)= \Hom(A,B) \text{ for all } B \in \text{obj }(\mathcal{C})
+		\]
+	and if $f: B \to B'$, where $B' \in \text{obj }(\mathcal{C})$, then $T_A(f): \Hom(A,B) \to \Hom(A,B')$ is given by
+		\[
+		T_A(f): h \mapsto fh.
+		\]
+	We call $T_A(f)=\Hom(A,f)$ the induced map, and denote it by $f_*$. Thus, $f_*: h \mapsto fh$. By the definition of a category, $\Hom(A,B)$ is a set. Check that composition `makes sense', is associative, and if $1_B: B \to B$ is the identity, then $(1_B)_*=1_{\Hom(A,B)}$. 
+	\item Define the \emph{forgetful functor} $U: \textbf{Groups } \to \textbf{ Sets}$ as follows: $U(G)$ is the underlying set of a group $G$ and $U(f)$ is a homomorphism $f$ regarded simply as a function. That is, the forgetful functor `forgets' part of the group structure. One can define similar functors for \textbf{Rings.} and \textbf{Top.}. 
+	\end{enumerate} \xqed
+\end{ex}
+
+
+\begin{dfn}[Natural Transformation]
+Let $S,T: \mathcal{A} \to \mathcal{B}$ be (covariant) functors. A natural transformation $\tau: S \to T$ is a one-parameter family of morphisms in $\mathcal{B}$,
+	\[
+	\tau= (\tau_A: SA \to TA)_{A \in \,\text{obj }\mathcal{A}}
+	\]
+making the following diagram commute for all $f: A \to A'$ in $\mathcal{A}$:
+	\[
+	\begin{tikzcd}
+	SA \arrow{r}{\tau_A} \arrow[swap]{d}{Sf} & TA \arrow{d}{Tf} \\
+	SA' \arrow[swap]{r}{\tau_{A'}} & TA'
+	\end{tikzcd}
+	\]
+\end{dfn}
+
+\noindent Just as functors are maps between categories, natural transformations are maps between functors. 
+
+
+\begin{thm}[Yoneda Lemma]
+Let $\mathcal{C}$ be a category, $A \in \text{obj }(\mathcal{C})$, and $G: \mathcal{C} \to \textbf{Sets}$ be a covariant functor. Then there is a bijection
+	\[
+	\gamma: \text{Nat}(\Hom_\mathcal{C}(A,-),G) \ma{} G(A)
+	\]
+given by $\gamma: \tau \mapsto \tau_A(1_A)$. 
+\end{thm}
+
+
+\subsection{Products and Coproducts}
+
+
+Let $\mathcal{I}$ denote \emph{any} indexed set.
+
+\begin{dfn}[Product]
+Let $\mathcal{C}$ be a category and $\{A_i\;|\; i \in \mathcal{I}\}$ be a family of objects of $\mathcal{C}$. A product for the family $\{A_i\;|\; i \in \mathcal{I}\}$ is an object $P$ of $\mathcal{C}$ together with a family of morphisms
+	\[
+	\{ \pi_i: P \rightarrow A_i \;|\; i \in \mathcal{I}\}
+	\]
+such that for any object $B$ and any family of morphisms
+	\[
+	\{ \varphi_i: B \rightarrow A_i \;|\; i \in \mathcal{I}\},
+	\]
+there is a unique morphism $\varphi: B \rightarrow P$ such that $\pi_i \circ \varphi=\varphi_i$ for all $i \in \mathcal{I}$. That is, there is a Universal Mapping Property. 
+\begin{multicols}{2}
+	\[
+	\begin{tikzcd}
+	B \arrow[dotted]{rr}{\varphi}
+	 \arrow[swap]{dr}{\varphi_i}
+	 &                & P \arrow{dl}{\pi_i} \\
+	 & A_i & 
+	\end{tikzcd}
+	\]
+	\break
+	\[
+	\begin{split}
+	\varphi(B)&=\prod_{i \in \mathcal{I}} \varphi_i(B) \\
+	b &\mapsto \prod_{i \in \mathcal{I}} \varphi_i(b)
+	\end{split}
+	\]
+	\end{multicols}
+A product $P$ of $\{A_i\;|\; i \in \mathcal{I}\}$ is usually denoted $\prod_{i \in \mathcal{I}} A_i$.
+\end{dfn}
+
+
+ It is usually most helpful to describe products in terms of their commutative diagrams. A product for $\{A_1,A_2\}$ is a diagram of objects and morphisms $A_1 \stackrel{\pi_1}{\longleftarrow} P \stackrel{\pi_2}{\longrightarrow} A_2$ such that for any other diagram of the form $A_1 \stackrel{\varphi_1}{\longleftarrow} B \stackrel{\varphi_2}{\longrightarrow} A_2$, there is a unique morphism $\varphi: B \to P$ such that the following diagram commutes:
+	\[
+	\begin{tikzcd}
+	\hspace{0.1cm} & P \arrow[swap]{dl}{\pi_1} \arrow{dr}{\pi_2} \arrow{d}{\varphi} & \\
+	A_1 & B \arrow{l}{\varphi_1} \arrow[swap]{r}{\varphi_2} & A_2
+	\end{tikzcd}
+	\]
+It is important to note that a product need not exist in a given category. However, this will not be a problem for the categories with which we will be working---abelian groups and sets. For example in the category of sets, the Cartesian product $\prod_{i \in \mathcal{I}} A_i$ is a product of the family $\{A_i \;|\; i \in \mathcal{I}\}$. 
+
+
+\begin{thm}\label{product-dual}
+If $\left(P,\{\pi_i\}\right)$ and $\left(Q,\{\varphi_i\}\right)$ are both products of the family $\{A_i\;|\; i \in \mathcal{I}\}$ objects of a category $\mathcal{C}$, then $P$ and $Q$ are equivalent. 
+\end{thm}
+
+\pf Since $P$, $Q$ are both products, they each have their family of morphisms to the $A_i$'s. We obtain the following commutative diagrams:
+
+\begin{multicols}{2}
+	\[
+	\begin{tikzcd}
+	P \arrow[dotted]{rr}{f}
+	 \arrow[swap]{dr}{\pi_i}
+ 	&  & Q \arrow{dl}{\varphi_i} \\
+ 	& A_i & 
+	\end{tikzcd}
+	\]
+\break 
+	\[
+	\begin{tikzcd}
+	Q \arrow[dotted]{rr}{g}
+ \arrow[swap]{dr}{\varphi_i}
+	 &   & P \arrow{dl}{\pi_i} \\
+	 & A_i & 
+	\end{tikzcd}
+	\]
+\end{multicols}
+Then $g\circ f:P \rightarrow P$, i.e
+\begin{multicols}{2}
+	\[
+	\begin{tikzcd}
+	P \arrow[dotted]{rr}{g f}
+	 \arrow[swap]{dr}{\pi_i}
+	 &  & P \arrow{dl}{\pi_i} \\
+	 & A_i & 
+	\end{tikzcd}
+	\]
+\break 
+	\[
+	\begin{tikzcd}
+	Q \arrow[dotted]{rr}{f g}
+	 \arrow[swap]{dr}{\varphi_i}
+	 & & Q \arrow{dl}{\varphi_i} \\
+	 & A_i & 
+	\end{tikzcd}
+	\]
+\end{multicols}
+But by definition, such a morphism is unique. We have the map $P \xrightarrow{1_P} P$. By uniqueness, we know that $g f= 1_P$. Similarly, we know that $f g=1_Q$. But then $f,g$ are isomorphisms.
+\qed \\
+
+We also obtain the dual definition and theorem by reversing arrows in the definition and theorem above, respectively.
+
+
+\begin{dfn}[Coproduct]
+A coproduct (or sum) for the family $\{A_i\;|\; i \in \mathcal{I}\}$ of objects in a category $\mathcal{C}$ is an object $S$ of $\mathcal{C}$ together with a family of morphisms $\{\tau_i :A_i \rightarrow S \;|\; i \in \mathcal{I}\}$ such that for any object $S$ and any family of morphisms $\{\tau_i: A_i \rightarrow S\;|\; i \in \mathcal{I}\}$ there is a unique morphism $\varphi: S \rightarrow B$ such that 
+	\[
+	\varphi \circ \tau_i=\varphi_i
+	\]
+A coproduct $S$ of $\{A_i \;|\; i \in \mathcal{I}\}$ is denoted $\bigoplus_{i \in \mathcal{I}} A_i$, $\sum_{i \in \mathcal{I}} A_i$, or sometimes $\amalg_{i \in \mathcal{I}} A_i$.
+\end{dfn}
+
+
+Notice again these do \emph{not} assure existence, just uniqueness. 
+
+
+\begin{thm}
+If $(S,\{\tau_i\})$ and $(S',\{\lambda_i\})$ are both coproducts for the family $\{A_i\;|\; i \mathcal{I}\}$ of objects of a category $\mathcal{C}$, then $S$ and $S'$ are equivalent. 
+\end{thm}
+
+\pf Simply use the dual of the argument of Theorem \ref{product-dual}. \qed \\
+
+
+\begin{rem}
+Given a finite collection of objects in a category, $\mathcal{A}=\{A_i\}_{i=1}^n$, the product and coproduct of $\mathcal{A}$ are isomorphic. The reader should prove this in the case of $R$-modules. [For the general case, the category need have a zero object, which we shall not discuss here.] 
+\end{rem}
+
+
+\begin{rem}
+There are many ways to diagrammatically summarize the universal properties of products and coproducts. In addition to the diagrams given above, the ones below are also common (the product on the left and the coproduct on the right). 
+\begin{multicols}{2}
+	\[
+	\begin{tikzcd}
+		& B \arrow[swap]{dl}{f_\alpha} \arrow[dotted]{d}{f} \arrow{dr}{f_\beta} & \\
+	A_\alpha & \prod_{i \in \mathcal{J}} A_i \arrow{l}{\pi_\alpha} \arrow[swap]{r}{\pi_\beta} & A_\beta
+	\end{tikzcd}
+	\]
+\break 
+	\[
+	\begin{tikzcd}
+		& B & \\
+	A_\alpha \arrow{ur}{f_\alpha} \arrow[swap]{r}{i_\alpha} & \bigoplus_{i \in \mathcal{I}} A_i \arrow[swap,dotted]{u}{f} & A_\beta \arrow{l}{i_\beta} \arrow[swap]{ul}{f_\beta} 
+	\end{tikzcd}
+	\]
+\end{multicols}
+\end{rem}
