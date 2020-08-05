@@ -56,6 +56,10 @@ Every left $R$-module $M$ is the quotient of a free left $R$-module $F$. Moreove
 This theorem implies that there given any $R$-module, there is always a free module which surjectively maps onto it. We will often use this theorem without mention. One could always obtain this from Proposition~\ref{prop:setbasis}. 
 
 
+
+% -------------------
+% Projective Modules
+% -------------------
 \subsection{Projective Modules}
 
 
@@ -253,6 +257,26 @@ Then there exists a unique map $h: C \to C'$ making the diagram commute. Moreove
 	A' \arrow{r}{f'} & B' \arrow{r}{g'} & C' \arrow{r} & 0
 	\end{tikzcd}
 	\]
+First, we show there exists a unique $h: C \rightarrow C'$ such that $hg=g' \beta$. Let $x \in C$. As $g$ is onto, there is a $b \in B$ such that $x=g(b)$. 
+        \[
+        \begin{tikzcd}
+        b \arrow{r}{g} \arrow{d}{\beta} & x=g(b) \\
+        \beta(b) \arrow{r} & g'\beta(b)
+        \end{tikzcd}
+        \]
+We try the map $h(x) \defeq g'\beta(b)$. We need check that this map is well defined. Let $b_1 \in B$ such that $g(b_1)=g(b)=x$. We have
+        \[
+        \begin{tikzcd}
+        b \arrow{r}{g} \arrow{d}{\beta} & x=g(b) & b_1 \arrow[swap]{l}{g} \arrow{d}{\beta} \\
+        \beta(b) \arrow{r}{g'} & g'\beta(b) & \beta(b_1) \arrow[swap]{l}{g'} 
+        \end{tikzcd}
+        \]
+We need check that $g'(\beta(b))=g'(\beta(b_1))$. Note that as $x= g(b)=g(b_1)$, we have $g(b_1) - g(b)= g(b_1 - b)=0$. But then using exactness at $B$, $b_1-b \in \ker g= \im f$. Therefore,  $b_1-b=f(a)$ for some $a \in A$. Then by commutativity, $\beta(b_1-b)= \beta(f(a))= f'(\alpha(a))$. By exactness, we know that $g'f'= 0$ so that $g'(\beta(b_1-b))=g'(f'(\alpha(a)))=0$. Then 
+	\[
+	0= g'(\beta(b_1-b))= g'(\beta(b_1)-\beta(b))= g'(\beta(b_1)) - g'(\beta(b))= h(b_1) - h(b)
+	\]
+so that $h(b_1)= h(b)$, proving $h$ is well defined. By construction, if $b \in B$ and $c:= g(b)$, then $(hg)(b)= h(g(b))= h(c)= (g' \beta)(b)$ so that the diagram commutes. 
+	
 
 
 
@@ -260,66 +284,20 @@ Then there exists a unique map $h: C \to C'$ making the diagram commute. Moreove
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Then there exists a unique $h: C \rightarrow C'$ such that $hg=g' \beta$. We show this first. Let $x \in C$. As $g$ is onto, there is a $b \in B$ such that $x=g(b)$. 
-\[
-\begin{tikzcd}
-b \arrow{r}{g} \arrow{d}{\beta} & x=g(b) \\
-\beta(b) \arrow{r} & g'\beta(b)
-\end{tikzcd}
-\]
-We ``try'' the map $h(x) \defeq g'\beta(b)$. We need check that this map is well defined. Let $b_1 \in B$ such that $g(b_1)=g(b)=x$. We have
-\[
-\begin{tikzcd}
-b_1 \arrow{dr} & \\
-b \arrow{r}{g} \arrow{d}{\beta} & x=g(b) \\
-\beta(b) \arrow{r} & g'\beta(b)
-\end{tikzcd}
-\]
-We need check that $g'(\beta(b))=g'(\beta(b;))$. Note that $g(b_1-b)=0$ so that $b_1-b=f(a)$ for some $a \in A$. Then $\beta(b_1-b)=\beta(f(a))=f'(\alpha(a))$. Moreover, $g'(\beta(b_1-b))=g'(f'(\alpha(a)))=0$, because of exactness. So we know that $g'(\beta(b_1))=g'(\beta(b))$ so that the map is well defined. By construction, it commutes the diagram. 
-
-However, there is an easier way of demonstrating this. 
-\[
-\begin{tikzcd}
-A \arrow{r}{f} \arrow{d}{\alpha} & B \arrow{r}{g} \arrow{d}{\beta} & C \arrow{r} \arrow[dotted]{d}{h} & 0 \\
-A' \arrow{r}{f'} & B' \arrow{r}{g'} & C' \arrow{r} & 0
-\end{tikzcd}
-\]
-Note we have $B \stackrel{g}{\longrightarrow} C$ and look at the cokernel of $f$. We have $g'\beta f=g'f'\alpha=0$. Then simply use the Universal Property of the Cokernel. 
-\[
-\begin{tikzcd}
-A \arrow{r}{f} & B \arrow{d}{g'\beta} \arrow{r}{g} & C \arrow[dotted]{dl}{\exists!h} \\
-& C' & 
-\end{tikzcd}
-\]
+However, there is an easier way of demonstrating the existence of the map.  
+        \[
+        \begin{tikzcd}
+        A \arrow{r}{f} \arrow{d}{\alpha} & B \arrow{r}{g} \arrow{d}{\beta} & C \arrow{r} \arrow[dotted]{d}{h} & 0 \\
+        A' \arrow{r}{f'} & B' \arrow{r}{g'} & C' \arrow{r} & 0
+        \end{tikzcd}
+        \]
+Note we have a map $B \stackrel{g}{\longrightarrow} C$. Consider the cokernel of $f$. Using exactness, we have $0= g' f' \alpha= g' \beta f$.Using the Universal Property of the Cokernel,
+        \[
+        \begin{tikzcd}
+        A \arrow{r}{f} & B \arrow[swap]{d}{g'\beta} \arrow{r}{g} & C \arrow[dotted]{dl}{\exists!h} \\
+        & C' & 
+        \end{tikzcd}
+        \]
 We have yet to show that $h$ is unique and a homomorphism. We show this by showing that for any commutative diagram with exact rows, as below,
 \[
 \begin{tikzcd}
@@ -337,24 +315,95 @@ there exists a unique $h: A \rightarrow A'$ with $f'h=\beta f$. The idea is the 
 We know also that $g'\beta f=0$. But then the Universal Property of the Kernel says there exists a unique $h: A \rightarrow A'$ with $f'h=\beta f$. \qed \\
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% -------------------
+% Injective Modules
+% -------------------
 \subsection{Injective Modules}
 
 
-Let $f: A \rightarrow B$ be a homomorphism and let $M$ be another $R$-module. We have an induced map of abelian groups
-\[
-\Hom_R(B,M) \longrightarrow_{\Hom_R(f,M)=f_*^M} \Hom_R(A,M)
-\]
-given by $f_*^M(\beta)=\beta f$. 
+Let $f: A \to B$ be a homomorphism of $R$-modules and let $M$ be another $R$-module. If we have a map $\beta: B \to M$ then we can obtain a map $A \to M$ by (pre)composing the map from $\beta: B \to M$ with $f$; that is, we have an induced map of abelian groups
+        \[
+        \Hom_R(B,M) \ma{\Hom_R(f,M)=f_M^*} \Hom_R(A,M)
+        \]
+given by $f_M^*(\beta):=\beta f$. Note that if the module $M$ is understood, we often drop the $M$. Similarly, if we have a map $f: M \to A$, then given a map $A \to B$, we obtain a map $M \to B$ via composition; that is, we have an induced map of abelian groups
+	\[
+	\Hom_R(M,A) \ma{\Hom_R(M,f)= f_*^M} \Hom_R(M,B)
+	\]
+Again, we will often drop the $M$ if will be understood. These induced maps behave fairly well with regards to exact sequences, as the next proposition shows. 
+
 
 \begin{prop}
-Let $0 \longrightarrow A \ma{f} B \ma{g} C \longrightarrow 0$ be a short exact sequence. Then the sequence
-\[
-0 \longrightarrow \Hom(C,M) \ma{g_*^M} \Hom(B,M) \ma{f_*^M} \Hom(A,M)
-\]
-is exact.
+Suppose that
+	\[
+	\begin{split}
+	A \ma{f} B &\ma{g} C \ma{} 0 \\
+	0 \ma{} X &\ma{r} Y \ma{s} Z
+	\end{split}
+	\]
+are exact sequences of $R$-modules and $M$ is an $R$-module. Then there are exact sequences of abelian groups
+	\[
+	\begin{split}
+	0 \ma{} \Hom(C,M) &\ma{g^*} \Hom(B,M) \ma{f^*} \Hom(A,M) \\
+	0 \ma{} \Hom(M,X) &\ma{r_*} \Hom(M,Y) \ma{s_*} \Hom(M,Z) 
+	\end{split}
+	\]
 \end{prop}
 
-Proof: Exercise \\
+\pf  We prove the existence of the first exact sequence and leave the second as a routine exercise which follow mutatis mutandis from the proof we shall give for the first. By Example~\ref{ex:simple_exact}, to prove exactness at $\Hom(C,M)$, it suffices to prove that $g^*$ is injective. Suppose that $\psi: C \to M$ is such that $g^*(\psi)= 0$, i.e. $0= g^*(\psi)= \psi g$. We want to show that $\psi$ is the zero map. We know for all $b \in B$, $g^*(\psi)(b)=0$, i.e. $\psi g(b)= 0$. But as $g$ is surjective, we know that $g(B)= C$ so that it must be that $\psi(C)= 0$. But then $\psi$ is the zero map. Therefore, $g^*$ is injective. 
+
+Now we prove exactness at $\Hom(B,M)$, i.e. we prove $\im g^* = \ker f^*$. Now if $\psi: C \to M$ is a map, then by exactness $f^*g^*(\psi)= f^*(\psi g)= (\psi g)f= \psi (gf)= \psi(0)= 0$. Therefore, $\im g^* \subseteq \ker f^*$. 
+
+Now suppose $\theta \in \ker f^*$, i.e. $\theta: B \to M$ is such that $0= f^*(\theta)= \theta f$. Consider the $\coker f:= N/\im f$. Because $\theta f= 0$, by the Universal Property of the Cokernel, there exists a unique map $h: \coker f \to M$ such that $\theta= h \pi$. 
+	\[
+	\begin{tikzcd}
+	A \arrow{r}{f} & B \arrow{r}{\theta} \arrow[swap]{d}{\pi} & M \\
+	& \coker f \arrow[dotted,swap]{ur}{h} & 
+	\end{tikzcd}
+	\]
+where $\pi: B \to \coker f$ is the projection map $b \mapsto b + \im f$. But by exactness, $\im f= \ker g$ so that $\coker f= B/\im f= B/\ker g$. Furthermore as $g: B \to C$ is surjective, we know by the First Isomorphism Theorem that $B/\ker g \cong C$. But then via this isomorphism, we can view $h$ as $h: C \to M$, i.e. $h \in \Hom(C,M)$.
+
+
+
+
+We claim that $g^*(h)= \theta$. Let $b \in B$. 
+
+
+
+
+
+\newpage
+
+Over a field, HOm Exact
+
+
+% This and previous result
+
+%%%%%%%%%%%%%%%%%
+
 
 
 Note that $f_*^M$ is onto if for any $h: A \rightarrow M$, there is a $p: B \rightarrow M$ with $pf=h$. 
@@ -395,6 +444,10 @@ $_R I$ is injective if and only if for all monomorphisms $0 \longrightarrow I \m
 \end{prop}
 
 
+
+% -------------------
+% Baer's Criterion
+% -------------------
 \subsection{Baer's Criterion} 
 
 
@@ -504,6 +557,9 @@ It is important to take note of a few things:
 
 
 
+% -------------------
+% Divisible Modules & Snake Lemma
+% -------------------
 \subsection{Divisible Modules and Snake Lemma}
 
 \begin{dfn}[Divisible Group]

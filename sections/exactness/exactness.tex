@@ -21,7 +21,7 @@ Generally, $A \ma{f} B \ma{g} C$ does not mean that we have exactness at $B$ but
 \end{rem}
 
 
-\begin{ex} \hfill
+\begin{ex} \label{ex:simple_exact} \hfill
 \begin{enumerate}[(i)]
 \item A sequence $0 \ma{} A \ma{f} B$ is exact if and only if $f$ is injective.
 \item A sequence $B \ma{g} C \ma{} 0$ is exact if and only if $g$ is surjective.
@@ -50,8 +50,10 @@ If $0 \ma{} A \ma{f} B \ma{g} C \ma{} 0$ is a short exact sequence, then $A \con
 
 
 
+% -------------------
+% Short 5 Lemma
+% -------------------
 \subsection{The Short 5 Lemma}
-
 
 
 \begin{lem}[The Short 5 Lemma] \label{lem:shortfive}
@@ -156,8 +158,10 @@ Now as $f(a) \in B$, there exists a $b_0 \in B$ such that $b_0=f(a)$ so that $\b
 
 
 
+% -------------------
+% Isomorphism of Short Exact Sequences
+% -------------------
 \subsection{Isomorphisms of Short Exact Sequences}
-
 
 
 Suppose we have two exact sequences $0 \ma{} A \ma{} B \ma{} C \ma{} 0$ and $0 \ma{} A' \ma{} B' \ma{} C' \ma{} 0$ with isomorphisms $f: A \to A'$, $g: B \to B'$, and $h: C \to C'$. We can represent this diagrammatically below:
@@ -257,8 +261,10 @@ is split exact: if $\{b_i\}_{i \in \mathcal{I}}$ is a basis of $W$, one can choo
 
 
 
+% -------------------
+% Idempotents and Indecomposables
+% -------------------
 \subsection{Idempotents and Indecomposables}
-
 
 
 \begin{dfn}[Idempotent]
@@ -366,8 +372,10 @@ so that the intersection is trivial. \qed \\
 
 
 
+% -------------------
+% Hom(M,--)
+% -------------------
 \subsection{The Functor $\Hom_R(M,-)$}
-
 
 
 Now we look a bit more at exact sequences. Let $A$, $B$ be $R$-modules. Usually, $\Hom_R(A,B)$ is an abelian group only. Given another module $M$ and a homomorphism $f: A \to B$, we have an induced homomorphism of abelian groups
